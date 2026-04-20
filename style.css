@@ -101,7 +101,7 @@ ul { list-style: none; }
     margin-right: -4px;
     transition: background-color 0.15s ease;
     flex-shrink: 0;
-    z-index: 101; /* Mantém o botão acima do menu lateral */
+    z-index: 101; 
 }
 
 .menu-btn:hover  { background-color: rgba(255,255,255,0.06); }
@@ -124,7 +124,19 @@ ul { list-style: none; }
 .day-group { display: flex; flex-direction: column; flex-shrink: 0; }
 .day-title { position: sticky; left: 40px; font-size: 10px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.6px; text-transform: uppercase; margin-bottom: 8px; z-index: 5; display: inline-block; width: max-content; }
 .day-matches { display: flex; gap: 20px; }
-.match-col { display: flex; flex-direction: column; min-width: 148px; scroll-snap-align: start; padding: 0; }
+
+/* AJUSTE PARA OS JOGOS SEREM CLICÁVEIS */
+.match-col { 
+    display: flex; 
+    flex-direction: column; 
+    min-width: 148px; 
+    scroll-snap-align: start; 
+    padding: 0; 
+    cursor: pointer; /* Adicionado para indicar que é clicável */
+    transition: opacity 0.2s;
+}
+.match-col:active { opacity: 0.7; }
+
 .team-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
 .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; z-index: 10; padding: 10px; min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
 .left-arrow  { left: 0; }
@@ -232,7 +244,7 @@ footer { margin-top: 40px; padding: 40px 16px; background-color: #101319; border
 }
 
 /* =========================================
-   MENU LATERAL (SIDE MENU) - NOVO COMPONENTE
+   MENU LATERAL (SIDE MENU)
    ========================================= */
 .side-menu {
     position: fixed;
@@ -241,7 +253,6 @@ footer { margin-top: 40px; padding: 40px 16px; background-color: #101319; border
     width: 100%;
     max-width: 320px;
     height: 100vh;
-    /* Gradiente escuro adaptado para o bg-body do projeto: RGB(13, 16, 22) */
     background: linear-gradient(90deg, rgba(13,16,22,0) 0%, rgba(13,16,22,0.85) 40%, rgba(13,16,22,1) 100%);
     z-index: 90;
     transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -288,3 +299,91 @@ footer { margin-top: 40px; padding: 40px 16px; background-color: #101319; border
     border-radius: 6px;
     margin-right: -14px; 
 }
+
+/* =========================================
+   COMPONENTE MATCH DETAILS (MODAL OVERLAY)
+   ========================================= */
+.matchup-wrapper {
+    --m-bg-main: #1b2028;
+    --m-bg-surface: #222a35;
+    --m-bg-button: #202b38;
+    --m-bg-alert: #202731;
+    --m-text-primary: #ffffff;
+    --m-text-secondary: #8e9bb0;
+    --m-border-color: #2a3340;
+    --m-accent-blue: #1e75ff;
+    --m-accent-orange: #ff682a;
+
+    /* Estilos Modal: Fica fixo acima de tudo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    background-color: var(--m-bg-main);
+    overflow-y: auto;
+    color: var(--m-text-primary);
+    
+    /* Animação para deslizar de baixo para cima */
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block; 
+}
+
+/* Classe ativada via JS para mostrar o Modal */
+.matchup-wrapper.open {
+    transform: translateY(0);
+}
+
+.matchup-header { display: flex; align-items: center; justify-content: space-between; padding: 16px; border-bottom: 1px solid var(--m-border-color); }
+.matchup-header-left { display: flex; align-items: center; gap: 12px; overflow: hidden; }
+.matchup-logo { width: 32px; height: 32px; display: flex; justify-content: center; align-items: center; }
+.matchup-header-title { font-size: 15px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.matchup-close-btn { width: 32px; height: 32px; border-radius: 8px; background-color: rgba(255,255,255,0.05); border: none; display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--m-text-secondary); transition: 0.2s; }
+.matchup-close-btn:active { transform: scale(0.9); }
+
+.matchup-breadcrumbs { padding: 16px; font-size: 11px; color: var(--m-text-secondary); display: flex; gap: 4px; flex-wrap: wrap; font-weight: 500; }
+.matchup-breadcrumbs a { color: var(--m-text-secondary); text-decoration: underline; }
+
+.matchup-matchboard { display: flex; justify-content: space-between; align-items: flex-start; padding: 20px 24px; margin-top: 10px; }
+.matchup-team { display: flex; flex-direction: column; align-items: center; width: 100px; }
+.matchup-flag { width: 54px; height: 36px; border-radius: 4px; object-fit: cover; margin-bottom: 12px; }
+.matchup-team-name { font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+.matchup-color-bar { width: 50px; height: 4px; border-radius: 2px; margin-bottom: 6px; }
+.matchup-blue { background-color: var(--m-accent-blue); }
+.matchup-orange { background-color: var(--m-accent-orange); }
+.matchup-color-label { font-size: 9px; font-weight: 700; color: var(--m-text-secondary); letter-spacing: 0.5px; }
+
+.matchup-score-center { display: flex; flex-direction: column; align-items: center; }
+.matchup-pts-label { font-size: 9px; font-weight: 700; color: var(--m-text-secondary); margin-bottom: 8px; }
+.matchup-score-boxes { display: flex; gap: 8px; margin-bottom: 12px; }
+.matchup-score-box { width: 52px; height: 56px; background-color: var(--m-bg-surface); border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; font-weight: 600; color: var(--m-text-secondary); }
+.matchup-datetime { font-size: 10px; font-weight: 600; color: var(--m-text-secondary); margin-bottom: 10px; }
+.matchup-game-icon { width: 20px; height: 20px; }
+
+.matchup-action-container { padding: 0 16px; margin-bottom: 24px; }
+.matchup-btn-explore { width: 100%; background-color: var(--m-bg-button); color: var(--m-text-primary); border: none; padding: 14px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s ease; }
+.matchup-btn-explore:active { transform: scale(0.98); background-color: #273444; }
+
+.matchup-accordion { margin-bottom: 24px; }
+.matchup-acc-header { display: flex; justify-content: space-between; align-items: center; padding: 16px; cursor: pointer; }
+.matchup-acc-title { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; }
+.matchup-chevron { transition: transform 0.3s ease; fill: var(--m-text-secondary); }
+.matchup-open .matchup-chevron { transform: rotate(180deg); }
+.matchup-acc-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 16px; }
+.matchup-open .matchup-acc-body { max-height: 200px; }
+.matchup-detail-row { display: flex; justify-content: space-between; padding: 12px 0; font-size: 12px; }
+.matchup-detail-row span:first-child { color: var(--m-text-secondary); }
+.matchup-detail-row span:last-child { font-weight: 500; }
+
+.matchup-tabs { display: flex; border-bottom: 2px solid var(--m-border-color); margin-bottom: 20px; }
+.matchup-tab { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 16px 0; cursor: pointer; position: relative; }
+.matchup-active::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background-color: var(--m-accent-blue); }
+.matchup-tab-title { font-size: 10px; font-weight: 700; color: var(--m-text-secondary); margin-bottom: 8px; letter-spacing: 0.5px; }
+.matchup-active .matchup-tab-title { color: var(--m-text-primary); }
+.matchup-tab-score { font-size: 14px; font-weight: 700; }
+
+.matchup-alert-container { padding: 0 16px 20px; }
+.matchup-alert-box { display: flex; align-items: center; gap: 12px; background-color: var(--m-bg-alert); padding: 16px; border-radius: 8px; font-size: 12px; font-weight: 400; color: #d1d5db; }
+.matchup-alert-box svg { fill: var(--m-text-primary); flex-shrink: 0; }
