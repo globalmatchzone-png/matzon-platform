@@ -91,6 +91,85 @@ document.addEventListener('DOMContentLoaded', () => {
     if (logoMatzon)       logoMatzon.addEventListener('click', showDashboard);
     if (headerBackBtn)    headerBackBtn.addEventListener('click', showDashboard);
 
+    // Comunidade
+    const menuComunidade    = document.getElementById('menuComunidade');
+    const communityWrapper  = document.getElementById('communityWrapper');
+    const communityListView = document.getElementById('communityListView');
+    const commChatView      = document.getElementById('commChatView');
+    const commGroupInfoView = document.getElementById('commGroupInfoView');
+    const commBackToMainBtn = document.getElementById('commBackToMainBtn');
+    const commBackToListBtn = document.getElementById('commBackToListBtn');
+    const openGroupInfoBtn  = document.getElementById('openGroupInfoBtn');
+    const openGroupInfoBtn2 = document.getElementById('openGroupInfoBtn2');
+    const closeGroupInfoBtn = document.getElementById('closeGroupInfoBtn');
+    const commMenuToggleBtn = document.getElementById('commMenuToggleBtn');
+    const commDropdown      = document.getElementById('commDropdown');
+
+    function showCommunity() {
+        if (dashboardView)    dashboardView.style.display    = 'none';
+        if (tournamentsView)  tournamentsView.style.display  = 'none';
+        if (profileView)      profileView.style.display      = 'none';
+        setHeaderDefault();
+        if (headerEl) headerEl.style.display = 'none';
+        communityWrapper.style.display = 'flex';
+        communityListView.style.display = 'flex';
+        commChatView.style.display = 'none';
+        commGroupInfoView.style.display = 'none';
+        window.scrollTo(0, 0);
+        menuItems.forEach(el => el.classList.remove('active'));
+        if (menuComunidade) menuComunidade.classList.add('active');
+        closeMenu();
+    }
+
+    function hideCommunity() {
+        communityWrapper.style.display = 'none';
+        if (headerEl) headerEl.style.display = '';
+        showDashboard();
+    }
+
+    if (menuComunidade)    menuComunidade.addEventListener('click', showCommunity);
+    if (commBackToMainBtn) commBackToMainBtn.addEventListener('click', hideCommunity);
+
+    document.querySelectorAll('.js-open-chat').forEach(item => {
+        item.addEventListener('click', () => {
+            communityListView.style.display = 'none';
+            commChatView.style.display = 'flex';
+            const body = document.getElementById('commChatBody');
+            if (body) body.scrollTop = body.scrollHeight;
+        });
+    });
+
+    if (commBackToListBtn) {
+        commBackToListBtn.addEventListener('click', () => {
+            commChatView.style.display = 'none';
+            communityListView.style.display = 'flex';
+        });
+    }
+
+    [openGroupInfoBtn, openGroupInfoBtn2].forEach(btn => {
+        if (btn) btn.addEventListener('click', () => {
+            commGroupInfoView.style.display = 'block';
+        });
+    });
+
+    if (closeGroupInfoBtn) {
+        closeGroupInfoBtn.addEventListener('click', () => {
+            commGroupInfoView.style.display = 'none';
+        });
+    }
+
+    if (commMenuToggleBtn && commDropdown) {
+        commMenuToggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            commDropdown.classList.toggle('open');
+        });
+        document.addEventListener('click', (e) => {
+            if (!commDropdown.contains(e.target) && e.target !== commMenuToggleBtn) {
+                commDropdown.classList.remove('open');
+            }
+        });
+    }
+
 
     // =========================================
     // 2. MENU HAMBÚRGUER
@@ -139,24 +218,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // =========================================
-    // 4. SCHEDULE CAROUSEL (SETAS)
+    // 4. SCHEDULE CAROUSEL (SETAS) — improved from V2
     // =========================================
     const scheduleCarousel = document.getElementById('matchesCarousel');
     const btnPrevMatch     = document.getElementById('prevMatchBtn');
     const btnNextMatch     = document.getElementById('nextMatchBtn');
 
     if (scheduleCarousel && btnPrevMatch && btnNextMatch) {
+        const getScheduleScrollAmount = () => {
+            const firstCol = scheduleCarousel.querySelector('.match-col');
+            if (!firstCol) return scheduleCarousel.clientWidth * 0.8;
+            const dayMatches = scheduleCarousel.querySelector('.day-matches');
+            const gap = dayMatches ? parseFloat(window.getComputedStyle(dayMatches).gap) || 0 : 0;
+            return firstCol.offsetWidth + gap;
+        };
+
         btnPrevMatch.addEventListener('click', () => {
-            scheduleCarousel.scrollBy({ left: -(scheduleCarousel.clientWidth * 0.8), behavior: 'smooth' });
+            scheduleCarousel.scrollBy({ left: -getScheduleScrollAmount(), behavior: 'smooth' });
         });
         btnNextMatch.addEventListener('click', () => {
-            scheduleCarousel.scrollBy({ left: (scheduleCarousel.clientWidth * 0.8), behavior: 'smooth' });
+            scheduleCarousel.scrollBy({ left: getScheduleScrollAmount(), behavior: 'smooth' });
         });
     }
 
 
     // =========================================
-    // 5. ACTIVE STATE (TABS, PILLS, ROUND-BTNS)
+    // 5. GENERIC CAROUSEL HELPERS (from V2)
+    // =========================================
+
+    /** Sync dots to scroll position of a container */
+    function setupCarouselDots(scrollContainerSelector, dotsContainerSelector) {
+        const scrollContainer = document.querySelector(scrollContainerSelector);
+        const dotsWrapper     = document.querySelector(dotsContainerSelector);
+        if (!scrollContainer || !dotsWrapper) return;
+        const dots = dotsWrapper.querySelectorAll('.dot');
+        if (dots.length === 0) return;
+
+        scrollContainer.addEventListener('scroll', () => {
+            const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+            if (maxScrollLeft <= 0) return;
+            const scrollRatio = scrollContainer.scrollLeft / maxScrollLeft;
+            const dotIndex    = Math.round(scrollRatio * (dots.length - 1));
+            dots.forEach((dot, index) => dot.classList.toggle('active', index === dotIndex));
+        }, { passive: true });
+    }
+
+    /** Wire prev/next arrows to scroll a slider */
+    function setupCarouselArrows(sliderSelector, controlsContainerId) {
+        const slider   = document.querySelector(sliderSelector);
+        const controls = document.getElementById(controlsContainerId);
+        if (!slider || !controls) return;
+
+        const prevBtn = controls.querySelector('.arrow-prev');
+        const nextBtn = controls.querySelector('.arrow-next');
+
+        const getScrollAmount = () => {
+            const firstChild = slider.firstElementChild;
+            if (!firstChild) return 0;
+            const gap = parseFloat(window.getComputedStyle(slider).gap) || 0;
+            return firstChild.offsetWidth + gap;
+        };
+
+        if (prevBtn) prevBtn.addEventListener('click', () => slider.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' }));
+        if (nextBtn) nextBtn.addEventListener('click', () => slider.scrollBy({ left:  getScrollAmount(), behavior: 'smooth' }));
+    }
+
+    // Wire merchandise slider
+    setupCarouselDots('#merchSlider', '#merchControls .dots');
+    setupCarouselArrows('#merchSlider', 'merchControls');
+
+
+    // =========================================
+    // 6. ACTIVE STATE (TABS, PILLS, ROUND-BTNS)
     // =========================================
     function setupActiveState(selector) {
         const items = document.querySelectorAll(selector);
@@ -187,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // =========================================
-    // 6. PERFIL — TABS + BARRAS DE PERFORMANCE
+    // 7. PERFIL — TABS + BARRAS DE PERFORMANCE
     // =========================================
     function animateProfileBars() {
         document.querySelectorAll('#profileView .prf-panel.active .prf-bar-fill').forEach(fill => {
@@ -221,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // =========================================
-    // 7. MODAL MATCH DETAILS
+    // 8. MODAL MATCH DETAILS
     // =========================================
     function createEmojiImage(emoji) {
         const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="54"><rect width="100%" height="100%" fill="#222a35" rx="4"/><text x="50%" y="50%" font-size="32" font-family="sans-serif" text-anchor="middle" dominant-baseline="central">${emoji}</text></svg>`;
@@ -237,7 +370,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const matchModal    = document.getElementById('matchModalOverlay');
     const matchCloseBtn = document.getElementById('closeMatchModal');
 
-    // Apenas elementos do dashboard e tournaments abrem o modal
     const allMatches = document.querySelectorAll(
         '#dashboardView .match-col, #dashboardView .compact-match-col, #tournamentsView .match-card'
     );
@@ -257,9 +389,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         const teamNames = match.querySelectorAll('.team-name');
                         if (teamNames[0]) team1 = teamNames[0].textContent.trim();
                         if (teamNames[1]) team2 = teamNames[1].textContent.trim();
-                        const imgs = match.querySelectorAll('img.flag, svg.team-shield');
-                        if (imgs[0] && imgs[0].tagName.toLowerCase() === 'img') flag1 = imgs[0].src;
-                        if (imgs[1] && imgs[1].tagName.toLowerCase() === 'img') flag2 = imgs[1].src;
+                        const imgs = match.querySelectorAll('img.flag, img.team-logo');
+                        if (imgs.length >= 2) { flag1 = imgs[0].src; flag2 = imgs[1].src; }
+                        else if (imgs.length === 1) { flag2 = imgs[0].src; }
                         const timeEl = match.querySelector('.time');
                         if (timeEl) time = timeEl.textContent.trim();
                         const dayGroup = match.closest('.day-group');
