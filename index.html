@@ -12,8 +12,18 @@
 <body>
 
     <div class="app-container">
-        
+
+        <!-- ===================== HEADER ===================== -->
         <header class="header" id="mainHeader">
+
+            <!-- Botão voltar (só visível no perfil) -->
+            <button class="menu-btn" id="headerBackBtn" style="display:none;" aria-label="Voltar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 5l-7 7 7 7"/>
+                </svg>
+            </button>
+
+            <!-- Logo MATZON (visível por defeito) -->
             <div class="logo-matzon" id="logoMatzon" style="cursor: pointer;">
                 MATZON
                 <svg viewBox="0 0 100 50" class="logo-e">
@@ -23,6 +33,11 @@
                 </svg>
                 <sup class="registered-mark">®</sup>
             </div>
+
+            <!-- Título do perfil (só visível no perfil) -->
+            <div id="headerProfileTitle" style="display:none; flex:1; font-size:15px; font-weight:700; font-family:var(--font-body); text-align:center; color:#fff;">Profile</div>
+
+            <!-- Menu hambúrguer (sempre visível) -->
             <button class="menu-btn" id="menuBtn" aria-label="Abrir menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="#8a96a6">
                     <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/>
@@ -30,6 +45,7 @@
             </button>
         </header>
 
+        <!-- ===================== MENU LATERAL ===================== -->
         <nav class="side-menu" id="sideMenu">
             <ul class="menu-list">
                 <li class="menu-item active" id="menuProfile">Perfil</li>
@@ -40,8 +56,10 @@
             </ul>
         </nav>
 
+        <!-- ===================== MAIN ===================== -->
         <main class="main-content">
 
+            <!-- ===== VIEW: DASHBOARD ===== -->
             <div id="dashboardView">
                 <div class="schedule-card">
                     <div class="carousel-wrapper">
@@ -135,7 +153,7 @@
                 </div>
 
                 <h3 class="section-title-large">FeWC 2026 eFootball Console Nations League</h3>
-                
+
                 <div class="slim-banner" id="btnGoTournaments">
                     <div class="red-dot"></div>Follow the MATZON Nations League 2026! →
                 </div>
@@ -149,7 +167,6 @@
                         <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/EFootball_logo.svg" style="height:12px; background:blue; padding:2px; border-radius:2px;" alt="icon">
                         •• 115 TEAMS
                     </div>
-
                     <div class="section-header" style="padding:0 0 10px 0;">TODAY</div>
                     <div class="ticker-container" id="ticker2" style="padding:0; gap:0; border-top: 1px solid #2a3143; padding-top:15px;">
                         <div class="compact-match-col"><div class="compact-match-info"><div class="compact-flags"><span>🇻🇳</span><span>🇲🇻</span></div><div class="compact-time">12:00</div></div></div>
@@ -166,11 +183,12 @@
                 </div>
             </div>
 
+            <!-- ===== VIEW: TOURNAMENTS ===== -->
             <div id="tournamentsView" style="display: none;">
                 <section class="hero-section">
                     <div class="hero-card" style="background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=800&q=80');">
                         <div class="hero-overlay"></div>
-                        <h1 class="hero-title">MATZON World Cup 2026™<br>ft. Rocket League</h1>
+                        <h1 class="hero-title">MATZON World Cup 2026™<br>ft. eFootball</h1>
                     </div>
                 </section>
 
@@ -195,15 +213,14 @@
                                 <button class="tab-arrow small-arrow js-zone-left"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
                                 <button class="pill">Europe</button>
                             </div>
-                            <button class="pill w-col-3">Asia (East) & Oceania</button>
+                            <button class="pill w-col-3">Asia (East) &amp; Oceania</button>
                             <button class="pill w-col-2">Africa</button>
                             <button class="pill active w-col-2">Asia West</button>
-                            <button class="pill w-col-3">North & Central America</button>
+                            <button class="pill w-col-3">North &amp; Central America</button>
                         </div>
                         <div class="filter-spacer"></div>
                         <span class="filter-label">zone</span>
                     </div>
-                    
                     <div class="filter-row">
                         <div class="pills-scroll">
                             <button class="pill active w-col-1">Week 1</button>
@@ -213,7 +230,6 @@
                         <div class="filter-line"></div>
                         <span class="filter-label">Phase</span>
                     </div>
-
                     <div class="filter-row">
                         <div class="pills-scroll">
                             <button class="pill active w-col-1">Groups</button>
@@ -223,7 +239,6 @@
                         <div class="filter-line"></div>
                         <span class="filter-label">stage</span>
                     </div>
-
                     <div class="filter-row">
                         <div class="pills-scroll">
                             <button class="pill active w-col-2">Group A</button>
@@ -238,66 +253,29 @@
 
                 <section class="standings-section">
                     <h2 class="section-title">Standings</h2>
-                    
                     <div class="table-header">
-                        <div class="th-left">
-                            <span class="th-hash">#</span>
-                            <span>PARTICIPANT</span>
-                        </div>
-                        <div class="th-right">
-                            <span>MP</span><span>GD</span><span>PTS</span>
-                        </div>
+                        <div class="th-left"><span class="th-hash">#</span><span>PARTICIPANT</span></div>
+                        <div class="th-right"><span>MP</span><span>GD</span><span>PTS</span></div>
                     </div>
-
                     <div class="standings-list">
                         <div class="standing-row advancing">
-                            <div class="st-left">
-                                <span class="st-rank">1</span>
-                                <img src="https://flagcdn.com/w40/fr.png" alt="France" class="st-flag">
-                                <span class="st-name">France</span>
-                            </div>
-                            <div class="st-right">
-                                <span>0</span><span>0</span><span class="st-pts">0</span>
-                            </div>
+                            <div class="st-left"><span class="st-rank">1</span><img src="https://flagcdn.com/w40/fr.png" alt="France" class="st-flag"><span class="st-name">France</span></div>
+                            <div class="st-right"><span>0</span><span>0</span><span class="st-pts">0</span></div>
                         </div>
-                        
                         <div class="standing-row advancing">
-                            <div class="st-left">
-                                <span class="st-rank">1</span>
-                                <img src="https://flagcdn.com/w40/gr.png" alt="Greece" class="st-flag">
-                                <span class="st-name">Greece</span>
-                            </div>
-                            <div class="st-right">
-                                <span>0</span><span>0</span><span class="st-pts">0</span>
-                            </div>
+                            <div class="st-left"><span class="st-rank">2</span><img src="https://flagcdn.com/w40/gr.png" alt="Greece" class="st-flag"><span class="st-name">Greece</span></div>
+                            <div class="st-right"><span>0</span><span>0</span><span class="st-pts">0</span></div>
                         </div>
-
                         <div class="standing-row advancing">
-                            <div class="st-left">
-                                <span class="st-rank">1</span>
-                                <img src="https://flagcdn.com/w40/lu.png" alt="Luxembourg" class="st-flag">
-                                <span class="st-name">Luxembourg</span>
-                            </div>
-                            <div class="st-right">
-                                <span>0</span><span>0</span><span class="st-pts">0</span>
-                            </div>
+                            <div class="st-left"><span class="st-rank">3</span><img src="https://flagcdn.com/w40/lu.png" alt="Luxembourg" class="st-flag"><span class="st-name">Luxembourg</span></div>
+                            <div class="st-right"><span>0</span><span>0</span><span class="st-pts">0</span></div>
                         </div>
-
                         <div class="standing-row advancing">
-                            <div class="st-left">
-                                <span class="st-rank">1</span>
-                                <img src="https://flagcdn.com/w40/ua.png" alt="Ukraine" class="st-flag">
-                                <span class="st-name">Ukraine</span>
-                            </div>
-                            <div class="st-right">
-                                <span>0</span><span>0</span><span class="st-pts">0</span>
-                            </div>
+                            <div class="st-left"><span class="st-rank">4</span><img src="https://flagcdn.com/w40/ua.png" alt="Ukraine" class="st-flag"><span class="st-name">Ukraine</span></div>
+                            <div class="st-right"><span>0</span><span>0</span><span class="st-pts">0</span></div>
                         </div>
                     </div>
-
-                    <div class="legend-box">
-                        <div class="legend-color"></div> Advancing
-                    </div>
+                    <div class="legend-box"><div class="legend-color"></div> Advancing</div>
                 </section>
 
                 <section class="matchups-section">
@@ -322,70 +300,64 @@
                             <circle cx="12" cy="12" r="3" fill="white"/>
                         </svg>
                     </div>
-
                     <div class="match-cards">
                         <div class="match-card">
                             <div class="match-row">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/fr.png" class="m-flag"> France</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/fr.png" alt="France" class="m-flag"> France</div>
                                 <div class="match-time">19:00</div>
                             </div>
                             <div class="match-row mt-12">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/ua.png" class="m-flag"> Ukraine</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/ua.png" alt="Ukraine" class="m-flag"> Ukraine</div>
                                 <div class="match-date">APR 28</div>
                             </div>
                         </div>
-
                         <div class="match-card">
                             <div class="match-row">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/lu.png" class="m-flag"> Luxembourg</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/lu.png" alt="Luxembourg" class="m-flag"> Luxembourg</div>
                                 <div class="match-time">19:00</div>
                             </div>
                             <div class="match-row mt-12">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/gr.png" class="m-flag"> Greece</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/gr.png" alt="Greece" class="m-flag"> Greece</div>
                                 <div class="match-date">APR 28</div>
                             </div>
                         </div>
-
                         <div class="match-card">
                             <div class="match-row">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/ua.png" class="m-flag"> Ukraine</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/ua.png" alt="Ukraine" class="m-flag"> Ukraine</div>
                                 <div class="match-time">19:30</div>
                             </div>
                             <div class="match-row mt-12">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/lu.png" class="m-flag"> Luxembourg</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/lu.png" alt="Luxembourg" class="m-flag"> Luxembourg</div>
                                 <div class="match-date">APR 28</div>
                             </div>
                         </div>
-
                         <div class="match-card">
                             <div class="match-row">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/gr.png" class="m-flag"> Greece</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/gr.png" alt="Greece" class="m-flag"> Greece</div>
                                 <div class="match-time">19:30</div>
                             </div>
                             <div class="match-row mt-12">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/fr.png" class="m-flag"> France</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/fr.png" alt="France" class="m-flag"> France</div>
                                 <div class="match-date">APR 28</div>
                             </div>
                         </div>
-
                         <div class="match-card">
                             <div class="match-row">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/fr.png" class="m-flag"> France</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/fr.png" alt="France" class="m-flag"> France</div>
                                 <div class="match-time">20:00</div>
                             </div>
                             <div class="match-row mt-12">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/lu.png" class="m-flag"> Luxembourg</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/lu.png" alt="Luxembourg" class="m-flag"> Luxembourg</div>
                                 <div class="match-date">APR 28</div>
                             </div>
                         </div>
-
                         <div class="match-card">
                             <div class="match-row">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/gr.png" class="m-flag"> Greece</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/gr.png" alt="Greece" class="m-flag"> Greece</div>
                                 <div class="match-time">20:00</div>
                             </div>
                             <div class="match-row mt-12">
-                                <div class="match-team"><img src="https://flagcdn.com/w40/ua.png" class="m-flag"> Ukraine</div>
+                                <div class="match-team"><img src="https://flagcdn.com/w40/ua.png" alt="Ukraine" class="m-flag"> Ukraine</div>
                                 <div class="match-date">APR 28</div>
                             </div>
                         </div>
@@ -407,27 +379,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="glass">
-                                        <td class="t-left">Europe</td><td>8</td><td>4</td><td>12</td>
-                                    </tr>
-                                    <tr class="glass highlight">
-                                        <td class="t-left">Asia East*</td><td>3</td><td>2</td><td>5</td>
-                                    </tr>
-                                    <tr class="glass">
-                                        <td class="t-left">Asia West*</td><td>2</td><td>1</td><td>3</td>
-                                    </tr>
-                                    <tr class="glass highlight">
-                                        <td class="t-left">Africa</td><td>5</td><td>3</td><td>8</td>
-                                    </tr>
-                                    <tr class="glass">
-                                        <td class="t-left">N&CA</td><td>4</td><td>2</td><td>6</td>
-                                    </tr>
-                                    <tr class="glass highlight">
-                                        <td class="t-left">SA</td><td>3</td><td>1</td><td>4</td>
-                                    </tr>
-                                    <tr class="glass">
-                                        <td class="t-left">Oceania**</td><td>N.A.</td><td>N.A.</td><td>2</td>
-                                    </tr>
+                                    <tr class="glass"><td class="t-left">Europe</td><td>8</td><td>4</td><td>12</td></tr>
+                                    <tr class="glass highlight"><td class="t-left">Asia East*</td><td>3</td><td>2</td><td>5</td></tr>
+                                    <tr class="glass"><td class="t-left">Asia West*</td><td>2</td><td>1</td><td>3</td></tr>
+                                    <tr class="glass highlight"><td class="t-left">Africa</td><td>5</td><td>3</td><td>8</td></tr>
+                                    <tr class="glass"><td class="t-left">N&amp;CA</td><td>4</td><td>2</td><td>6</td></tr>
+                                    <tr class="glass highlight"><td class="t-left">SA</td><td>3</td><td>1</td><td>4</td></tr>
+                                    <tr class="glass"><td class="t-left">Oceania**</td><td>N.A.</td><td>N.A.</td><td>2</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -446,7 +404,6 @@
                     <div class="explanation-box">
                         <h3>consistency ranking explanation</h3>
                         <p>Throughout all three qualifying-weeks, national teams earn consistency points based on their performance across both the group stages and the knockout stages. This system rewards teams that consistently perform at a high level, while also capturing success in high-pressure knockout scenarios. As a result, the overall ranking reflects both consistency and peak performance. At the end of the MATZON Nations League, national teams that have earned the most consistency points will qualify for the MATZON Continental Championships.</p>
-                        
                         <h3 class="mt-24">Direct qualification in week 3</h3>
                         <p>In addition to qualification via the consistency ranking, a limited number of teams qualify directly through their performance in week 3. These qualification spots are awarded to the top-performing teams of the final week, ensuring that strong late-stage performances are rewarded.<br>
                         If a national team qualifies both through the consistency ranking and through its week 3 performance, the additional qualification spot is reallocated to the next highest-ranked team from the consistency ranking that has not yet qualified.</p>
@@ -454,11 +411,155 @@
                 </section>
             </div>
 
+            <!-- ===== VIEW: PERFIL ===== -->
+            <div id="profileView" style="display: none;">
+
+                <div class="prf-user-card">
+                    <div class="prf-merged-hero-bg" style="background-image: url('https://flagcdn.com/w640/fr.png');">
+                        <button class="prf-settings-btn" aria-label="Configurações">
+                            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                                <circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="prf-user-info-container">
+                        <div class="prf-avatar-wrapper">
+                            <div class="prf-avatar-merged" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">AT</div>
+                            <img src="https://flagcdn.com/w40/fr.png" alt="France" class="prf-player-nation-flag">
+                        </div>
+                        <h1 class="prf-nation-name" style="font-size:22px; margin-top:12px;">AlexTactical</h1>
+                        <div class="prf-player-tags">
+                            <span class="pill active prf-pill-small">Striker</span>
+                            <span class="prf-country-text">France</span>
+                        </div>
+                        <div class="prf-world-rank">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent-orange)"><path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z"/></svg>
+                            World Rank <strong class="prf-rank-highlight">#18</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-card prf-stats-strip">
+                    <div class="prf-stats-row">
+                        <div class="prf-stat"><div class="prf-stat-val">34</div><div class="prf-stat-key">MATCHES</div></div>
+                        <div class="prf-stat-sep"></div>
+                        <div class="prf-stat"><div class="prf-stat-val" style="color:var(--accent-orange);">87</div><div class="prf-stat-key">GOALS</div></div>
+                        <div class="prf-stat-sep"></div>
+                        <div class="prf-stat"><div class="prf-stat-val">41</div><div class="prf-stat-key">ASSISTS</div></div>
+                        <div class="prf-stat-sep"></div>
+                        <div class="prf-stat"><div class="prf-stat-val prf-text-green">8.4</div><div class="prf-stat-key">AVG</div></div>
+                    </div>
+                </div>
+
+                <div class="tabs-container prf-tabs-margin">
+                    <div class="tabs-scroll" id="profileTabsScroll">
+                        <button class="tab-item active js-prf-tab" data-target="tab-stats">Stats</button>
+                        <button class="tab-item js-prf-tab" data-target="tab-history">History</button>
+                        <button class="tab-item js-prf-tab" data-target="tab-achievements">Achievements</button>
+                    </div>
+                </div>
+
+                <!-- TAB: Stats -->
+                <div class="prf-panel active" id="tab-stats">
+                    <div class="matchups-section pt-0">
+                        <h2 class="section-title prf-small-title">Recent Form</h2>
+                        <div class="prf-form-row">
+                            <div class="round-btn prf-form-w">W</div>
+                            <div class="round-btn prf-form-w">W</div>
+                            <div class="round-btn prf-form-l">L</div>
+                            <div class="round-btn prf-form-w">W</div>
+                            <div class="round-btn prf-form-d">D</div>
+                        </div>
+                    </div>
+                    <div class="standings-section pt-0">
+                        <h2 class="section-title prf-small-title">Performance</h2>
+                        <div class="standing-row prf-performance-card">
+                            <div class="prf-bar-row"><div class="prf-bar-label">Attacking</div><div class="prf-bar-track"><div class="prf-bar-fill" data-width="91" style="background:linear-gradient(90deg,#ff7a00,#ffb347);"></div></div><div class="prf-bar-val">91</div></div>
+                            <div class="prf-bar-row"><div class="prf-bar-label">Passing</div><div class="prf-bar-track"><div class="prf-bar-fill" data-width="78" style="background:linear-gradient(90deg,#1d4ed8,#3b82f6);"></div></div><div class="prf-bar-val">78</div></div>
+                            <div class="prf-bar-row"><div class="prf-bar-label">Dribbling</div><div class="prf-bar-track"><div class="prf-bar-fill" data-width="85" style="background:linear-gradient(90deg,#059669,#34d399);"></div></div><div class="prf-bar-val">85</div></div>
+                            <div class="prf-bar-row"><div class="prf-bar-label">Defense</div><div class="prf-bar-track"><div class="prf-bar-fill" data-width="42" style="background:linear-gradient(90deg,#4b5563,#9ca3af);"></div></div><div class="prf-bar-val">42</div></div>
+                            <div class="prf-bar-row"><div class="prf-bar-label">Shooting</div><div class="prf-bar-track"><div class="prf-bar-fill" data-width="88" style="background:linear-gradient(90deg,#dc2626,#f87171);"></div></div><div class="prf-bar-val">88</div></div>
+                        </div>
+                    </div>
+                    <div class="standings-section pt-0 pb-24">
+                        <h2 class="section-title prf-small-title">Current Tournament</h2>
+                        <div class="standing-row prf-current-tourney">
+                            <div class="prf-tourney-header">
+                                <div class="prf-tourney-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent-orange)"><path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z"/></svg></div>
+                                <div class="prf-tourney-info"><div class="prf-tourney-name">MATZON Nations League</div><div class="prf-tourney-desc">Europe · Week 1 · Group A</div></div>
+                                <div class="prf-tourney-pos">1st</div>
+                            </div>
+                            <div class="prf-tourney-stats">
+                                <div class="prf-mini-stat"><div class="prf-mini-val">3</div><div class="prf-mini-key">MP</div></div>
+                                <div class="prf-mini-stat"><div class="prf-mini-val" style="color:var(--accent-orange);">7</div><div class="prf-mini-key">GOALS</div></div>
+                                <div class="prf-mini-stat"><div class="prf-mini-val">3</div><div class="prf-mini-key">ASSISTS</div></div>
+                                <div class="prf-mini-stat"><div class="prf-mini-val prf-text-green">9.1</div><div class="prf-mini-key">AVG</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: History -->
+                <div class="prf-panel" id="tab-history">
+                    <div class="matchups-section pt-0">
+                        <h2 class="section-title prf-small-title">Match History</h2>
+                        <div class="match-cards">
+                            <div class="match-card prf-cursor-default">
+                                <div class="match-row">
+                                    <div class="match-team"><img src="https://flagcdn.com/w40/fr.png" alt="France" class="m-flag"> France vs Greece</div>
+                                    <div class="prf-history-right"><div class="prf-result-badge prf-form-w">W</div><div class="match-time prf-text-14">3G 1A</div></div>
+                                </div>
+                                <div class="match-row mt-12"><div class="match-date prf-text-normal">Nations League · Group A</div><div class="match-date">APR 20</div></div>
+                            </div>
+                            <div class="match-card prf-cursor-default">
+                                <div class="match-row">
+                                    <div class="match-team"><img src="https://flagcdn.com/w40/fr.png" alt="France" class="m-flag"> France vs Luxembourg</div>
+                                    <div class="prf-history-right"><div class="prf-result-badge prf-form-d">D</div><div class="match-time prf-text-14">2G 0A</div></div>
+                                </div>
+                                <div class="match-row mt-12"><div class="match-date prf-text-normal">Nations League · Group A</div><div class="match-date">APR 14</div></div>
+                            </div>
+                            <div class="match-card prf-cursor-default">
+                                <div class="match-row">
+                                    <div class="match-team"><img src="https://flagcdn.com/w40/fr.png" alt="France" class="m-flag"> France vs Ukraine</div>
+                                    <div class="prf-history-right"><div class="prf-result-badge prf-form-w">W</div><div class="match-time prf-text-14">2G 2A</div></div>
+                                </div>
+                                <div class="match-row mt-12"><div class="match-date prf-text-normal">Nations League · Group A</div><div class="match-date">APR 7</div></div>
+                            </div>
+                            <div class="match-card prf-cursor-default">
+                                <div class="match-row">
+                                    <div class="match-team"><img src="https://flagcdn.com/w40/de.png" alt="Germany" class="m-flag"> France vs Germany</div>
+                                    <div class="prf-history-right"><div class="prf-result-badge prf-form-l">L</div><div class="match-time prf-text-14">1G 0A</div></div>
+                                </div>
+                                <div class="match-row mt-12"><div class="match-date prf-text-normal">Friendly</div><div class="match-date">MAR 28</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: Achievements -->
+                <div class="prf-panel" id="tab-achievements">
+                    <div class="standings-section pt-0">
+                        <h2 class="section-title prf-small-title">Badges Earned</h2>
+                        <div class="prf-badges-grid">
+                            <div class="standing-row prf-badge-card"><div class="prf-badge-icon">🏆</div><div class="prf-badge-info"><div class="st-name">Champion</div><div class="prf-badge-desc">Win a tournament</div></div><div class="legend-color prf-badge-dot"></div></div>
+                            <div class="standing-row prf-badge-card"><div class="prf-badge-icon">⚡</div><div class="prf-badge-info"><div class="st-name">Hat-Trick</div><div class="prf-badge-desc">3 goals in one match</div></div><div class="legend-color prf-badge-dot"></div></div>
+                            <div class="standing-row prf-badge-card"><div class="prf-badge-icon">🔥</div><div class="prf-badge-info"><div class="st-name">On Fire</div><div class="prf-badge-desc">5 win streak</div></div><div class="legend-color prf-badge-dot"></div></div>
+                            <div class="standing-row prf-badge-card"><div class="prf-badge-icon">🌍</div><div class="prf-badge-info"><div class="st-name">Nations Rep</div><div class="prf-badge-desc">Represent your nation</div></div><div class="legend-color prf-badge-dot"></div></div>
+                            <div class="standing-row prf-badge-card prf-badge-locked"><div class="prf-badge-icon">👑</div><div class="prf-badge-info"><div class="st-name">Legend</div><div class="prf-badge-desc">Top 10 World Rank</div></div><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--text-muted)"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5L12 1zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93C9.33 17.79 7 14.5 7 11V7.18L12 5z"/></svg></div>
+                            <div class="standing-row prf-badge-card prf-badge-locked"><div class="prf-badge-icon">💎</div><div class="prf-badge-info"><div class="st-name">Diamond</div><div class="prf-badge-desc">100 career goals</div></div><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--text-muted)"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5L12 1zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93C9.33 17.79 7 14.5 7 11V7.18L12 5z"/></svg></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ===== FIM VIEW PERFIL ===== -->
+
+            <!-- ===== MODAL: MATCH DETAILS ===== -->
             <section class="matchup-wrapper" id="matchModalOverlay">
                 <div class="matchup-header">
                     <div class="matchup-header-left">
                         <div class="matchup-logo">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                                 <path d="M4 10C4 10 5.5 5 12 5C18.5 5 20 10 20 10L21 16C21 17.5 19.5 19 18 19C16.5 19 15 17.5 14 16L12 14L10 16C9 17.5 7.5 19 6 19C4.5 19 3 17.5 3 16L4 10Z"/>
                                 <path d="M8 12H10V14H8V12ZM14 12H16V14H14V12Z" fill="#1b2028"/>
                             </svg>
@@ -472,7 +573,6 @@
                         </svg>
                     </button>
                 </div>
-
                 <div class="matchup-breadcrumbs">
                     <span>Nations League</span> &rsaquo;
                     <span>Asia West</span> &rsaquo;
@@ -480,15 +580,13 @@
                     <span>Group A</span> &rsaquo;
                     <a href="#">1. Matchup</a>
                 </div>
-
                 <div class="matchup-matchboard">
                     <div class="matchup-team">
                         <img src="https://flagcdn.com/w80/jo.png" alt="Team 1" class="matchup-flag">
-                        <div class="matchup-team-name">Equipa 1</div>
+                        <div class="matchup-team-name">Team 1</div>
                         <div class="matchup-color-bar matchup-blue"></div>
                         <div class="matchup-color-label">INGAME COLOR</div>
                     </div>
-
                     <div class="matchup-score-center">
                         <div class="matchup-pts-label">PTS</div>
                         <div class="matchup-score-boxes">
@@ -496,56 +594,36 @@
                             <div class="matchup-score-box">-</div>
                         </div>
                         <div class="matchup-datetime">28.04.2026 - 17:00</div>
-                        <svg class="matchup-game-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg class="matchup-game-icon" viewBox="0 0 24 24" fill="none">
                             <path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z" fill="#1e75ff"/>
                             <circle cx="12" cy="12" r="4" fill="white"/>
                         </svg>
                     </div>
-
                     <div class="matchup-team">
                         <img src="https://flagcdn.com/w80/qa.png" alt="Team 2" class="matchup-flag">
-                        <div class="matchup-team-name">Equipa 2</div>
+                        <div class="matchup-team-name">Team 2</div>
                         <div class="matchup-color-bar matchup-orange"></div>
                         <div class="matchup-color-label">INGAME COLOR</div>
                     </div>
                 </div>
-
                 <div class="matchup-action-container">
                     <button class="matchup-btn-explore">Explore Competition Page</button>
                 </div>
-
                 <div class="matchup-accordion matchup-open" id="matchupDetailsAccordion">
                     <div class="matchup-acc-header" id="matchupAccordionHeader">
                         <div class="matchup-acc-title">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#8e9bb0">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                            </svg>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#8e9bb0"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
                             Matchup details
                         </div>
-                        <svg class="matchup-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-                        </svg>
+                        <svg class="matchup-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
                     </div>
                     <div class="matchup-acc-body">
-                        <div class="matchup-detail-row">
-                            <span>Date</span>
-                            <span>28.04.2026</span>
-                        </div>
-                        <div class="matchup-detail-row">
-                            <span>Time</span>
-                            <span>17:00</span>
-                        </div>
-                        <div class="matchup-detail-row">
-                            <span>Mode</span>
-                            <span>Group Matchup (aggregate)</span>
-                        </div>
-                        <div class="matchup-detail-row">
-                            <span>Has livestream</span>
-                            <span>NO</span>
-                        </div>
+                        <div class="matchup-detail-row"><span>Date</span><span>28.04.2026</span></div>
+                        <div class="matchup-detail-row"><span>Time</span><span>17:00</span></div>
+                        <div class="matchup-detail-row"><span>Mode</span><span>Group Matchup (aggregate)</span></div>
+                        <div class="matchup-detail-row"><span>Has livestream</span><span>NO</span></div>
                     </div>
                 </div>
-
                 <div class="matchup-tabs">
                     <div class="matchup-tab matchup-active" onclick="switchMatchupTab(this)">
                         <div class="matchup-tab-title">GAME 1</div>
@@ -557,8 +635,10 @@
                     </div>
                 </div>
             </section>
+
         </main>
 
+        <!-- ===================== FOOTER ===================== -->
         <footer class="footer">
             <div class="footer-logo logo-matzon" style="color: #8a96a6; padding: 0;">
                 MATZON
@@ -575,6 +655,7 @@
                 <a href="#">Privacy Policy</a><a href="#">Cookie Policy</a><a href="#">Terms of Service</a>
             </div>
         </footer>
+
     </div>
 
     <script src="script.js"></script>
