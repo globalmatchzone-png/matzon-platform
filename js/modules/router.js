@@ -2,7 +2,7 @@
 // Routing, hamburger, comunidade
 'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("app:ready", () => {
 
 // Header Scroll
 

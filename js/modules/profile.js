@@ -2,7 +2,7 @@
 // Perfil e barras de performance
 'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("app:ready", () => {
 
 function animateProfileBars() {
         document.querySelectorAll('#profileView .prf-panel.active .prf-bar-fill').forEach(fill => {

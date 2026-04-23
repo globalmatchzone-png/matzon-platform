@@ -2,7 +2,7 @@
 // Active states e scroll horizontal
 'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("app:ready", () => {
 
 function setupActiveState(selector) {
         const items = document.querySelectorAll(selector);

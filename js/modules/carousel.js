@@ -2,7 +2,7 @@
 // Todos os carrosseis
 'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("app:ready", () => {
 
 const bannerEl   = document.getElementById('mainBanner');
     const bannerDots = document.querySelectorAll('#bannerControls .dot');

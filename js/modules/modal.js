@@ -2,7 +2,7 @@
 // Modal de detalhes do jogo
 'use strict';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("app:ready", () => {
 
 function createEmojiImage(emoji) {
         const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="54"><rect width="100%" height="100%" fill="#222a35" rx="4"/><text x="50%" y="50%" font-size="32" font-family="sans-serif" text-anchor="middle" dominant-baseline="central">${emoji}</text></svg>`;
