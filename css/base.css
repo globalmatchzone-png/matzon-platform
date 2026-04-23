@@ -1,0 +1,41 @@
+/* =========================================
+   VARIÁVEIS E RESET UNIFICADOS
+   ========================================= */
+:root {
+    --bg-main: #0b0e14;
+    --bg-card: #151a23;
+    --bg-pill: #202836;
+    --text-primary: #ffffff;
+    --text-muted: #8a96a6;
+    --border-color: #202836;
+    --accent-blue: #0056e3;
+    --accent-orange: #ff7a00;
+    --green-grad: linear-gradient(135deg, #4ade80, #eab308);
+    --blue-grad: linear-gradient(135deg, #1d4ed8, #3b82f6);
+    --border-rad: 20px;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+body.modal-open { overflow: hidden; }
+
+.app-container {
+    width: 100%;
+    background-color: var(--bg-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }

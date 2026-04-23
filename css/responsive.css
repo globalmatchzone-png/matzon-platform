@@ -1,0 +1,10 @@
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (min-width: 768px) {
+    .app-container { max-width: 480px; margin: 0 auto; box-shadow: 0 0 60px rgba(0,0,0,0.6); min-height: 100vh; }
+    body { background-color: #060810; }
+    .merch-card { max-width: 300px; }
+    .news-item { flex-direction: row; align-items: center; }
+    .news-img { width: 160px; height: 120px; }
+}
