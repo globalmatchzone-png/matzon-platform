@@ -108,7 +108,31 @@ document.addEventListener('app:ready', () => {
             const me = playersData.players.find(x => x.isYou);
             const openCount = tournamentsData.tournaments.filter(t => t.status === 'open' && t.slotsLeft > 0).length;
             renderPlayerCard(playerData.player, me, openCount);
+            updateSideMenu(playerData.player, me, openCount);
         });
     });
 
 });
+
+// Injectar dados do player no menu hamburger
+function updateSideMenu(p, me, openCount) {
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    const setAttr = (id, attr, val) => { const el = document.getElementById(id); if (el) el[attr] = val; };
+
+    set('menuGamertag', p.gamertag);
+    set('menuNationName', p.nation);
+    set('menuRankNum', '#' + (me ? me.rank : p.rank));
+    set('menuPts', me ? me.points.toLocaleString() : '980');
+    set('menuMatches', p.stats.matches);
+    set('menuGoals', p.stats.goals);
+    set('menuOpenEvents', openCount);
+
+    const avatar = document.getElementById('menuAvatar');
+    if (avatar) {
+        avatar.textContent = p.initials;
+        avatar.style.background = p.avatarGradient;
+    }
+
+    setAttr('menuNationFlag', 'src', `https://flagcdn.com/w40/${p.nationCode}.png`);
+    setAttr('menuNationFlag', 'alt', p.nation);
+}

@@ -92,3 +92,157 @@
 .footer-bottom { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
 .footer-bottom a { font-size: 12px; font-weight: 600; color: var(--text-muted); }
 .footer-copyright { font-size: 11px; color: #4b5563; font-weight: 500; }
+
+/* ── Side Menu — Player Card ─────────────────────────── */
+.side-menu {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 60px 24px 40px;
+    gap: 0;
+}
+
+.menu-player-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.menu-player-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 900;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.menu-player-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.menu-player-gamertag {
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.menu-player-nation {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.menu-player-rank {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.menu-rank-num {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--accent-orange);
+    line-height: 1;
+}
+
+.menu-rank-label {
+    font-size: 8px;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+/* Stats strip */
+.menu-stats-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.menu-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.menu-stat-val {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+}
+
+.menu-stat-key {
+    font-size: 8px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    text-align: center;
+}
+
+.menu-open-events {
+    color: var(--accent-orange);
+}
+
+.menu-stat-sep {
+    width: 1px;
+    height: 24px;
+    background: var(--border-color);
+    flex-shrink: 0;
+}
+
+/* Menu list */
+.menu-list {
+    flex: 1;
+}
+
+/* Botão Sair */
+.menu-logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 12px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+    margin-top: 24px;
+    transition: color 0.2s, border-color 0.2s;
+    letter-spacing: 0.3px;
+}
+
+.menu-logout-btn:active {
+    color: #f87171;
+    border-color: rgba(248,113,113,0.3);
+}

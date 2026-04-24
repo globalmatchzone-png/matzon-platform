@@ -1,4 +1,45 @@
 <nav class="side-menu" id="sideMenu">
+
+    <!-- Player Card -->
+    <div class="menu-player-card" id="menuPlayerCard">
+        <div class="menu-player-avatar" id="menuAvatar">AT</div>
+        <div class="menu-player-info">
+            <div class="menu-player-gamertag" id="menuGamertag">AlexTactical</div>
+            <div class="menu-player-nation" id="menuNation">
+                <img src="https://flagcdn.com/w40/fr.png" alt="France" class="st-flag" id="menuNationFlag">
+                <span id="menuNationName">France</span>
+            </div>
+        </div>
+        <div class="menu-player-rank">
+            <div class="menu-rank-num" id="menuRankNum">#18</div>
+            <div class="menu-rank-label">WORLD</div>
+        </div>
+    </div>
+
+    <!-- Stats strip -->
+    <div class="menu-stats-strip">
+        <div class="menu-stat">
+            <div class="menu-stat-val" id="menuPts">980</div>
+            <div class="menu-stat-key">PTS</div>
+        </div>
+        <div class="menu-stat-sep"></div>
+        <div class="menu-stat">
+            <div class="menu-stat-val" id="menuMatches">34</div>
+            <div class="menu-stat-key">MATCHES</div>
+        </div>
+        <div class="menu-stat-sep"></div>
+        <div class="menu-stat">
+            <div class="menu-stat-val" id="menuGoals">87</div>
+            <div class="menu-stat-key">GOALS</div>
+        </div>
+        <div class="menu-stat-sep"></div>
+        <div class="menu-stat">
+            <div class="menu-stat-val menu-open-events" id="menuOpenEvents">4</div>
+            <div class="menu-stat-key">OPEN EVENTS</div>
+        </div>
+    </div>
+
+    <!-- Nav items -->
     <ul class="menu-list">
         <li class="menu-item active" id="menuProfile">Perfil</li>
         <li class="menu-item" id="menuRanking">Ranking</li>
@@ -6,4 +47,15 @@
         <li class="menu-item" id="menuChat">Chat</li>
         <li class="menu-item" id="menuComunidade">Comunidade</li>
     </ul>
+
+    <!-- Botão Sair -->
+    <button class="menu-logout-btn" id="menuLogoutBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        Sair
+    </button>
+
 </nav>
