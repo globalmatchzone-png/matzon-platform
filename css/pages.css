@@ -290,3 +290,51 @@
 .gi-list-content { flex: 1; }
 .gi-list-title { font-size: 14px; font-weight: 600; color: var(--text-primary); }
 .gi-list-sub { font-size: 11px; font-weight: 500; color: var(--text-muted); margin-top: 2px; line-height: 1.4; }
+
+/* =========================================
+   RANKING PAGE
+   ========================================= */
+.rnk-banner { background: linear-gradient(135deg, #2b1dcc 0%, #173cd6 50%, #0d26a8 100%); border-radius: 16px; height: 130px; position: relative; overflow: hidden; display: flex; align-items: center; padding: 20px; margin: 0 16px 24px; }
+.rnk-banner::before { content: ''; position: absolute; top:0;left:0;right:0;bottom:0; background-image: linear-gradient(90deg,rgba(255,255,255,0.08) 1px,transparent 1px),linear-gradient(rgba(255,255,255,0.08) 1px,transparent 1px); background-size:30px 30px; transform:skewX(-15deg) scale(1.5); z-index:1; }
+.rnk-banner-text { position:relative; z-index:3; transform:skewX(-6deg); }
+.rnk-banner-small { font-size:10px; font-weight:800; margin-bottom:2px; }
+.rnk-banner-title { font-size:34px; font-weight:900; font-style:italic; line-height:0.85; letter-spacing:-1.5px; }
+.rnk-banner-flags { position:absolute; right:-25px; top:-30px; width:60%; height:180%; transform:rotate(12deg); display:grid; grid-template-columns:repeat(4,1fr); gap:6px; z-index:2; }
+.rnk-banner-flags img { width:100%; height:28px; object-fit:cover; border-radius:3px; }
+
+.rnk-content { padding: 0 16px; }
+
+.rnk-filter-row { display:flex; gap:12px; margin:16px 0; }
+.rnk-btn-active { flex:1; padding:14px; border-radius:8px; font-size:14px; font-weight:700; background:var(--accent-blue); color:#fff; border:none; cursor:pointer; font-family:var(--font-body); }
+.rnk-btn-inactive { flex:1; padding:14px; border-radius:8px; font-size:14px; font-weight:600; background:transparent; color:var(--text-primary); border:1px solid var(--border-color); cursor:pointer; font-family:var(--font-body); }
+
+.rnk-search { background:var(--bg-card); border:1px solid var(--border-color); border-radius:8px; padding:14px 16px; display:flex; align-items:center; gap:12px; margin-bottom:20px; }
+.rnk-search input { background:none; border:none; color:var(--text-primary); font-size:14px; width:100%; outline:none; font-family:var(--font-body); }
+.rnk-search input::placeholder { color:var(--text-muted); }
+
+.rnk-divider { display:flex; align-items:center; margin-bottom:16px; }
+.rnk-divider::before,.rnk-divider::after { content:''; flex:1; height:1px; background:var(--border-color); }
+.rnk-divider span { padding:0 12px; font-size:10px; font-weight:700; color:var(--text-muted); letter-spacing:0.5px; }
+
+.rnk-table-header { display:flex; padding:0 16px; margin-bottom:10px; font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; }
+.rnk-col-rank { width:50px; }
+.rnk-col-nation { flex:1; }
+.rnk-col-fpi { width:60px; text-align:right; margin-right:24px; }
+
+.rnk-list { display:flex; flex-direction:column; gap:8px; margin-bottom:24px; }
+.rnk-item { background:var(--bg-card); border-radius:8px; padding:14px 16px; display:flex; align-items:center; cursor:pointer; transition:opacity 0.2s; }
+.rnk-item:active { opacity:0.7; }
+.rnk-num { width:30px; font-size:14px; font-weight:700; }
+.rnk-gold { color:#f4c150; }
+.rnk-trend { width:44px; font-size:11px; font-weight:700; flex-shrink:0; }
+.rnk-up   { color:#4ade80; }
+.rnk-down { color:#f87171; }
+.rnk-new  { color:#4ade80; font-size:10px; }
+.rnk-same { color:var(--text-muted); }
+.rnk-nation { flex:1; display:flex; align-items:center; gap:12px; }
+.rnk-name { font-size:14px; font-weight:600; }
+.rnk-fpi { font-size:13px; font-weight:700; margin-right:12px; color:var(--text-muted); }
+
+.rnk-pagination { display:flex; justify-content:center; gap:8px; padding:8px 0 32px; }
+.rnk-page-btn { width:36px; height:36px; border-radius:50%; background:transparent; border:1px solid var(--border-color); color:var(--text-muted); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:12px; font-weight:600; font-family:var(--font-body); }
+.rnk-page-btn.active { background:var(--accent-blue); color:#fff; border-color:var(--accent-blue); }

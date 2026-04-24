@@ -9,6 +9,7 @@
         { url: 'pages/dashboard.html',     id: 'slot-main',      append: true  },
         { url: 'pages/tournaments.html',   id: 'slot-main',      append: true  },
         { url: 'pages/profile.html',       id: 'slot-main',      append: true  },
+        { url: 'pages/ranking.html',       id: 'slot-main',      append: true  },
         { url: 'components/modal.html',    id: 'slot-main',      append: true  },
         { url: 'components/footer.html',   id: 'slot-footer',    append: false },
         { url: 'pages/community.html',     id: 'slot-community', append: false },

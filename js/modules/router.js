@@ -189,3 +189,34 @@ if (menuBtn) {
     }
 
 });
+
+// ---- RANKING ----
+document.addEventListener('app:ready', () => {
+    const rankingView  = document.getElementById('rankingView');
+    const menuRanking  = document.getElementById('menuRanking');
+    const menuItems2   = document.querySelectorAll('.menu-item');
+
+    function showRanking() {
+        ['dashboardView','tournamentsView','profileView'].forEach(id => {
+            var el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+        });
+        if (rankingView) rankingView.style.display = 'block';
+        var headerEl = document.getElementById('mainHeader');
+        if (headerEl) headerEl.style.display = '';
+        var logoMatzon = document.getElementById('logoMatzon');
+        var headerBackBtn = document.getElementById('headerBackBtn');
+        var headerProfileTitle = document.getElementById('headerProfileTitle');
+        if (logoMatzon) logoMatzon.style.display = '';
+        if (headerBackBtn) headerBackBtn.style.display = 'none';
+        if (headerProfileTitle) headerProfileTitle.style.display = 'none';
+        window.scrollTo(0, 0);
+        menuItems2.forEach(function(el) { el.classList.remove('active'); });
+        if (menuRanking) menuRanking.classList.add('active');
+        var sideMenu = document.getElementById('sideMenu');
+        if (sideMenu) sideMenu.classList.remove('open');
+        document.body.classList.remove('modal-open');
+    }
+
+    if (menuRanking) menuRanking.addEventListener('click', showRanking);
+});
