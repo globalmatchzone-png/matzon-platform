@@ -197,3 +197,16 @@ document.addEventListener("app:ready", () => {
     }
 
 });
+
+// Listener para navegação por evento (usado por outros módulos)
+document.addEventListener('nav:goto', (e) => {
+    if (e.detail === 'tournaments') {
+        const ev = new Event('click');
+        const menuT = document.getElementById('menuTournaments');
+        if (menuT) menuT.dispatchEvent(ev);
+    }
+    if (e.detail === 'ranking') {
+        const menuR = document.getElementById('menuRanking');
+        if (menuR) menuR.dispatchEvent(new Event('click'));
+    }
+});

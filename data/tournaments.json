@@ -1,0 +1,69 @@
+{
+  "tournaments": [
+    {
+      "id": "t001",
+      "name": "MATZON Nations League",
+      "game": "eFootball",
+      "gameCode": "efc",
+      "zone": "Europe",
+      "status": "open",
+      "startDate": "APR 28, 2026",
+      "slots": 32,
+      "slotsLeft": 8,
+      "reward": "+120 Ranking Points",
+      "playerJoined": false
+    },
+    {
+      "id": "t002",
+      "name": "Open Series — Week 2",
+      "game": "eFootball",
+      "gameCode": "efc",
+      "zone": "Global",
+      "status": "open",
+      "startDate": "MAY 3, 2026",
+      "slots": 64,
+      "slotsLeft": 31,
+      "reward": "+80 Ranking Points",
+      "playerJoined": false
+    },
+    {
+      "id": "t003",
+      "name": "Rocket League Cup",
+      "game": "Rocket League",
+      "gameCode": "rl",
+      "zone": "Europe",
+      "status": "open",
+      "startDate": "MAY 5, 2026",
+      "slots": 16,
+      "slotsLeft": 4,
+      "reward": "+60 Ranking Points",
+      "playerJoined": false
+    },
+    {
+      "id": "t004",
+      "name": "Asia Nations Cup",
+      "game": "eFootball",
+      "gameCode": "efc",
+      "zone": "Asia",
+      "status": "ongoing",
+      "startDate": "APR 20, 2026",
+      "slots": 32,
+      "slotsLeft": 0,
+      "reward": "+100 Ranking Points",
+      "playerJoined": false
+    },
+    {
+      "id": "t005",
+      "name": "Weekend Blitz",
+      "game": "eFootball",
+      "gameCode": "efc",
+      "zone": "Global",
+      "status": "open",
+      "startDate": "APR 26, 2026",
+      "slots": 32,
+      "slotsLeft": 2,
+      "reward": "+40 Ranking Points",
+      "playerJoined": false
+    }
+  ]
+}
