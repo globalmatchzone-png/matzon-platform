@@ -338,3 +338,92 @@
 .rnk-pagination { display:flex; justify-content:center; gap:8px; padding:8px 0 32px; }
 .rnk-page-btn { width:36px; height:36px; border-radius:50%; background:transparent; border:1px solid var(--border-color); color:var(--text-muted); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:12px; font-weight:600; font-family:var(--font-body); }
 .rnk-page-btn.active { background:var(--accent-blue); color:#fff; border-color:var(--accent-blue); }
+
+/* =========================================
+   TOURNAMENTS — PANELS & OPEN EVENTS
+   ========================================= */
+.trn-panel { display: block; }
+
+.trn-page-header { padding: 24px 16px 16px; }
+.trn-page-title { font-family: var(--font-heading); font-size: 38px; font-weight: 900; font-style: italic; line-height: 0.9; letter-spacing: -1px; margin-bottom: 10px; }
+.trn-page-sub { font-size: 12px; font-weight: 500; color: var(--text-muted); line-height: 1.5; }
+
+.trn-filters-row { display: flex; gap: 8px; padding: 0 16px 20px; overflow-x: auto; scrollbar-width: none; }
+.trn-filters-row::-webkit-scrollbar { display: none; }
+
+/* Card de torneio */
+.trn-card { background-color: var(--bg-card); border-radius: 16px; padding: 20px; margin-bottom: 12px; border: 1px solid var(--border-color); transition: border-color 0.25s ease; }
+.trn-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+.trn-card-title { font-family: var(--font-heading); font-size: 16px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+.trn-card-meta { font-size: 11px; font-weight: 600; color: var(--text-muted); }
+
+/* Status dot */
+.trn-status { display: flex; align-items: center; gap: 6px; flex-shrink: 0; margin-left: 12px; }
+.trn-status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.trn-status-dot--open    { background-color: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.6); }
+.trn-status-dot--ongoing { background-color: var(--accent-blue); box-shadow: 0 0 6px rgba(0,86,227,0.6); }
+.trn-status-dot--full    { background-color: var(--text-muted); }
+.trn-status-label { font-size: 10px; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
+.trn-status-label--open    { color: #22c55e; }
+.trn-status-label--ongoing { color: var(--accent-blue); }
+.trn-status-label--full    { color: var(--text-muted); }
+
+/* Reward row */
+.trn-reward-row { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+.trn-reward-icon { width: 28px; height: 28px; background-color: rgba(255,122,0,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.trn-reward-icon svg { width: 14px; height: 14px; fill: var(--accent-orange); }
+.trn-reward-text { font-size: 12px; font-weight: 700; color: var(--accent-orange); }
+
+/* Barra de slots */
+.trn-slots-row { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.trn-slots-track { flex: 1; height: 3px; background-color: var(--border-color); border-radius: 2px; overflow: hidden; }
+.trn-slots-fill { height: 100%; background-color: var(--accent-blue); border-radius: 2px; transition: width 0.4s cubic-bezier(0.4,0,0.2,1); }
+.trn-slots-fill--full { background-color: var(--text-muted); }
+.trn-slots-label { font-size: 10px; font-weight: 700; color: var(--text-muted); white-space: nowrap; }
+
+/* Botões */
+.trn-card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; border-top: 1px solid var(--border-color); }
+.trn-start-date { font-size: 11px; font-weight: 700; color: var(--text-muted); }
+
+.trn-btn-join {
+    background-color: var(--accent-blue);
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+.trn-btn-join:active { opacity: 0.8; }
+
+.trn-btn-joined {
+    background-color: transparent;
+    color: #22c55e;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: 1px solid rgba(34,197,94,0.25);
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.trn-btn-closed {
+    background-color: transparent;
+    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    cursor: not-allowed;
+}
+
+.trn-card--joined { border-color: rgba(34,197,94,0.3); }
