@@ -1,37 +1,38 @@
 // MATZON - loader.js
-// Responsabilidade: Carregar HTML e disparar app:ready
-"use strict";
+// Responsabilidade: Carregar fragmentos HTML e disparar app:ready
+'use strict';
 
 (function () {
-    var SLOTS = [
-        ["components/header.html",   "slot-header",    false],
-        ["components/nav.html",      "slot-nav",       false],
-        ["pages/dashboard.html",     "slot-main",      true],
-        ["pages/tournaments.html",   "slot-main",      true],
-        ["pages/profile.html",       "slot-main",      true],
-        ["components/modal.html",    "slot-main",      true],
-        ["components/footer.html",   "slot-footer",    false],
-        ["pages/community.html",     "slot-community", false],
+    var files = [
+        { url: 'components/header.html',   id: 'slot-header',    append: false },
+        { url: 'components/nav.html',      id: 'slot-nav',       append: false },
+        { url: 'pages/dashboard.html',     id: 'slot-main',      append: true  },
+        { url: 'pages/tournaments.html',   id: 'slot-main',      append: true  },
+        { url: 'pages/profile.html',       id: 'slot-main',      append: true  },
+        { url: 'components/modal.html',    id: 'slot-main',      append: true  },
+        { url: 'components/footer.html',   id: 'slot-footer',    append: false },
+        { url: 'pages/community.html',     id: 'slot-community', append: false },
     ];
 
-    Promise.all(SLOTS.map(function(s) {
-        return fetch(s[0]).then(function(r) { return r.text(); });
+    Promise.all(files.map(function(f) {
+        return fetch(f.url).then(function(r) { return r.text(); });
     })).then(function(htmls) {
-        var mainEl = document.getElementById("slot-main");
-        if (mainEl) mainEl.innerHTML = "";
+        var mainEl = document.getElementById('slot-main');
+        if (mainEl) mainEl.innerHTML = '';
 
-        SLOTS.forEach(function(s, i) {
-            var el = document.getElementById(s[1]);
+        files.forEach(function(f, i) {
+            var el = document.getElementById(f.id);
             if (!el) return;
-            if (s[2]) {
-                el.insertAdjacentHTML("beforeend", htmls[i]);
+            if (f.append) {
+                el.insertAdjacentHTML('beforeend', htmls[i]);
             } else {
                 el.innerHTML = htmls[i];
             }
         });
-        document.dispatchEvent(new CustomEvent("app:ready"));
+
+        document.dispatchEvent(new CustomEvent('app:ready'));
     }).catch(function(err) {
-        console.error("Loader error:", err);
-        document.dispatchEvent(new CustomEvent("app:ready"));
+        console.error('Loader error:', err);
+        document.dispatchEvent(new CustomEvent('app:ready'));
     });
 })();
