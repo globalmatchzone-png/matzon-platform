@@ -427,3 +427,14 @@
 }
 
 .trn-card--joined { border-color: rgba(34,197,94,0.3); }
+
+/* ── Ranking — Players tab ───────────────────────────── */
+.rnk-item--you { background: rgba(255,122,0,0.06); border: 1px solid rgba(255,122,0,0.2); }
+.rnk-player-info { display: flex; flex-direction: column; gap: 2px; }
+.rnk-nation-sub { font-size: 10px; font-weight: 600; color: var(--text-muted); }
+.rnk-you-tag { font-size: 9px; font-weight: 800; color: var(--accent-orange); background: rgba(255,122,0,0.12); padding: 1px 6px; border-radius: 4px; margin-left: 6px; letter-spacing: 0.4px; }
+.rnk-points { font-size: 13px; font-weight: 700; color: var(--text-primary); margin-right: 12px; }
+
+/* ── Toast ───────────────────────────────────────────── */
+.rnk-toast { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--bg-card); border: 1px solid rgba(255,122,0,0.3); color: var(--accent-orange); font-size: 12px; font-weight: 700; padding: 12px 20px; border-radius: 10px; white-space: nowrap; opacity: 0; transition: opacity 0.25s ease, transform 0.25s ease; pointer-events: none; z-index: 999; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+.rnk-toast--visible { opacity: 1; transform: translateX(-50%) translateY(0); }

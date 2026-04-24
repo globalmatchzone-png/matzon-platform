@@ -1,10 +1,12 @@
 // MATZON - ranking.js
-// Responsabilidade: Tabela de ranking, pesquisa e renderização
 'use strict';
 
 document.addEventListener('app:ready', () => {
 
-    const rankings = [
+    // ── Dados ──────────────────────────────────────────────
+    let playersData = [];
+
+    const countriesData = [
         { rank:1,  trend:'up',   val:1,  code:'it', name:'Italy',        fpi:'1406.88' },
         { rank:2,  trend:'up',   val:1,  code:'br', name:'Brazil',       fpi:'1398.93' },
         { rank:3,  trend:'up',   val:1,  code:'id', name:'Indonesia',    fpi:'1374.91' },
@@ -29,41 +31,154 @@ document.addEventListener('app:ready', () => {
         { rank:22, trend:'down', val:3,  code:'pe', name:'Peru',         fpi:'1145.20' },
         { rank:23, trend:'up',   val:6,  code:'nl', name:'Netherlands',  fpi:'1133.66' },
         { rank:24, trend:'down', val:4,  code:'cl', name:'Chile',        fpi:'1131.01' },
-        { rank:25, trend:'up',   val:8,  code:'vn', name:'Vietnam',      fpi:'1102.45' },
+        { rank:25, trend:'up',   val:8,  code:'vn', name:'Vietnam',      fpi:'1102.45' }
     ];
 
-    function getTrend(trend, val) {
-        if (trend === 'up')   return `<span class="rnk-trend rnk-up">▲ ${val}</span>`;
-        if (trend === 'down') return `<span class="rnk-trend rnk-down">▼ ${val}</span>`;
-        if (trend === 'new')  return `<span class="rnk-trend rnk-new">NEW</span>`;
-        return `<span class="rnk-trend rnk-same">—</span>`;
+    // ── Carregar players ───────────────────────────────────
+    fetch('data/players.json')
+        .then(r => r.json())
+        .then(json => {
+            playersData = json.players;
+            renderPlayers(playersData);
+        })
+        .catch(err => console.error('Players load error:', err));
+
+    // ── Tabs ───────────────────────────────────────────────
+    const tabPlayers   = document.getElementById('rnkTabPlayers');
+    const tabCountries = document.getElementById('rnkTabCountries');
+    const panelPlayers   = document.getElementById('rnkPanelPlayers');
+    const panelCountries = document.getElementById('rnkPanelCountries');
+
+    if (tabPlayers) {
+        tabPlayers.addEventListener('click', () => {
+            tabPlayers.classList.add('active');
+            tabCountries.classList.remove('active');
+            panelPlayers.style.display   = 'block';
+            panelCountries.style.display = 'none';
+        });
     }
 
-    function render(data) {
-        const list = document.getElementById('rankingList');
-        if (!list) return;
-        list.innerHTML = data.map(item => `
+    if (tabCountries) {
+        tabCountries.addEventListener('click', () => {
+            tabCountries.classList.add('active');
+            tabPlayers.classList.remove('active');
+            panelCountries.style.display = 'block';
+            panelPlayers.style.display   = 'none';
+            renderCountries(countriesData);
+        });
+    }
+
+    // ── Render Players ─────────────────────────────────────
+    function renderPlayers(list) {
+        const container = document.getElementById('rnkPlayerList');
+        if (!container) return;
+
+        container.innerHTML = list.map((p, i) => {
+            const youClass  = p.isYou ? 'rnk-item--you' : '';
+            const rankClass = p.rank === 1 ? 'rnk-gold' : '';
+
+            return `
+            <div class="rnk-item ${youClass}">
+                <div class="rnk-num ${rankClass}">${p.rank}</div>
+                <div class="rnk-nation">
+                    <img src="https://flagcdn.com/w40/${p.nationCode}.png" alt="${p.nation}" class="st-flag">
+                    <div class="rnk-player-info">
+                        <span class="rnk-name">${p.gamertag}${p.isYou ? ' <span class="rnk-you-tag">YOU</span>' : ''}</span>
+                        <span class="rnk-nation-sub">${p.nation}</span>
+                    </div>
+                </div>
+                <div class="rnk-points">${p.points.toLocaleString()}</div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="${p.isYou ? 'var(--accent-orange)' : '#ffffff'}" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </div>`;
+        }).join('');
+    }
+
+    // ── Render Countries ───────────────────────────────────
+    function renderCountries(list) {
+        const container = document.getElementById('rnkCountryList');
+        if (!container) return;
+
+        container.innerHTML = list.map(item => {
+            let trend = '';
+            if (item.trend === 'up')   trend = `<span class="rnk-trend rnk-up">▲ ${item.val}</span>`;
+            if (item.trend === 'down') trend = `<span class="rnk-trend rnk-down">▼ ${item.val}</span>`;
+            if (item.trend === 'new')  trend = `<span class="rnk-trend rnk-new">NEW</span>`;
+            if (item.trend === 'same') trend = `<span class="rnk-trend rnk-same">—</span>`;
+
+            return `
             <div class="rnk-item">
                 <div class="rnk-num ${item.rank === 1 ? 'rnk-gold' : ''}">${item.rank}</div>
-                ${getTrend(item.trend, item.val)}
+                ${trend}
                 <div class="rnk-nation">
                     <img src="https://flagcdn.com/w40/${item.code}.png" alt="${item.name}" class="st-flag">
                     <span class="rnk-name">${item.name}</span>
                 </div>
                 <div class="rnk-fpi">${item.fpi}</div>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-            </div>
-        `).join('');
+            </div>`;
+        }).join('');
     }
 
-    render(rankings);
-
+    // ── Search ─────────────────────────────────────────────
     const searchInput = document.getElementById('rankingSearchInput');
     if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
+        searchInput.addEventListener('input', e => {
             const term = e.target.value.toLowerCase();
-            render(rankings.filter(i => i.name.toLowerCase().includes(term)));
+            const isPlayers = tabPlayers && tabPlayers.classList.contains('active');
+            if (isPlayers) {
+                renderPlayers(playersData.filter(p =>
+                    p.gamertag.toLowerCase().includes(term) ||
+                    p.nation.toLowerCase().includes(term)
+                ));
+            } else {
+                renderCountries(countriesData.filter(c =>
+                    c.name.toLowerCase().includes(term)
+                ));
+            }
         });
+    }
+
+    // ── Core Loop: JOIN TOURNAMENT → SUBIR NO RANKING ─────
+    document.addEventListener('player:joined-tournament', e => {
+        const tournament = e.detail;
+        const pointsGained = 50;
+
+        const me = playersData.find(p => p.isYou);
+        if (!me) return;
+
+        const oldRank = me.rank;
+        me.points += pointsGained;
+
+        // Re-sort e re-rank
+        playersData.sort((a, b) => b.points - a.points);
+        playersData.forEach((p, i) => { p.rank = i + 1; });
+
+        const newRank = me.rank;
+
+        renderPlayers(playersData);
+
+        // Mostra toast de ranking update
+        if (newRank < oldRank) {
+            showToast(`+${pointsGained} pts · Rank ${oldRank} → ${newRank}`);
+        } else {
+            showToast(`+${pointsGained} pts · Ranking updated`);
+        }
+    });
+
+    // ── Toast ──────────────────────────────────────────────
+    function showToast(msg) {
+        let toast = document.getElementById('rnk-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'rnk-toast';
+            document.body.appendChild(toast);
+        }
+        toast.textContent = msg;
+        toast.className = 'rnk-toast rnk-toast--visible';
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => {
+            toast.classList.remove('rnk-toast--visible');
+        }, 3000);
     }
 
 });

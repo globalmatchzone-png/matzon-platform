@@ -1,0 +1,24 @@
+{
+  "players": [
+    { "rank": 1,  "id": "p010", "gamertag": "ShadowStrike",  "nationCode": "br", "nation": "Brazil",      "points": 2840, "isYou": false },
+    { "rank": 2,  "id": "p011", "gamertag": "NeonBlitz",     "nationCode": "kr", "nation": "South Korea", "points": 2710, "isYou": false },
+    { "rank": 3,  "id": "p012", "gamertag": "IronWall",      "nationCode": "de", "nation": "Germany",     "points": 2650, "isYou": false },
+    { "rank": 4,  "id": "p013", "gamertag": "PacificEdge",   "nationCode": "jp", "nation": "Japan",       "points": 2580, "isYou": false },
+    { "rank": 5,  "id": "p014", "gamertag": "VoltDrive",     "nationCode": "ar", "nation": "Argentina",   "points": 2490, "isYou": false },
+    { "rank": 6,  "id": "p015", "gamertag": "ColdFront",     "nationCode": "pl", "nation": "Poland",      "points": 2340, "isYou": false },
+    { "rank": 7,  "id": "p016", "gamertag": "TacticalX",     "nationCode": "ma", "nation": "Morocco",     "points": 2210, "isYou": false },
+    { "rank": 8,  "id": "p017", "gamertag": "RedShift",      "nationCode": "tr", "nation": "Türkiye",     "points": 2100, "isYou": false },
+    { "rank": 9,  "id": "p018", "gamertag": "SilentAce",     "nationCode": "ng", "nation": "Nigeria",     "points": 1980, "isYou": false },
+    { "rank": 10, "id": "p019", "gamertag": "DuskHunter",    "nationCode": "mx", "nation": "Mexico",      "points": 1870, "isYou": false },
+    { "rank": 11, "id": "p020", "gamertag": "GridLock",      "nationCode": "it", "nation": "Italy",       "points": 1760, "isYou": false },
+    { "rank": 12, "id": "p021", "gamertag": "ApexPulse",     "nationCode": "eg", "nation": "Egypt",       "points": 1650, "isYou": false },
+    { "rank": 13, "id": "p022", "gamertag": "NorthStar",     "nationCode": "ca", "nation": "Canada",      "points": 1540, "isYou": false },
+    { "rank": 14, "id": "p023", "gamertag": "StormCore",     "nationCode": "gh", "nation": "Ghana",       "points": 1430, "isYou": false },
+    { "rank": 15, "id": "p024", "gamertag": "PhaseShift",    "nationCode": "pt", "nation": "Portugal",    "points": 1320, "isYou": false },
+    { "rank": 16, "id": "p025", "gamertag": "DeltaForce",    "nationCode": "cl", "nation": "Chile",       "points": 1210, "isYou": false },
+    { "rank": 17, "id": "p026", "gamertag": "RapidFire",     "nationCode": "vn", "nation": "Vietnam",     "points": 1100, "isYou": false },
+    { "rank": 18, "id": "p001", "gamertag": "AlexTactical",  "nationCode": "fr", "nation": "France",      "points": 980,  "isYou": true  },
+    { "rank": 19, "id": "p027", "gamertag": "IceCross",      "nationCode": "se", "nation": "Sweden",      "points": 870,  "isYou": false },
+    { "rank": 20, "id": "p028", "gamertag": "BlackOps",      "nationCode": "za", "nation": "South Africa","points": 760,  "isYou": false }
+  ]
+}

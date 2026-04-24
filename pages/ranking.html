@@ -6,22 +6,18 @@
             <h1 class="rnk-banner-title">WORLD<br>RANKING</h1>
         </div>
         <div class="rnk-banner-flags">
-            <img src="https://flagcdn.com/w80/au.png" alt="Australia">
             <img src="https://flagcdn.com/w80/br.png" alt="Brazil">
-            <img src="https://flagcdn.com/w80/sa.png" alt="Saudi Arabia">
-            <img src="https://flagcdn.com/w80/it.png" alt="Italy">
-            <img src="https://flagcdn.com/w80/us.png" alt="USA">
-            <img src="https://flagcdn.com/w80/nl.png" alt="Netherlands">
-            <img src="https://flagcdn.com/w80/ma.png" alt="Morocco">
-            <img src="https://flagcdn.com/w80/ar.png" alt="Argentina">
-            <img src="https://flagcdn.com/w80/id.png" alt="Indonesia">
-            <img src="https://flagcdn.com/w80/za.png" alt="South Africa">
-            <img src="https://flagcdn.com/w80/fr.png" alt="France">
+            <img src="https://flagcdn.com/w80/kr.png" alt="South Korea">
+            <img src="https://flagcdn.com/w80/de.png" alt="Germany">
             <img src="https://flagcdn.com/w80/jp.png" alt="Japan">
+            <img src="https://flagcdn.com/w80/fr.png" alt="France">
+            <img src="https://flagcdn.com/w80/ar.png" alt="Argentina">
             <img src="https://flagcdn.com/w80/pl.png" alt="Poland">
-            <img src="https://flagcdn.com/w80/tr.png" alt="Turkey">
-            <img src="https://flagcdn.com/w80/gr.png" alt="Greece">
-            <img src="https://flagcdn.com/w80/vn.png" alt="Vietnam">
+            <img src="https://flagcdn.com/w80/ma.png" alt="Morocco">
+            <img src="https://flagcdn.com/w80/tr.png" alt="Türkiye">
+            <img src="https://flagcdn.com/w80/ng.png" alt="Nigeria">
+            <img src="https://flagcdn.com/w80/it.png" alt="Italy">
+            <img src="https://flagcdn.com/w80/pt.png" alt="Portugal">
         </div>
     </div>
 
@@ -29,35 +25,44 @@
 
         <h2 class="section-title">MATZON World Rankings</h2>
 
+        <!-- Tabs Players / Countries -->
         <div class="tabs-container" style="margin-top:0;">
-            <div class="tabs-scroll" id="rankingTabsScroll">
-                <button class="tab-item">Rocket League</button>
-                <button class="tab-item active">eFootball Console</button>
-                <button class="tab-item">eFootball Mobile</button>
+            <div class="tabs-scroll">
+                <button class="tab-item active" id="rnkTabPlayers">Players</button>
+                <button class="tab-item" id="rnkTabCountries">Countries</button>
             </div>
         </div>
 
-        <div class="rnk-filter-row">
-            <button class="rnk-btn-active">Nations</button>
-            <button class="rnk-btn-inactive">Players</button>
-        </div>
-
-        <div class="rnk-search">
+        <!-- Search -->
+        <div class="rnk-search" style="margin-top:16px;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input type="text" id="rankingSearchInput" placeholder="Look up Nation">
+            <input type="text" id="rankingSearchInput" placeholder="Search player or nation">
         </div>
 
         <div class="rnk-divider">
-            <span>LAST UPDATED ON 20.04.2026</span>
+            <span>LAST UPDATED ON 24.04.2026</span>
         </div>
 
-        <div class="rnk-table-header">
-            <div class="rnk-col-rank">Rank</div>
-            <div class="rnk-col-nation">Nation</div>
-            <div class="rnk-col-fpi">FPI</div>
+        <!-- Panel Players -->
+        <div id="rnkPanelPlayers">
+            <div class="rnk-table-header">
+                <div class="rnk-col-rank">Rank</div>
+                <div class="rnk-col-nation">Player</div>
+                <div class="rnk-col-fpi">PTS</div>
+            </div>
+            <div class="rnk-list" id="rnkPlayerList"></div>
         </div>
 
-        <div class="rnk-list" id="rankingList"></div>
+        <!-- Panel Countries -->
+        <div id="rnkPanelCountries" style="display:none;">
+            <div class="rnk-table-header">
+                <div class="rnk-col-rank">Rank</div>
+                <div style="width:44px;"></div>
+                <div class="rnk-col-nation">Nation</div>
+                <div class="rnk-col-fpi">FPI</div>
+            </div>
+            <div class="rnk-list" id="rnkCountryList"></div>
+        </div>
 
         <div class="rnk-pagination">
             <button class="rnk-page-btn">&#171;</button>
