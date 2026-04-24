@@ -1,14 +1,41 @@
 // MATZON - router.js
-// Routing, hamburger, comunidade
 'use strict';
 
 document.addEventListener("app:ready", () => {
 
-// Header Scroll
+    const headerEl           = document.getElementById('mainHeader');
+    const dashboardView      = document.getElementById('dashboardView');
+    const tournamentsView    = document.getElementById('tournamentsView');
+    const profileView        = document.getElementById('profileView');
+    const rankingView        = document.getElementById('rankingView');
+    const communityWrapper   = document.getElementById('communityWrapper');
+    const communityListView  = document.getElementById('communityListView');
+    const commChatView       = document.getElementById('commChatView');
+    const commGroupInfoView  = document.getElementById('commGroupInfoView');
 
-let lastScrollTop = 0;
-    const headerEl = document.getElementById('mainHeader');
+    const logoMatzon         = document.getElementById('logoMatzon');
+    const headerBackBtn      = document.getElementById('headerBackBtn');
+    const headerProfileTitle = document.getElementById('headerProfileTitle');
+    const btnGoTournaments   = document.getElementById('btnGoTournaments');
+    const menuTournaments    = document.getElementById('menuTournaments');
+    const menuProfile        = document.getElementById('menuProfile');
+    const menuRanking        = document.getElementById('menuRanking');
+    const menuComunidade     = document.getElementById('menuComunidade');
+    const menuChat           = document.getElementById('menuChat');
+    const menuBtn            = document.getElementById('menuBtn');
+    const sideMenu           = document.getElementById('sideMenu');
+    const menuItems          = document.querySelectorAll('.menu-item');
 
+    const commBackToMainBtn  = document.getElementById('commBackToMainBtn');
+    const commBackToListBtn  = document.getElementById('commBackToListBtn');
+    const openGroupInfoBtn   = document.getElementById('openGroupInfoBtn');
+    const openGroupInfoBtn2  = document.getElementById('openGroupInfoBtn2');
+    const closeGroupInfoBtn  = document.getElementById('closeGroupInfoBtn');
+    const commMenuToggleBtn  = document.getElementById('commMenuToggleBtn');
+    const commDropdown       = document.getElementById('commDropdown');
+
+    // Header scroll
+    let lastScrollTop = 0;
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         if (scrollTop > lastScrollTop && scrollTop > 60) {
@@ -19,21 +46,15 @@ let lastScrollTop = 0;
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     }, { passive: true });
 
-// Routing
-
-const dashboardView      = document.getElementById('dashboardView');
-    const tournamentsView    = document.getElementById('tournamentsView');
-    const profileView        = document.getElementById('profileView');
-
-    const logoMatzon         = document.getElementById('logoMatzon');
-    const headerBackBtn      = document.getElementById('headerBackBtn');
-    const headerProfileTitle = document.getElementById('headerProfileTitle');
-    const btnGoTournaments   = document.getElementById('btnGoTournaments');
-    const menuTournaments    = document.getElementById('menuTournaments');
-    const menuProfile        = document.getElementById('menuProfile');
-    const menuBtn            = document.getElementById('menuBtn');
-    const sideMenu           = document.getElementById('sideMenu');
-    const menuItems          = document.querySelectorAll('.menu-item');
+    // Helpers
+    function hideAllViews() {
+        if (dashboardView)    dashboardView.style.display    = 'none';
+        if (tournamentsView)  tournamentsView.style.display  = 'none';
+        if (profileView)      profileView.style.display      = 'none';
+        if (rankingView)      rankingView.style.display      = 'none';
+        if (communityWrapper) communityWrapper.style.display = 'none';
+        if (headerEl)         headerEl.style.display         = '';
+    }
 
     function setHeaderDefault() {
         if (logoMatzon)         logoMatzon.style.display         = '';
@@ -47,54 +68,79 @@ const dashboardView      = document.getElementById('dashboardView');
         if (headerProfileTitle) headerProfileTitle.style.display = 'block';
     }
 
+    function setActiveMenu(el) {
+        menuItems.forEach(i => i.classList.remove('active'));
+        if (el) el.classList.add('active');
+    }
+
     function closeMenu() {
         if (sideMenu) sideMenu.classList.remove('open');
         if (menuBtn)  menuBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="#8a96a6"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>';
         document.body.classList.remove('modal-open');
     }
 
+    // Views
     function showDashboard() {
-        if (dashboardView)   dashboardView.style.display   = 'block';
-        if (tournamentsView) tournamentsView.style.display = 'none';
-        if (profileView)     profileView.style.display     = 'none';
+        hideAllViews();
+        if (dashboardView) dashboardView.style.display = 'block';
         setHeaderDefault();
+        setActiveMenu(menuProfile);
         window.scrollTo(0, 0);
-        menuItems.forEach(el => el.classList.remove('active'));
-        if (menuProfile) menuProfile.classList.add('active');
         closeMenu();
     }
 
     function showTournaments() {
-        if (dashboardView)   dashboardView.style.display   = 'none';
+        hideAllViews();
         if (tournamentsView) tournamentsView.style.display = 'block';
-        if (profileView)     profileView.style.display     = 'none';
         setHeaderDefault();
+        setActiveMenu(menuTournaments);
         window.scrollTo(0, 0);
-        menuItems.forEach(el => el.classList.remove('active'));
-        if (menuTournaments) menuTournaments.classList.add('active');
         closeMenu();
     }
 
     function showProfile() {
-        if (dashboardView)   dashboardView.style.display   = 'none';
-        if (tournamentsView) tournamentsView.style.display = 'none';
-        if (profileView)     profileView.style.display     = 'block';
+        hideAllViews();
+        if (profileView) profileView.style.display = 'block';
         setHeaderProfile();
+        setActiveMenu(null);
         window.scrollTo(0, 0);
-        menuItems.forEach(el => el.classList.remove('active'));
         closeMenu();
-        animateProfileBars();
+        if (typeof animateProfileBars === 'function') animateProfileBars();
     }
 
+    function showRanking() {
+        hideAllViews();
+        if (rankingView) rankingView.style.display = 'block';
+        setHeaderDefault();
+        setActiveMenu(menuRanking);
+        window.scrollTo(0, 0);
+        closeMenu();
+    }
+
+    function showCommunity() {
+        hideAllViews();
+        if (headerEl)          headerEl.style.display          = 'none';
+        if (communityWrapper)  communityWrapper.style.display  = 'flex';
+        if (communityListView) communityListView.style.display = 'flex';
+        if (commChatView)      commChatView.style.display      = 'none';
+        if (commGroupInfoView) commGroupInfoView.style.display = 'none';
+        setActiveMenu(menuComunidade);
+        window.scrollTo(0, 0);
+        closeMenu();
+    }
+
+    // Navegação
     if (btnGoTournaments) btnGoTournaments.addEventListener('click', showTournaments);
     if (menuTournaments)  menuTournaments.addEventListener('click', showTournaments);
     if (menuProfile)      menuProfile.addEventListener('click', showProfile);
+    if (menuRanking)      menuRanking.addEventListener('click', showRanking);
+    if (menuComunidade)   menuComunidade.addEventListener('click', showCommunity);
+    if (menuChat)         menuChat.addEventListener('click', showCommunity);
     if (logoMatzon)       logoMatzon.addEventListener('click', showDashboard);
     if (headerBackBtn)    headerBackBtn.addEventListener('click', showDashboard);
 
-// Menu Hamburguer
-
-if (menuBtn) {
+    // Menu hambúrguer
+    if (menuBtn) {
         menuBtn.addEventListener('click', () => {
             const isOpen = sideMenu.classList.contains('open');
             if (isOpen) {
@@ -107,51 +153,13 @@ if (menuBtn) {
         });
     }
 
-// Comunidade
-
-// Comunidade
-    const menuComunidade    = document.getElementById('menuComunidade');
-    const communityWrapper  = document.getElementById('communityWrapper');
-    const communityListView = document.getElementById('communityListView');
-    const commChatView      = document.getElementById('commChatView');
-    const commGroupInfoView = document.getElementById('commGroupInfoView');
-    const commBackToMainBtn = document.getElementById('commBackToMainBtn');
-    const commBackToListBtn = document.getElementById('commBackToListBtn');
-    const openGroupInfoBtn  = document.getElementById('openGroupInfoBtn');
-    const openGroupInfoBtn2 = document.getElementById('openGroupInfoBtn2');
-    const closeGroupInfoBtn = document.getElementById('closeGroupInfoBtn');
-    const commMenuToggleBtn = document.getElementById('commMenuToggleBtn');
-    const commDropdown      = document.getElementById('commDropdown');
-
-    function showCommunity() {
-        if (dashboardView)    dashboardView.style.display    = 'none';
-        if (tournamentsView)  tournamentsView.style.display  = 'none';
-        if (profileView)      profileView.style.display      = 'none';
-        setHeaderDefault();
-        if (headerEl) headerEl.style.display = 'none';
-        communityWrapper.style.display = 'flex';
-        communityListView.style.display = 'flex';
-        commChatView.style.display = 'none';
-        commGroupInfoView.style.display = 'none';
-        window.scrollTo(0, 0);
-        menuItems.forEach(el => el.classList.remove('active'));
-        if (menuComunidade) menuComunidade.classList.add('active');
-        closeMenu();
-    }
-
-    function hideCommunity() {
-        communityWrapper.style.display = 'none';
-        if (headerEl) headerEl.style.display = '';
-        showDashboard();
-    }
-
-    if (menuComunidade)    menuComunidade.addEventListener('click', showCommunity);
-    if (commBackToMainBtn) commBackToMainBtn.addEventListener('click', hideCommunity);
+    // Comunidade interna
+    if (commBackToMainBtn) commBackToMainBtn.addEventListener('click', showDashboard);
 
     document.querySelectorAll('.js-open-chat').forEach(item => {
         item.addEventListener('click', () => {
-            communityListView.style.display = 'none';
-            commChatView.style.display = 'flex';
+            if (communityListView) communityListView.style.display = 'none';
+            if (commChatView)      commChatView.style.display      = 'flex';
             const body = document.getElementById('commChatBody');
             if (body) body.scrollTop = body.scrollHeight;
         });
@@ -159,20 +167,20 @@ if (menuBtn) {
 
     if (commBackToListBtn) {
         commBackToListBtn.addEventListener('click', () => {
-            commChatView.style.display = 'none';
-            communityListView.style.display = 'flex';
+            if (commChatView)      commChatView.style.display      = 'none';
+            if (communityListView) communityListView.style.display = 'flex';
         });
     }
 
     [openGroupInfoBtn, openGroupInfoBtn2].forEach(btn => {
         if (btn) btn.addEventListener('click', () => {
-            commGroupInfoView.style.display = 'block';
+            if (commGroupInfoView) commGroupInfoView.style.display = 'block';
         });
     });
 
     if (closeGroupInfoBtn) {
         closeGroupInfoBtn.addEventListener('click', () => {
-            commGroupInfoView.style.display = 'none';
+            if (commGroupInfoView) commGroupInfoView.style.display = 'none';
         });
     }
 
@@ -188,35 +196,4 @@ if (menuBtn) {
         });
     }
 
-});
-
-// ---- RANKING ----
-document.addEventListener('app:ready', () => {
-    const rankingView  = document.getElementById('rankingView');
-    const menuRanking  = document.getElementById('menuRanking');
-    const menuItems2   = document.querySelectorAll('.menu-item');
-
-    function showRanking() {
-        ['dashboardView','tournamentsView','profileView'].forEach(id => {
-            var el = document.getElementById(id);
-            if (el) el.style.display = 'none';
-        });
-        if (rankingView) rankingView.style.display = 'block';
-        var headerEl = document.getElementById('mainHeader');
-        if (headerEl) headerEl.style.display = '';
-        var logoMatzon = document.getElementById('logoMatzon');
-        var headerBackBtn = document.getElementById('headerBackBtn');
-        var headerProfileTitle = document.getElementById('headerProfileTitle');
-        if (logoMatzon) logoMatzon.style.display = '';
-        if (headerBackBtn) headerBackBtn.style.display = 'none';
-        if (headerProfileTitle) headerProfileTitle.style.display = 'none';
-        window.scrollTo(0, 0);
-        menuItems2.forEach(function(el) { el.classList.remove('active'); });
-        if (menuRanking) menuRanking.classList.add('active');
-        var sideMenu = document.getElementById('sideMenu');
-        if (sideMenu) sideMenu.classList.remove('open');
-        document.body.classList.remove('modal-open');
-    }
-
-    if (menuRanking) menuRanking.addEventListener('click', showRanking);
 });
