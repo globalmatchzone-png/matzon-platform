@@ -3,16 +3,15 @@
 
 document.addEventListener('app:ready', () => {
 
-    let data      = [];
-    let youAvatar = 'https://randomuser.me/api/portraits/men/1.jpg';
+    let data        = [];
+    let youAvatar   = 'https://randomuser.me/api/portraits/men/1.jpg';
     let youGamertag = 'AlexTactical';
 
-    // Carregar avatar do player logado
     fetch('data/player.json')
         .then(r => r.json())
         .then(json => {
-            youAvatar   = json.player.avatar || youAvatar;
-            youGamertag = json.player.gamertag;
+            youAvatar   = json.player.avatar   || youAvatar;
+            youGamertag = json.player.gamertag || youGamertag;
         });
 
     fetch('data/tournaments.json')
@@ -20,30 +19,33 @@ document.addEventListener('app:ready', () => {
         .then(json => { data = json.tournaments; render(data); })
         .catch(err => console.error('Tournaments load error:', err));
 
+    // Imagens por torneio
+    const images = {
+        't001': 'https://images.unsplash.com/photo-1552058544-f2b08422138a?q=80&w=300',
+        't002': 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=300',
+        't003': 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=300',
+        't004': 'https://images.unsplash.com/photo-1560272564-c83b66b1ad12?q=80&w=300',
+        't005': 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=300',
+    };
+
     function avatarStack(participants, playerJoined, filled, slots) {
-        const show   = participants.slice(0, 4);
-        const extra  = filled - show.length;
-        const youBadge = playerJoined
-            ? `<img src="${youAvatar}"
-                    alt="You"
-                    class="trn-avatar trn-avatar--you"
-                    title="${youGamertag} (You)"
-                    onerror="this.style.display='none'">`
+        const show  = participants.slice(0, 3);
+        const extra = filled - show.length - (playerJoined ? 1 : 0);
+
+        const youImg = playerJoined
+            ? `<img src="${youAvatar}" alt="You" class="trn-avatar trn-avatar--you" title="${youGamertag}">`
             : '';
 
         const imgs = show.map(p =>
-            `<img src="${p.avatar}"
-                  alt="${p.gamertag}"
-                  class="trn-avatar"
-                  title="${p.gamertag}"
+            `<img src="${p.avatar}" alt="${p.gamertag}" class="trn-avatar" title="${p.gamertag}"
                   onerror="this.style.display='none'">`
         ).join('');
 
-        const moreTag = extra > 0
+        const more = extra > 0
             ? `<div class="trn-avatar trn-avatar--more">+${extra}</div>`
             : '';
 
-        return `<div class="trn-avatar-stack">${youBadge}${imgs}${moreTag}</div>`;
+        return `<div class="trn-avatar-stack">${youImg}${imgs}${more}</div>`;
     }
 
     function render(list) {
@@ -52,14 +54,11 @@ document.addEventListener('app:ready', () => {
 
         container.innerHTML = list.map(t => {
             const filled   = t.slots - t.slotsLeft;
-            const pct      = Math.round((filled / t.slots) * 100);
             const isOpen   = t.status === 'open' && t.slotsLeft > 0;
+            const statusKey = t.slotsLeft === 0 ? 'full' : t.status;
 
-            const statusKey   = t.slotsLeft === 0 ? 'full' : t.status;
             const statusLabel = { open:'OPEN', ongoing:'ONGOING', full:'FULL' }[statusKey];
-            const dotClass    = { open:'trn-status-dot--open', ongoing:'trn-status-dot--ongoing', full:'trn-status-dot--full' }[statusKey];
-            const lblClass    = { open:'trn-status-label--open', ongoing:'trn-status-label--ongoing', full:'trn-status-label--full' }[statusKey];
-            const fillClass   = t.slotsLeft === 0 ? 'trn-slots-fill trn-slots-fill--full' : 'trn-slots-fill';
+            const statusCls   = { open:'trn-news-status--open', ongoing:'trn-news-status--ongoing', full:'trn-news-status--full' }[statusKey];
 
             let actionBtn = '';
             if (t.playerJoined) {
@@ -70,48 +69,33 @@ document.addEventListener('app:ready', () => {
                 actionBtn = `<button class="trn-btn-closed" disabled>CLOSED</button>`;
             }
 
+            const img = images[t.id] || images['t002'];
+
             return `
-            <div class="trn-card ${t.playerJoined ? 'trn-card--joined' : ''}" id="trn-card-${t.id}">
-                <div class="trn-card-header">
-                    <div>
-                        <div class="trn-card-title">${t.name}</div>
-                        <div class="trn-card-meta">${t.game}&nbsp;&nbsp;·&nbsp;&nbsp;${t.zone}</div>
-                    </div>
-                    <div class="trn-status">
-                        <div class="trn-status-dot ${dotClass}"></div>
-                        <span class="trn-status-label ${lblClass}">${statusLabel}</span>
-                    </div>
+            <div class="trn-news-card ${t.playerJoined ? 'trn-card--joined' : ''}" id="trn-card-${t.id}">
+                <div class="trn-news-img" style="background-image:url('${img}');">
+                    <span class="trn-news-status ${statusCls}">${statusLabel}</span>
                 </div>
-
-                <div class="trn-reward-row">
-                    <div class="trn-reward-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z"/></svg>
+                <div class="trn-news-body">
+                    <p class="trn-news-title"><strong>${t.name}</strong></p>
+                    <p class="trn-news-reward">${t.reward}</p>
+                    <div class="trn-news-players">
+                        ${avatarStack(t.participants, t.playerJoined, filled, t.slots)}
+                        <span class="trn-news-count">${filled} / ${t.slots}</span>
                     </div>
-                    <span class="trn-reward-text">${t.reward}</span>
-                </div>
-
-                <div class="trn-participants-row">
-                    ${avatarStack(t.participants, t.playerJoined, filled, t.slots)}
-                    <span class="trn-slots-label">${filled} / ${t.slots} players</span>
-                </div>
-
-                <div class="trn-slots-row">
-                    <div class="trn-slots-track">
-                        <div class="${fillClass}" style="width:${pct}%"></div>
+                    <div class="trn-news-meta">
+                        ${t.startDate}
+                        &nbsp;·&nbsp;
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/EFootball_logo.svg"
+                             alt="eFootball" style="height:10px;background:blue;padding:1px;border-radius:1px;vertical-align:middle;">
+                        &nbsp;·&nbsp;
+                        <span>${t.zone}</span>
                     </div>
-                </div>
-
-                <div class="trn-card-footer">
-                    <span class="trn-start-date">${t.startDate}</span>
                     ${actionBtn}
                 </div>
             </div>`;
         }).join('');
 
-        bindButtons(container);
-    }
-
-    function bindButtons(container) {
         container.querySelectorAll('.trn-btn-join').forEach(btn => {
             btn.addEventListener('click', () => join(btn.dataset.id));
         });
@@ -137,7 +121,7 @@ document.addEventListener('app:ready', () => {
         render(data);
     }
 
-    // Tabs principais
+    // Tabs
     document.querySelectorAll('.js-trn-main-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.js-trn-main-tab').forEach(t => t.classList.remove('active'));
@@ -148,14 +132,12 @@ document.addEventListener('app:ready', () => {
         });
     });
 
-    // Tab arrows
     const scroll   = document.getElementById('trnTabsScroll');
     const leftBtn  = document.querySelector('.js-trn-tab-left');
     const rightBtn = document.querySelector('.js-trn-tab-right');
     if (leftBtn  && scroll) leftBtn.addEventListener('click',  () => scroll.scrollBy({ left:-120, behavior:'smooth' }));
     if (rightBtn && scroll) rightBtn.addEventListener('click', () => scroll.scrollBy({ left: 120, behavior:'smooth' }));
 
-    // Filtros
     document.querySelectorAll('.js-trn-filter').forEach(btn => {
         btn.addEventListener('click', () => {
             document.querySelectorAll('.js-trn-filter').forEach(b => b.classList.remove('active'));
@@ -165,7 +147,6 @@ document.addEventListener('app:ready', () => {
         });
     });
 
-    // CTA do perfil
     const btnJoin = document.getElementById('btnJoinTournament');
     if (btnJoin) {
         btnJoin.addEventListener('click', () => {
