@@ -242,6 +242,23 @@
     padding: 8px 18px;
 }
 
+/* JOIN button posição */
+.trn-btn-join, .trn-btn-joined, .trn-btn-closed {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+}
+.trn-btn-join   { background: var(--accent-orange); color: #000; }
+.trn-btn-joined { background: rgba(255,122,0,0.15); color: var(--accent-orange); border: 1px solid rgba(255,122,0,0.3); }
+.trn-btn-closed { background: var(--bg-pill); color: var(--text-muted); }
+
 /* =========================================
    FEATURED GAMES CARDS
    ========================================= */
