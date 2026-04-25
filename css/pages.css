@@ -483,3 +483,51 @@
     object-fit: cover;
     flex-shrink: 0;
 }
+
+/* ── Tournament — Avatar Stack ───────────────────────── */
+.trn-participants-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.trn-avatar-stack {
+    display: flex;
+    align-items: center;
+}
+
+.trn-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--bg-card);
+    margin-right: -8px;
+    flex-shrink: 0;
+    background: var(--bg-pill);
+}
+
+.trn-avatar--you {
+    border: 2px solid var(--accent-orange);
+    order: -1;
+}
+
+.trn-avatar--more {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--bg-pill);
+    border: 2px solid var(--bg-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 800;
+    color: var(--text-muted);
+    margin-right: -8px;
+}
+
+.trn-avatar-stack + .trn-slots-label {
+    margin-left: 16px;
+}

@@ -3,7 +3,7 @@
     {
       "id": "t001",
       "name": "MATZON Nations League",
-      "game": "eFootball",
+      "game": "eFootball Mobile",
       "gameCode": "efc",
       "zone": "Europe",
       "status": "open",
@@ -11,12 +11,21 @@
       "slots": 32,
       "slotsLeft": 8,
       "reward": "+120 Ranking Points",
-      "playerJoined": false
+      "playerJoined": false,
+      "participants": [
+        { "id":"p010", "gamertag":"ShadowStrike",  "avatar":"https://randomuser.me/api/portraits/men/32.jpg" },
+        { "id":"p011", "gamertag":"NeonBlitz",     "avatar":"https://randomuser.me/api/portraits/men/44.jpg" },
+        { "id":"p012", "gamertag":"IronWall",      "avatar":"https://randomuser.me/api/portraits/men/55.jpg" },
+        { "id":"p013", "gamertag":"PacificEdge",   "avatar":"https://randomuser.me/api/portraits/men/12.jpg" },
+        { "id":"p014", "gamertag":"VoltDrive",     "avatar":"https://randomuser.me/api/portraits/men/76.jpg" },
+        { "id":"p015", "gamertag":"ColdFront",     "avatar":"https://randomuser.me/api/portraits/women/21.jpg" },
+        { "id":"p016", "gamertag":"TacticalX",     "avatar":"https://randomuser.me/api/portraits/men/88.jpg" }
+      ]
     },
     {
       "id": "t002",
       "name": "Open Series — Week 2",
-      "game": "eFootball",
+      "game": "eFootball Mobile",
       "gameCode": "efc",
       "zone": "Global",
       "status": "open",
@@ -24,25 +33,37 @@
       "slots": 64,
       "slotsLeft": 31,
       "reward": "+80 Ranking Points",
-      "playerJoined": false
+      "playerJoined": false,
+      "participants": [
+        { "id":"p017", "gamertag":"RedShift",    "avatar":"https://randomuser.me/api/portraits/men/67.jpg" },
+        { "id":"p018", "gamertag":"SilentAce",   "avatar":"https://randomuser.me/api/portraits/men/91.jpg" },
+        { "id":"p019", "gamertag":"DuskHunter",  "avatar":"https://randomuser.me/api/portraits/women/43.jpg" },
+        { "id":"p020", "gamertag":"GridLock",    "avatar":"https://randomuser.me/api/portraits/men/23.jpg" }
+      ]
     },
     {
       "id": "t003",
-      "name": "Rocket League Cup",
-      "game": "Rocket League",
-      "gameCode": "rl",
+      "name": "eFootball Mobile Cup",
+      "game": "eFootball Mobile",
+      "gameCode": "efc",
       "zone": "Europe",
       "status": "open",
       "startDate": "MAY 5, 2026",
       "slots": 16,
       "slotsLeft": 4,
       "reward": "+60 Ranking Points",
-      "playerJoined": false
+      "playerJoined": false,
+      "participants": [
+        { "id":"p021", "gamertag":"ApexPulse",   "avatar":"https://randomuser.me/api/portraits/men/38.jpg" },
+        { "id":"p022", "gamertag":"NorthStar",   "avatar":"https://randomuser.me/api/portraits/women/62.jpg" },
+        { "id":"p023", "gamertag":"StormCore",   "avatar":"https://randomuser.me/api/portraits/men/14.jpg" },
+        { "id":"p024", "gamertag":"PhaseShift",  "avatar":"https://randomuser.me/api/portraits/men/52.jpg" }
+      ]
     },
     {
       "id": "t004",
       "name": "Asia Nations Cup",
-      "game": "eFootball",
+      "game": "eFootball Mobile",
       "gameCode": "efc",
       "zone": "Asia",
       "status": "ongoing",
@@ -50,12 +71,18 @@
       "slots": 32,
       "slotsLeft": 0,
       "reward": "+100 Ranking Points",
-      "playerJoined": false
+      "playerJoined": false,
+      "participants": [
+        { "id":"p013", "gamertag":"PacificEdge",  "avatar":"https://randomuser.me/api/portraits/men/12.jpg" },
+        { "id":"p025", "gamertag":"DeltaForce",   "avatar":"https://randomuser.me/api/portraits/men/71.jpg" },
+        { "id":"p026", "gamertag":"RapidFire",    "avatar":"https://randomuser.me/api/portraits/women/33.jpg" },
+        { "id":"p027", "gamertag":"IceCross",     "avatar":"https://randomuser.me/api/portraits/men/64.jpg" }
+      ]
     },
     {
       "id": "t005",
       "name": "Weekend Blitz",
-      "game": "eFootball",
+      "game": "eFootball Mobile",
       "gameCode": "efc",
       "zone": "Global",
       "status": "open",
@@ -63,7 +90,12 @@
       "slots": 32,
       "slotsLeft": 2,
       "reward": "+40 Ranking Points",
-      "playerJoined": false
+      "playerJoined": false,
+      "participants": [
+        { "id":"p028", "gamertag":"BlackOps",     "avatar":"https://randomuser.me/api/portraits/men/83.jpg" },
+        { "id":"p010", "gamertag":"ShadowStrike",  "avatar":"https://randomuser.me/api/portraits/men/32.jpg" },
+        { "id":"p015", "gamertag":"ColdFront",    "avatar":"https://randomuser.me/api/portraits/women/21.jpg" }
+      ]
     }
   ]
 }
