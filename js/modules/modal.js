@@ -50,10 +50,10 @@ function createEmojiImage(emoji) {
                     } else if (match.classList.contains('compact-match-col')) {
                         const timeEl = match.querySelector('.compact-time');
                         if (timeEl) time = timeEl.textContent.trim();
-                        date = "TODAY"; team1 = "Player 1"; team2 = "Player 2";
-                        const emojiSpans = match.querySelectorAll('.compact-flags span');
-                        if (emojiSpans[0]) flag1 = createEmojiImage(emojiSpans[0].textContent);
-                        if (emojiSpans[1]) flag2 = createEmojiImage(emojiSpans[1].textContent);
+                        date = "TODAY";
+                        const imgs = match.querySelectorAll('.compact-flags img');
+                        if (imgs[0]) { flag1 = imgs[0].src; team1 = imgs[0].alt || "Player 1"; }
+                        if (imgs[1]) { flag2 = imgs[1].src; team2 = imgs[1].alt || "Player 2"; }
                     } else if (match.classList.contains('match-card')) {
                         const matchTeams = match.querySelectorAll('.match-team');
                         if (matchTeams[0]) { team1 = matchTeams[0].textContent.trim(); const i = matchTeams[0].querySelector('img'); if (i) flag1 = i.src; }
