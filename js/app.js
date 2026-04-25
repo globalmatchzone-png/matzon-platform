@@ -1,13 +1,12 @@
 // MATZON - app.js
-// Ponto de entrada. Modulos carregam-se automaticamente.
 window.MATZON = window.MATZON || {};
 
-
-// Banner video carousel
-(function() {
+// Banner video carousel — espera app:ready
+document.addEventListener('app:ready', function() {
     const slides = document.querySelectorAll('.banner-slide');
     const dots   = document.querySelectorAll('#bannerControls .dot');
-    let current  = 0;
+    if (!slides.length) return;
+    let current = 0;
 
     function goTo(n) {
         slides[current].classList.remove('active');
@@ -25,6 +24,5 @@ window.MATZON = window.MATZON || {};
     if (next) next.addEventListener('click', () => goTo(current + 1));
     dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
 
-    // Auto avança de 6 em 6 segundos
     setInterval(() => goTo(current + 1), 6000);
-})();
+});
