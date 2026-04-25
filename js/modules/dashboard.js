@@ -31,7 +31,7 @@ document.addEventListener('app:ready', () => {
             const img = document.createElement('img');
             img.src = p.avatar || `https://randomuser.me/api/portraits/men/1.jpg`;
             img.alt = p.gamertag;
-            img.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:16px;';
+            img.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:50%;';
             img.onerror = () => { avatar.textContent = p.initials; avatar.style.background = p.avatarGradient; };
             avatar.appendChild(img);
         }

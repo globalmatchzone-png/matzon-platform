@@ -100,7 +100,7 @@
    SIDE MENU — PLAYER CARD
    ========================================= */
 .smenu-profile { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; width: 100%; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); margin-bottom: 18px; }
-.smenu-avatar { width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, #1d4ed8, #3b82f6); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+.smenu-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #1d4ed8, #3b82f6); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 4px; overflow: hidden; }
 .smenu-gamertag { font-family: var(--font-heading); font-size: 18px; font-weight: 900; color: #fff; line-height: 1; }
 .smenu-nation { display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--text-muted); }
 .smenu-rank { display: flex; align-items: baseline; gap: 5px; margin-top: 2px; }
