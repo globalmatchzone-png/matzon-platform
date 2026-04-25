@@ -87,6 +87,7 @@
             </section>
 <!-- TOURNAMENT DETAIL OVERLAY -->
 <section class="matchup-wrapper" id="trnDetailOverlay">
+
     <div class="matchup-header">
         <div class="matchup-header-left">
             <div class="matchup-logo">
@@ -94,7 +95,7 @@
                     <path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z"/>
                 </svg>
             </div>
-            <div class="matchup-header-title">Tournament Details</div>
+            <div class="matchup-header-title" id="trnDetailTitle">Tournament</div>
         </div>
         <button class="matchup-close-btn" id="closeTrnDetail">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -103,7 +104,7 @@
         </button>
     </div>
 
-    <!-- Hero -->
+    <!-- Hero — preenchido por JS -->
     <div id="trnDetailHero" style="width:100%;height:200px;background-size:cover;background-position:center;position:relative;flex-shrink:0;">
         <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(11,14,20,1) 0%,transparent 60%);"></div>
         <div style="position:absolute;bottom:16px;left:16px;right:16px;">
@@ -113,249 +114,7 @@
         </div>
     </div>
 
-    <div style="overflow-y:auto;flex:1;padding-bottom:32px;">
-
-        <!-- Reward -->
-        <div style="display:flex;align-items:center;gap:12px;padding:20px 16px;border-bottom:1px solid var(--border-color);">
-            <div style="width:40px;height:40px;background:rgba(255,122,0,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent-orange)"><path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z"/></svg>
-            </div>
-            <div>
-                <div id="trnDetailReward" style="font-size:15px;font-weight:800;color:var(--accent-orange);"></div>
-                <div style="font-size:10px;color:var(--text-muted);font-weight:600;margin-top:2px;text-transform:uppercase;letter-spacing:0.4px;">Tournament Reward</div>
-            </div>
-        </div>
-
-        <!-- Detalhes -->
-        <div class="matchup-accordion matchup-open" style="margin-bottom:0;">
-            <div class="matchup-acc-body" style="max-height:none;padding:0 16px;">
-                <div class="matchup-detail-row"><span>Game</span><span id="trnDetailGame"></span></div>
-                <div class="matchup-detail-row"><span>Zone</span><span id="trnDetailZone"></span></div>
-                <div class="matchup-detail-row"><span>Start Date</span><span id="trnDetailDate"></span></div>
-                <div class="matchup-detail-row"><span>Slots</span><span id="trnDetailSlots"></span></div>
-                <div class="matchup-detail-row"><span>Status</span><span id="trnDetailStatusText"></span></div>
-            </div>
-        </div>
-
-        <!-- Participantes -->
-        <div style="padding:20px 16px 0;border-top:1px solid var(--border-color);">
-            <div style="font-size:10px;font-weight:800;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;">Participants</div>
-            <div id="trnDetailParticipants" style="display:flex;flex-direction:column;gap:10px;"></div>
-        </div>
-
-        <!-- CTA -->
-        <div style="padding:24px 16px 0;">
-            <button id="trnDetailJoinBtn" style="width:100%;padding:16px;border-radius:12px;background:var(--accent-blue);color:#fff;font-family:var(--font-body);font-size:14px;font-weight:800;border:none;cursor:pointer;letter-spacing:0.3px;transition:opacity 0.2s;">JOIN TOURNAMENT</button>
-        </div>
-
-    </div>
-        <!-- Divisor -->
-        <div style="height:1px;background:var(--border-color);margin:0 16px;"></div>
-
-        <!-- Filtros de zona/fase/grupo -->
-        <section class="filters-section">
-            <div class="filter-row">
-                <div class="pills-scroll zone-scroll">
-                    <button class="pill">Europe</button>
-                    <button class="pill w-col-3">Asia (East) &amp; Oceania</button>
-                    <button class="pill w-col-2">Africa</button>
-                    <button class="pill active w-col-2">Asia West</button>
-                    <button class="pill w-col-3">North &amp; Central America</button>
-                </div>
-                <div class="filter-spacer"></div>
-                <span class="filter-label">zone</span>
-            </div>
-            <div class="filter-row">
-                <div class="pills-scroll">
-                    <button class="pill active w-col-1">Week 1</button>
-                    <button class="pill w-col-2">Week 2</button>
-                    <button class="pill w-col-3-short">Week 3</button>
-                </div>
-                <div class="filter-line"></div>
-                <span class="filter-label">Phase</span>
-            </div>
-            <div class="filter-row">
-                <div class="pills-scroll">
-                    <button class="pill active w-col-1">Groups</button>
-                    <button class="pill w-col-2">Knockouts</button>
-                    <button class="pill w-col-3">Consistency Ranking</button>
-                </div>
-                <div class="filter-line"></div>
-                <span class="filter-label">stage</span>
-            </div>
-            <div class="filter-row">
-                <div class="pills-scroll">
-                    <button class="pill active w-col-2">Group A</button>
-                    <button class="pill w-col-2">Group B</button>
-                    <button class="pill w-col-2">Group C</button>
-                    <button class="pill w-col-2">Group D</button>
-                </div>
-                <div class="filter-spacer"></div>
-                <span class="filter-label">group</span>
-            </div>
-        </section>
-
-        <!-- Standings -->
-        <section class="standings-section">
-            <h2 class="section-title">Standings</h2>
-            <div class="table-header">
-                <div class="th-left"><span class="th-hash">#</span><span>PARTICIPANT</span></div>
-                <div class="th-right"><span>MP</span><span>GD</span><span>PTS</span></div>
-            </div>
-            <div class="standings-list">
-                <div class="standing-row advancing">
-                    <div class="st-left"><span class="st-rank">1</span><img src="https://randomuser.me/api/portraits/men/1.jpg" alt="France" class="st-flag" style="border-radius:50%;"><span class="st-name">France</span></div>
-                    <div class="st-right"><span>0</span><span>0</span><span class="st-pts">0</span></div>
-                </div>
-                <div class="standing-row advancing">
-                    <div class="st-left"><span class="st-rank">2</span><img src="https://randomuser.me/api/portraits/men/44.jpg" alt="Greece" class="st-flag" style="border-radius:50%;"><span class="st-name">Greece</span></div>
-                    <div class="st-right"><span>0</span><span>0</span><span class="st-pts">0</span></div>
-                </div>
-                <div class="standing-row advancing">
-                    <div class="st-left"><span class="st-rank">3</span><img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Luxembourg" class="st-flag" style="border-radius:50%;"><span class="st-name">Luxembourg</span></div>
-                    <div class="st-right"><span>0</span><span>0</span><span class="st-pts">0</span></div>
-                </div>
-                <div class="standing-row advancing">
-                    <div class="st-left"><span class="st-rank">4</span><img src="https://randomuser.me/api/portraits/women/26.jpg" alt="Ukraine" class="st-flag" style="border-radius:50%;"><span class="st-name">Ukraine</span></div>
-                    <div class="st-right"><span>0</span><span>0</span><span class="st-pts">0</span></div>
-                </div>
-            </div>
-            <div class="legend-box"><div class="legend-color"></div> Advancing</div>
-        </section>
-
-        <!-- Matchups -->
-        <section class="matchups-section">
-            <h2 class="section-title">Matchups</h2>
-            <div class="filter-row">
-                <div class="pills-scroll rounds-scroll">
-                    <button class="round-btn active">1</button>
-                    <button class="round-btn">2</button>
-                    <button class="round-btn">3</button>
-                    <button class="round-btn">4</button>
-                    <button class="round-btn">5</button>
-                    <button class="round-btn">6</button>
-                    <button class="round-btn">7</button>
-                </div>
-                <div class="filter-line"></div>
-                <span class="filter-label">Round</span>
-            </div>
-            <div class="match-date-header">
-                <span class="date-text">28 Apr 2026</span>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
-                    <path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z" fill="#3b82f6"/>
-                    <circle cx="12" cy="12" r="3" fill="white"/>
-                </svg>
-            </div>
-            <div class="match-cards">
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/men/1.jpg" class="m-flag" style="border-radius:50%;"> France</div>
-                        <div class="match-time">19:00</div>
-                    </div>
-                    <div class="match-row mt-12">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/women/26.jpg" class="m-flag" style="border-radius:50%;"> Ukraine</div>
-                        <div class="match-date">APR 28</div>
-                    </div>
-                </div>
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/men/55.jpg" class="m-flag" style="border-radius:50%;"> Luxembourg</div>
-                        <div class="match-time">19:00</div>
-                    </div>
-                    <div class="match-row mt-12">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/men/44.jpg" class="m-flag" style="border-radius:50%;"> Greece</div>
-                        <div class="match-date">APR 28</div>
-                    </div>
-                </div>
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/women/26.jpg" class="m-flag" style="border-radius:50%;"> Ukraine</div>
-                        <div class="match-time">19:30</div>
-                    </div>
-                    <div class="match-row mt-12">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/men/55.jpg" class="m-flag" style="border-radius:50%;"> Luxembourg</div>
-                        <div class="match-date">APR 28</div>
-                    </div>
-                </div>
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/men/44.jpg" class="m-flag" style="border-radius:50%;"> Greece</div>
-                        <div class="match-time">19:30</div>
-                    </div>
-                    <div class="match-row mt-12">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/men/1.jpg" class="m-flag" style="border-radius:50%;"> France</div>
-                        <div class="match-date">APR 28</div>
-                    </div>
-                </div>
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/men/1.jpg" class="m-flag" style="border-radius:50%;"> France</div>
-                        <div class="match-time">20:00</div>
-                    </div>
-                    <div class="match-row mt-12">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/men/55.jpg" class="m-flag" style="border-radius:50%;"> Luxembourg</div>
-                        <div class="match-date">APR 28</div>
-                    </div>
-                </div>
-                <div class="match-card">
-                    <div class="match-row">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/men/44.jpg" class="m-flag" style="border-radius:50%;"> Greece</div>
-                        <div class="match-time">20:00</div>
-                    </div>
-                    <div class="match-row mt-12">
-                        <div class="match-team"><img src="https://randomuser.me/api/portraits/women/26.jpg" class="m-flag" style="border-radius:50%;"> Ukraine</div>
-                        <div class="match-date">APR 28</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tabela de qualificação -->
-        <section class="qual-section">
-            <h2 class="section-title">Qualification for continental<br>championships via Nations League</h2>
-            <div class="qual-gradient-box">
-                <div class="qual-pattern"></div>
-                <div class="qual-table-wrapper">
-                    <table class="qual-table">
-                        <thead>
-                            <tr>
-                                <th class="t-left"></th>
-                                <th>Consistency PTS<br>Qualification</th>
-                                <th>Week 3<br>Qualification</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="glass"><td class="t-left">Europe</td><td>8</td><td>4</td><td>12</td></tr>
-                            <tr class="glass highlight"><td class="t-left">Asia East*</td><td>3</td><td>2</td><td>5</td></tr>
-                            <tr class="glass"><td class="t-left">Asia West*</td><td>2</td><td>1</td><td>3</td></tr>
-                            <tr class="glass highlight"><td class="t-left">Africa</td><td>5</td><td>3</td><td>8</td></tr>
-                            <tr class="glass"><td class="t-left">N&amp;CA</td><td>4</td><td>2</td><td>6</td></tr>
-                            <tr class="glass highlight"><td class="t-left">SA</td><td>3</td><td>1</td><td>4</td></tr>
-                            <tr class="glass"><td class="t-left">Oceania**</td><td>N.A.</td><td>N.A.</td><td>2</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="swipe-alert">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M9 18l-6-6 6-6v4h6V6l6 6-6 6v-4H9v4z"/></svg>
-                    SWIPE HORIZONTAL FOR FULL TABLE
-                </div>
-                <div class="qual-notes">
-                    * Asia West and Asia East will compete together in the MATZON Continental Championship Asia.<br>
-                    ** Oceania will compete separately in the MATZON Continental Championship Oceania.
-                </div>
-            </div>
-        </section>
-
-        <!-- Explicação -->
-        <section class="explanation-section">
-            <div class="explanation-box">
-                <h3>Consistency ranking explanation</h3>
-                <p>Throughout all three qualifying-weeks, national teams earn consistency points based on their performance across both the group stages and the knockout stages.</p>
-                <h3 class="mt-24">Direct qualification in week 3</h3>
-                <p>A limited number of teams qualify directly through their performance in week 3. These spots are awarded to the top-performing teams of the final week.</p>
-            </div>
-        </section>
-
+    <!-- Conteúdo dinâmico -->
+    <div id="trnDetailBody" style="overflow-y:auto;flex:1;padding-bottom:40px;"></div>
 
 </section>

@@ -4,7 +4,6 @@
       "id": "t001",
       "name": "MATZON Nations League",
       "game": "eFootball Mobile",
-      "gameCode": "efc",
       "zone": "Europe",
       "status": "open",
       "startDate": "APR 28, 2026",
@@ -13,20 +12,31 @@
       "reward": "+120 Ranking Points",
       "playerJoined": false,
       "participants": [
-        { "id":"p010", "gamertag":"ShadowStrike",  "avatar":"https://randomuser.me/api/portraits/men/32.jpg" },
-        { "id":"p011", "gamertag":"NeonBlitz",     "avatar":"https://randomuser.me/api/portraits/men/44.jpg" },
-        { "id":"p012", "gamertag":"IronWall",      "avatar":"https://randomuser.me/api/portraits/men/55.jpg" },
-        { "id":"p013", "gamertag":"PacificEdge",   "avatar":"https://randomuser.me/api/portraits/men/12.jpg" },
-        { "id":"p014", "gamertag":"VoltDrive",     "avatar":"https://randomuser.me/api/portraits/men/76.jpg" },
-        { "id":"p015", "gamertag":"ColdFront",     "avatar":"https://randomuser.me/api/portraits/women/21.jpg" },
-        { "id":"p016", "gamertag":"TacticalX",     "avatar":"https://randomuser.me/api/portraits/men/88.jpg" }
+        { "id":"p010", "gamertag":"ShadowStrike", "avatar":"https://randomuser.me/api/portraits/men/32.jpg" },
+        { "id":"p011", "gamertag":"NeonBlitz",    "avatar":"https://randomuser.me/api/portraits/men/44.jpg" },
+        { "id":"p012", "gamertag":"IronWall",     "avatar":"https://randomuser.me/api/portraits/men/55.jpg" },
+        { "id":"p013", "gamertag":"PacificEdge",  "avatar":"https://randomuser.me/api/portraits/men/12.jpg" },
+        { "id":"p014", "gamertag":"VoltDrive",    "avatar":"https://randomuser.me/api/portraits/men/76.jpg" },
+        { "id":"p015", "gamertag":"ColdFront",    "avatar":"https://randomuser.me/api/portraits/women/21.jpg" },
+        { "id":"p016", "gamertag":"TacticalX",    "avatar":"https://randomuser.me/api/portraits/men/88.jpg" }
+      ],
+      "standings": [
+        { "pos":1, "name":"ShadowStrike", "avatar":"https://randomuser.me/api/portraits/men/32.jpg", "mp":3, "gd":5,  "pts":9  },
+        { "pos":2, "name":"NeonBlitz",    "avatar":"https://randomuser.me/api/portraits/men/44.jpg", "mp":3, "gd":2,  "pts":6  },
+        { "pos":3, "name":"IronWall",     "avatar":"https://randomuser.me/api/portraits/men/55.jpg", "mp":3, "gd":-1, "pts":3  },
+        { "pos":4, "name":"TacticalX",   "avatar":"https://randomuser.me/api/portraits/men/88.jpg", "mp":3, "gd":-6, "pts":0  }
+      ],
+      "matchups": [
+        { "p1":"ShadowStrike", "av1":"https://randomuser.me/api/portraits/men/32.jpg", "p2":"TacticalX",  "av2":"https://randomuser.me/api/portraits/men/88.jpg", "time":"19:00", "date":"APR 28" },
+        { "p1":"NeonBlitz",    "av1":"https://randomuser.me/api/portraits/men/44.jpg", "p2":"IronWall",   "av2":"https://randomuser.me/api/portraits/men/55.jpg", "time":"19:30", "date":"APR 28" },
+        { "p1":"IronWall",     "av1":"https://randomuser.me/api/portraits/men/55.jpg", "p2":"ShadowStrike","av2":"https://randomuser.me/api/portraits/men/32.jpg","time":"20:00", "date":"APR 28" },
+        { "p1":"TacticalX",   "av1":"https://randomuser.me/api/portraits/men/88.jpg", "p2":"NeonBlitz",   "av2":"https://randomuser.me/api/portraits/men/44.jpg", "time":"20:30", "date":"APR 28" }
       ]
     },
     {
       "id": "t002",
       "name": "Open Series — Week 2",
       "game": "eFootball Mobile",
-      "gameCode": "efc",
       "zone": "Global",
       "status": "open",
       "startDate": "MAY 3, 2026",
@@ -35,17 +45,28 @@
       "reward": "+80 Ranking Points",
       "playerJoined": false,
       "participants": [
-        { "id":"p017", "gamertag":"RedShift",    "avatar":"https://randomuser.me/api/portraits/men/67.jpg" },
-        { "id":"p018", "gamertag":"SilentAce",   "avatar":"https://randomuser.me/api/portraits/men/91.jpg" },
-        { "id":"p019", "gamertag":"DuskHunter",  "avatar":"https://randomuser.me/api/portraits/women/43.jpg" },
-        { "id":"p020", "gamertag":"GridLock",    "avatar":"https://randomuser.me/api/portraits/men/23.jpg" }
+        { "id":"p017", "gamertag":"RedShift",   "avatar":"https://randomuser.me/api/portraits/men/67.jpg" },
+        { "id":"p018", "gamertag":"SilentAce",  "avatar":"https://randomuser.me/api/portraits/men/91.jpg" },
+        { "id":"p019", "gamertag":"DuskHunter", "avatar":"https://randomuser.me/api/portraits/women/43.jpg" },
+        { "id":"p020", "gamertag":"GridLock",   "avatar":"https://randomuser.me/api/portraits/men/23.jpg" }
+      ],
+      "standings": [
+        { "pos":1, "name":"RedShift",   "avatar":"https://randomuser.me/api/portraits/men/67.jpg",    "mp":2, "gd":4,  "pts":6 },
+        { "pos":2, "name":"DuskHunter", "avatar":"https://randomuser.me/api/portraits/women/43.jpg",  "mp":2, "gd":1,  "pts":4 },
+        { "pos":3, "name":"GridLock",   "avatar":"https://randomuser.me/api/portraits/men/23.jpg",    "mp":2, "gd":-2, "pts":1 },
+        { "pos":4, "name":"SilentAce",  "avatar":"https://randomuser.me/api/portraits/men/91.jpg",    "mp":2, "gd":-3, "pts":0 }
+      ],
+      "matchups": [
+        { "p1":"RedShift",   "av1":"https://randomuser.me/api/portraits/men/67.jpg",   "p2":"SilentAce",  "av2":"https://randomuser.me/api/portraits/men/91.jpg",    "time":"18:00", "date":"MAY 3" },
+        { "p1":"DuskHunter", "av1":"https://randomuser.me/api/portraits/women/43.jpg", "p2":"GridLock",   "av2":"https://randomuser.me/api/portraits/men/23.jpg",    "time":"18:30", "date":"MAY 3" },
+        { "p1":"GridLock",   "av1":"https://randomuser.me/api/portraits/men/23.jpg",   "p2":"RedShift",   "av2":"https://randomuser.me/api/portraits/men/67.jpg",    "time":"19:00", "date":"MAY 3" },
+        { "p1":"SilentAce",  "av1":"https://randomuser.me/api/portraits/men/91.jpg",   "p2":"DuskHunter", "av2":"https://randomuser.me/api/portraits/women/43.jpg",  "time":"19:30", "date":"MAY 3" }
       ]
     },
     {
       "id": "t003",
       "name": "eFootball Mobile Cup",
       "game": "eFootball Mobile",
-      "gameCode": "efc",
       "zone": "Europe",
       "status": "open",
       "startDate": "MAY 5, 2026",
@@ -54,17 +75,28 @@
       "reward": "+60 Ranking Points",
       "playerJoined": false,
       "participants": [
-        { "id":"p021", "gamertag":"ApexPulse",   "avatar":"https://randomuser.me/api/portraits/men/38.jpg" },
-        { "id":"p022", "gamertag":"NorthStar",   "avatar":"https://randomuser.me/api/portraits/women/62.jpg" },
-        { "id":"p023", "gamertag":"StormCore",   "avatar":"https://randomuser.me/api/portraits/men/14.jpg" },
-        { "id":"p024", "gamertag":"PhaseShift",  "avatar":"https://randomuser.me/api/portraits/men/52.jpg" }
+        { "id":"p021", "gamertag":"ApexPulse",  "avatar":"https://randomuser.me/api/portraits/men/38.jpg" },
+        { "id":"p022", "gamertag":"NorthStar",  "avatar":"https://randomuser.me/api/portraits/women/62.jpg" },
+        { "id":"p023", "gamertag":"StormCore",  "avatar":"https://randomuser.me/api/portraits/men/14.jpg" },
+        { "id":"p024", "gamertag":"PhaseShift", "avatar":"https://randomuser.me/api/portraits/men/52.jpg" }
+      ],
+      "standings": [
+        { "pos":1, "name":"ApexPulse",  "avatar":"https://randomuser.me/api/portraits/men/38.jpg",    "mp":1, "gd":3,  "pts":3 },
+        { "pos":2, "name":"NorthStar",  "avatar":"https://randomuser.me/api/portraits/women/62.jpg",  "mp":1, "gd":1,  "pts":3 },
+        { "pos":3, "name":"StormCore",  "avatar":"https://randomuser.me/api/portraits/men/14.jpg",    "mp":1, "gd":-1, "pts":0 },
+        { "pos":4, "name":"PhaseShift", "avatar":"https://randomuser.me/api/portraits/men/52.jpg",    "mp":1, "gd":-3, "pts":0 }
+      ],
+      "matchups": [
+        { "p1":"ApexPulse",  "av1":"https://randomuser.me/api/portraits/men/38.jpg",   "p2":"StormCore",  "av2":"https://randomuser.me/api/portraits/men/14.jpg",    "time":"17:00", "date":"MAY 5" },
+        { "p1":"NorthStar",  "av1":"https://randomuser.me/api/portraits/women/62.jpg", "p2":"PhaseShift", "av2":"https://randomuser.me/api/portraits/men/52.jpg",    "time":"17:30", "date":"MAY 5" },
+        { "p1":"StormCore",  "av1":"https://randomuser.me/api/portraits/men/14.jpg",   "p2":"NorthStar",  "av2":"https://randomuser.me/api/portraits/women/62.jpg",  "time":"18:00", "date":"MAY 5" },
+        { "p1":"PhaseShift", "av1":"https://randomuser.me/api/portraits/men/52.jpg",   "p2":"ApexPulse",  "av2":"https://randomuser.me/api/portraits/men/38.jpg",    "time":"18:30", "date":"MAY 5" }
       ]
     },
     {
       "id": "t004",
       "name": "Asia Nations Cup",
       "game": "eFootball Mobile",
-      "gameCode": "efc",
       "zone": "Asia",
       "status": "ongoing",
       "startDate": "APR 20, 2026",
@@ -73,17 +105,28 @@
       "reward": "+100 Ranking Points",
       "playerJoined": false,
       "participants": [
-        { "id":"p013", "gamertag":"PacificEdge",  "avatar":"https://randomuser.me/api/portraits/men/12.jpg" },
-        { "id":"p025", "gamertag":"DeltaForce",   "avatar":"https://randomuser.me/api/portraits/men/71.jpg" },
-        { "id":"p026", "gamertag":"RapidFire",    "avatar":"https://randomuser.me/api/portraits/women/33.jpg" },
-        { "id":"p027", "gamertag":"IceCross",     "avatar":"https://randomuser.me/api/portraits/men/64.jpg" }
+        { "id":"p013", "gamertag":"PacificEdge", "avatar":"https://randomuser.me/api/portraits/men/12.jpg" },
+        { "id":"p025", "gamertag":"DeltaForce",  "avatar":"https://randomuser.me/api/portraits/men/71.jpg" },
+        { "id":"p026", "gamertag":"RapidFire",   "avatar":"https://randomuser.me/api/portraits/women/33.jpg" },
+        { "id":"p027", "gamertag":"IceCross",    "avatar":"https://randomuser.me/api/portraits/men/64.jpg" }
+      ],
+      "standings": [
+        { "pos":1, "name":"PacificEdge", "avatar":"https://randomuser.me/api/portraits/men/12.jpg",    "mp":3, "gd":7,  "pts":9 },
+        { "pos":2, "name":"IceCross",    "avatar":"https://randomuser.me/api/portraits/men/64.jpg",    "mp":3, "gd":2,  "pts":6 },
+        { "pos":3, "name":"RapidFire",   "avatar":"https://randomuser.me/api/portraits/women/33.jpg",  "mp":3, "gd":-3, "pts":3 },
+        { "pos":4, "name":"DeltaForce",  "avatar":"https://randomuser.me/api/portraits/men/71.jpg",    "mp":3, "gd":-6, "pts":0 }
+      ],
+      "matchups": [
+        { "p1":"PacificEdge", "av1":"https://randomuser.me/api/portraits/men/12.jpg",   "p2":"DeltaForce", "av2":"https://randomuser.me/api/portraits/men/71.jpg",    "time":"15:00", "date":"APR 20" },
+        { "p1":"IceCross",    "av1":"https://randomuser.me/api/portraits/men/64.jpg",   "p2":"RapidFire",  "av2":"https://randomuser.me/api/portraits/women/33.jpg",  "time":"15:30", "date":"APR 20" },
+        { "p1":"RapidFire",   "av1":"https://randomuser.me/api/portraits/women/33.jpg", "p2":"PacificEdge","av2":"https://randomuser.me/api/portraits/men/12.jpg",    "time":"16:00", "date":"APR 20" },
+        { "p1":"DeltaForce",  "av1":"https://randomuser.me/api/portraits/men/71.jpg",   "p2":"IceCross",   "av2":"https://randomuser.me/api/portraits/men/64.jpg",    "time":"16:30", "date":"APR 20" }
       ]
     },
     {
       "id": "t005",
       "name": "Weekend Blitz",
       "game": "eFootball Mobile",
-      "gameCode": "efc",
       "zone": "Global",
       "status": "open",
       "startDate": "APR 26, 2026",
@@ -92,9 +135,21 @@
       "reward": "+40 Ranking Points",
       "playerJoined": false,
       "participants": [
-        { "id":"p028", "gamertag":"BlackOps",     "avatar":"https://randomuser.me/api/portraits/men/83.jpg" },
-        { "id":"p010", "gamertag":"ShadowStrike",  "avatar":"https://randomuser.me/api/portraits/men/32.jpg" },
-        { "id":"p015", "gamertag":"ColdFront",    "avatar":"https://randomuser.me/api/portraits/women/21.jpg" }
+        { "id":"p028", "gamertag":"BlackOps",    "avatar":"https://randomuser.me/api/portraits/men/83.jpg" },
+        { "id":"p010", "gamertag":"ShadowStrike", "avatar":"https://randomuser.me/api/portraits/men/32.jpg" },
+        { "id":"p015", "gamertag":"ColdFront",   "avatar":"https://randomuser.me/api/portraits/women/21.jpg" }
+      ],
+      "standings": [
+        { "pos":1, "name":"BlackOps",    "avatar":"https://randomuser.me/api/portraits/men/83.jpg",    "mp":2, "gd":5,  "pts":6 },
+        { "pos":2, "name":"ShadowStrike","avatar":"https://randomuser.me/api/portraits/men/32.jpg",    "mp":2, "gd":2,  "pts":4 },
+        { "pos":3, "name":"ColdFront",   "avatar":"https://randomuser.me/api/portraits/women/21.jpg",  "mp":2, "gd":-2, "pts":1 },
+        { "pos":4, "name":"VoltDrive",   "avatar":"https://randomuser.me/api/portraits/men/76.jpg",    "mp":2, "gd":-5, "pts":0 }
+      ],
+      "matchups": [
+        { "p1":"BlackOps",    "av1":"https://randomuser.me/api/portraits/men/83.jpg",   "p2":"VoltDrive",   "av2":"https://randomuser.me/api/portraits/men/76.jpg",    "time":"16:00", "date":"APR 26" },
+        { "p1":"ShadowStrike","av1":"https://randomuser.me/api/portraits/men/32.jpg",   "p2":"ColdFront",   "av2":"https://randomuser.me/api/portraits/women/21.jpg",  "time":"16:30", "date":"APR 26" },
+        { "p1":"ColdFront",   "av1":"https://randomuser.me/api/portraits/women/21.jpg", "p2":"BlackOps",    "av2":"https://randomuser.me/api/portraits/men/83.jpg",    "time":"17:00", "date":"APR 26" },
+        { "p1":"VoltDrive",   "av1":"https://randomuser.me/api/portraits/men/76.jpg",   "p2":"ShadowStrike","av2":"https://randomuser.me/api/portraits/men/32.jpg",    "time":"17:30", "date":"APR 26" }
       ]
     }
   ]

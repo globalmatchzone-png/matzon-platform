@@ -31,32 +31,25 @@ document.addEventListener('app:ready', () => {
     function avatarStack(participants, playerJoined, filled) {
         const show  = participants.slice(0, 3);
         const extra = filled - show.length - (playerJoined ? 1 : 0);
-
         const youImg = playerJoined
-            ? `<img src="${youAvatar}" alt="You"
-                    style="width:16px;height:16px;border-radius:50%;object-fit:cover;border:1px solid var(--accent-orange);margin-right:-4px;flex-shrink:0;">`
+            ? `<img src="${youAvatar}" style="width:16px;height:16px;border-radius:50%;object-fit:cover;border:1px solid var(--accent-orange);margin-right:-4px;flex-shrink:0;">`
             : '';
-
         const imgs = show.map(p =>
-            `<img src="${p.avatar}" alt="${p.gamertag}"
-                  style="width:16px;height:16px;border-radius:50%;object-fit:cover;border:1px solid var(--bg-card);margin-right:-4px;flex-shrink:0;"
-                  onerror="this.style.display='none'">`
+            `<img src="${p.avatar}" style="width:16px;height:16px;border-radius:50%;object-fit:cover;border:1px solid var(--bg-card);margin-right:-4px;flex-shrink:0;" onerror="this.style.display='none'">`
         ).join('');
-
         const more = extra > 0
             ? `<span style="font-size:9px;font-weight:700;color:var(--text-muted);margin-left:8px;">+${extra}</span>`
             : '';
-
         return `<span style="display:inline-flex;align-items:center;">${youImg}${imgs}${more}</span>`;
     }
 
-    // ── Render lista ──────────────────────────────────────
+    // ── Render lista de cards ─────────────────────────────
     function render(list) {
         const container = document.getElementById('tournament-join-list');
         if (!container) return;
 
         const featured = `
-        <div class="news-item js-trn-open" data-id="featured">
+        <div class="news-item js-trn-open" data-id="t001" style="cursor:pointer;">
             <div class="news-img" style="background-image:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=300');">
                 <div class="link-icon">
                     <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7z" fill="white"/></svg>
@@ -66,7 +59,7 @@ document.addEventListener('app:ready', () => {
                 <p><strong>MATZON NATIONS LEAGUE</strong> Starting tomorrow with AFRICA, ASIA (WEST) &amp; EUROPE on CONSOLE! Follow the competition here</p>
                 <div class="news-meta">
                     2 DAYS AGO &nbsp;•&nbsp;
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/EFootball_logo.svg" alt="eFootball" style="background:blue;padding:1px;height:12px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/EFootball_logo.svg" alt="efoot" style="background:blue;padding:1px;height:12px;">
                     &nbsp;•&nbsp;
                     <span class="author">BY MATZON</span>
                 </div>
@@ -81,8 +74,7 @@ document.addEventListener('app:ready', () => {
             const img = images[t.id] || images['t002'];
 
             return `
-            <div class="news-item js-trn-open" data-id="${t.id}"
-                 style="${t.playerJoined ? 'border:1px solid rgba(255,122,0,0.3);' : ''}">
+            <div class="news-item js-trn-open" data-id="${t.id}" style="cursor:pointer;${t.playerJoined ? 'border:1px solid rgba(255,122,0,0.3);' : ''}">
                 <div class="news-img" style="background-image:url('${img}');">
                     <div class="link-icon">
                         <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7z" fill="white"/></svg>
@@ -109,21 +101,20 @@ document.addEventListener('app:ready', () => {
 
         container.innerHTML = featured + cards;
 
-        // Clique em qualquer card → abre detalhe
         container.querySelectorAll('.js-trn-open').forEach(card => {
-            card.addEventListener('click', () => openDetail(card.dataset.id));
+            card.addEventListener('click', (e) => {
+                // Não activar se clicou num botão
+                if (e.target.closest('button')) return;
+                openDetail(card.dataset.id);
+            });
         });
     }
 
-    // ── Abrir overlay de detalhe ──────────────────────────
+    // ── Overlay de detalhe ────────────────────────────────
     function openDetail(id) {
         const overlay = document.getElementById('trnDetailOverlay');
-        if (!overlay) return;
-
-        if (id === 'featured') {
-            // Abre com dados do t001
-            id = 't001';
-        }
+        const body    = document.getElementById('trnDetailBody');
+        if (!overlay || !body) return;
 
         const t = data.find(x => x.id === id);
         if (!t) return;
@@ -131,7 +122,7 @@ document.addEventListener('app:ready', () => {
         const filled    = t.slots - t.slotsLeft;
         const statusKey = t.slotsLeft === 0 ? 'full' : t.status;
         const statusLabel = { open:'OPEN', ongoing:'ONGOING', full:'FULL' }[statusKey];
-        const statusBg    = { open:'rgba(34,197,94,0.9)', ongoing:'rgba(0,86,227,0.9)', full:'rgba(100,100,100,0.9)' }[statusKey];
+        const statusBg    = { open:'rgba(34,197,94,0.9)', ongoing:'rgba(0,86,227,0.9)', full:'rgba(100,100,100,0.85)' }[statusKey];
         const statusTxt   = { open:'#000', ongoing:'#fff', full:'#fff' }[statusKey];
         const img = images[t.id] || images['t002'];
 
@@ -141,78 +132,159 @@ document.addEventListener('app:ready', () => {
 
         const statusEl = document.getElementById('trnDetailStatus');
         if (statusEl) {
-            statusEl.textContent   = statusLabel;
+            statusEl.textContent      = statusLabel;
             statusEl.style.background = statusBg;
             statusEl.style.color      = statusTxt;
         }
 
-        setText('trnDetailName',       t.name);
-        setText('trnDetailSub',        `${t.game}  ·  ${t.zone}`);
-        setText('trnDetailReward',     t.reward);
-        setText('trnDetailGame',       t.game);
-        setText('trnDetailZone',       t.zone);
-        setText('trnDetailDate',       t.startDate);
-        setText('trnDetailSlots',      `${filled} / ${t.slots} players`);
-        setText('trnDetailStatusText', statusLabel);
+        const nameEl = document.getElementById('trnDetailName');
+        if (nameEl) nameEl.textContent = t.name;
 
-        // Participantes
-        const pList = document.getElementById('trnDetailParticipants');
-        if (pList) {
-            const youRow = t.playerJoined ? `
-                <div style="display:flex;align-items:center;gap:12px;">
-                    <img src="${youAvatar}" alt="You"
-                         style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-orange);flex-shrink:0;">
-                    <div>
-                        <div style="font-size:13px;font-weight:700;">${youGamertag} <span style="font-size:9px;font-weight:800;color:var(--accent-orange);background:rgba(255,122,0,0.12);padding:2px 6px;border-radius:4px;">YOU</span></div>
-                        <div style="font-size:10px;color:var(--text-muted);font-weight:600;margin-top:2px;">Registered</div>
-                    </div>
-                </div>` : '';
+        const subEl = document.getElementById('trnDetailSub');
+        if (subEl) subEl.textContent = `${t.game}  ·  ${t.zone}`;
 
-            const rows = t.participants.map(p => `
-                <div style="display:flex;align-items:center;gap:12px;">
-                    <img src="${p.avatar}" alt="${p.gamertag}"
-                         style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);flex-shrink:0;"
-                         onerror="this.style.display='none'">
-                    <div style="font-size:13px;font-weight:600;">${p.gamertag}</div>
-                </div>`).join('');
+        const titleEl = document.getElementById('trnDetailTitle');
+        if (titleEl) titleEl.textContent = t.name;
 
-            pList.innerHTML = youRow + rows;
+        // Botão JOIN
+        let joinBtnHtml = '';
+        if (t.playerJoined) {
+            joinBtnHtml = `<button id="trnDetailJoinBtn" data-id="${t.id}" style="width:100%;padding:16px;border-radius:12px;background:transparent;color:#22c55e;font-family:var(--font-body);font-size:14px;font-weight:800;border:1px solid rgba(34,197,94,0.3);cursor:pointer;">REGISTERED — TAP TO LEAVE</button>`;
+        } else if (t.status === 'open' && t.slotsLeft > 0) {
+            joinBtnHtml = `<button id="trnDetailJoinBtn" data-id="${t.id}" style="width:100%;padding:16px;border-radius:12px;background:var(--accent-blue);color:#fff;font-family:var(--font-body);font-size:14px;font-weight:800;border:none;cursor:pointer;">JOIN TOURNAMENT</button>`;
+        } else {
+            joinBtnHtml = `<button disabled style="width:100%;padding:16px;border-radius:12px;background:transparent;color:var(--text-muted);font-family:var(--font-body);font-size:14px;font-weight:700;border:1px solid var(--border-color);cursor:not-allowed;">CLOSED</button>`;
         }
 
-        // Botão JOIN/REGISTERED/CLOSED
+        // Standings
+        const standingsRows = t.standings.map((s, i) => `
+            <div class="standing-row ${i < 2 ? 'advancing' : ''}">
+                <div class="st-left">
+                    <span class="st-rank">${s.pos}</span>
+                    <img src="${s.avatar}" alt="${s.name}"
+                         style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;"
+                         onerror="this.style.display='none'">
+                    <span class="st-name">${s.name}</span>
+                </div>
+                <div class="st-right">
+                    <span>${s.mp}</span>
+                    <span>${s.gd > 0 ? '+'+s.gd : s.gd}</span>
+                    <span class="st-pts">${s.pts}</span>
+                </div>
+            </div>`).join('');
+
+        // Matchups
+        const matchupCards = t.matchups.map(m => `
+            <div class="match-card">
+                <div class="match-row">
+                    <div class="match-team">
+                        <img src="${m.av1}" alt="${m.p1}"
+                             class="m-flag" style="border-radius:50%;object-fit:cover;"
+                             onerror="this.style.display='none'">
+                        ${m.p1}
+                    </div>
+                    <div class="match-time">${m.time}</div>
+                </div>
+                <div class="match-row mt-12">
+                    <div class="match-team">
+                        <img src="${m.av2}" alt="${m.p2}"
+                             class="m-flag" style="border-radius:50%;object-fit:cover;"
+                             onerror="this.style.display='none'">
+                        ${m.p2}
+                    </div>
+                    <div class="match-date">${m.date}</div>
+                </div>
+            </div>`).join('');
+
+        // Participantes
+        const youRow = t.playerJoined ? `
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-color);">
+                <img src="${youAvatar}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--accent-orange);flex-shrink:0;">
+                <div>
+                    <div style="font-size:13px;font-weight:700;">${youGamertag}
+                        <span style="font-size:9px;font-weight:800;color:var(--accent-orange);background:rgba(255,122,0,0.12);padding:2px 6px;border-radius:4px;margin-left:6px;">YOU</span>
+                    </div>
+                    <div style="font-size:10px;color:#22c55e;font-weight:600;margin-top:2px;">Registered</div>
+                </div>
+            </div>` : '';
+
+        const participantRows = t.participants.map(p => `
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-color);">
+                <img src="${p.avatar}" alt="${p.gamertag}"
+                     style="width:36px;height:36px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);flex-shrink:0;"
+                     onerror="this.style.display='none'">
+                <div style="font-size:13px;font-weight:600;">${p.gamertag}</div>
+            </div>`).join('');
+
+        body.innerHTML = `
+            <!-- Reward -->
+            <div style="display:flex;align-items:center;gap:12px;padding:20px 16px;border-bottom:1px solid var(--border-color);">
+                <div style="width:40px;height:40px;background:rgba(255,122,0,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--accent-orange)"><path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z"/></svg>
+                </div>
+                <div>
+                    <div style="font-size:15px;font-weight:800;color:var(--accent-orange);">${t.reward}</div>
+                    <div style="font-size:10px;color:var(--text-muted);font-weight:600;margin-top:2px;text-transform:uppercase;letter-spacing:0.4px;">Tournament Reward</div>
+                </div>
+            </div>
+
+            <!-- Info -->
+            <div style="padding:0 16px;">
+                <div class="matchup-detail-row"><span>Game</span><span>${t.game}</span></div>
+                <div class="matchup-detail-row"><span>Zone</span><span>${t.zone}</span></div>
+                <div class="matchup-detail-row"><span>Start Date</span><span>${t.startDate}</span></div>
+                <div class="matchup-detail-row"><span>Players</span><span>${filled} / ${t.slots}</span></div>
+                <div class="matchup-detail-row"><span>Status</span><span style="color:${statusKey === 'open' ? '#22c55e' : statusKey === 'ongoing' ? 'var(--accent-blue)' : 'var(--text-muted)'};">${statusLabel}</span></div>
+            </div>
+
+            <!-- Standings -->
+            <section class="standings-section">
+                <h2 class="section-title">Standings</h2>
+                <div class="table-header">
+                    <div class="th-left"><span>#</span><span>PARTICIPANT</span></div>
+                    <div class="th-right"><span>MP</span><span>GD</span><span>PTS</span></div>
+                </div>
+                <div class="standings-list">${standingsRows}</div>
+                <div class="legend-box"><div class="legend-color"></div> Advancing</div>
+            </section>
+
+            <!-- Matchups -->
+            <section class="matchups-section">
+                <h2 class="section-title">Matchups</h2>
+                <div class="match-cards">${matchupCards}</div>
+            </section>
+
+            <!-- Participantes -->
+            <div style="padding:20px 16px 0;">
+                <h2 class="section-title" style="margin-bottom:14px;">Participants</h2>
+                ${youRow}${participantRows}
+            </div>
+
+            <!-- JOIN -->
+            <div style="padding:24px 16px 8px;">${joinBtnHtml}</div>
+        `;
+
+        // Bind join/leave
         const joinBtn = document.getElementById('trnDetailJoinBtn');
         if (joinBtn) {
-            if (t.playerJoined) {
-                joinBtn.textContent   = 'REGISTERED';
-                joinBtn.style.background = 'transparent';
-                joinBtn.style.color      = '#22c55e';
-                joinBtn.style.border     = '1px solid rgba(34,197,94,0.3)';
-                joinBtn.onclick = () => { leave(t.id); overlay.classList.remove('open'); document.body.classList.remove('modal-open'); };
-            } else if (t.status === 'open' && t.slotsLeft > 0) {
-                joinBtn.textContent   = 'JOIN TOURNAMENT';
-                joinBtn.style.background = 'var(--accent-blue)';
-                joinBtn.style.color      = '#fff';
-                joinBtn.style.border     = 'none';
-                joinBtn.onclick = () => { join(t.id); overlay.classList.remove('open'); document.body.classList.remove('modal-open'); };
-            } else {
-                joinBtn.textContent   = 'CLOSED';
-                joinBtn.style.background = 'transparent';
-                joinBtn.style.color      = 'var(--text-muted)';
-                joinBtn.style.border     = '1px solid var(--border-color)';
-                joinBtn.onclick = null;
-            }
+            joinBtn.addEventListener('click', () => {
+                if (t.playerJoined) {
+                    leave(t.id);
+                } else {
+                    join(t.id);
+                }
+                overlay.classList.remove('open');
+                document.body.classList.remove('modal-open');
+            });
         }
 
         overlay.classList.add('open');
         document.body.classList.add('modal-open');
+        // Scroll ao topo do body do overlay
+        body.scrollTop = 0;
     }
 
-    function setText(id, val) {
-        const el = document.getElementById(id);
-        if (el) el.textContent = val;
-    }
-
-    // ── Fechar overlay ────────────────────────────────────
+    // ── Fechar ────────────────────────────────────────────
     const closeBtn = document.getElementById('closeTrnDetail');
     if (closeBtn) {
         closeBtn.addEventListener('click', () => {
