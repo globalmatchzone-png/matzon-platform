@@ -54,25 +54,7 @@ document.addEventListener('app:ready', () => {
         const container = document.getElementById('tournament-join-list');
         if (!container) return;
 
-        const featuredCard = `
-            <div class="news-item">
-                <div class="news-img" style="background-image:url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=300');">
-                    <div class="link-icon">
-                        <svg viewBox="0 0 24 24"><path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3m-2 16H5V5h7V3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7z" fill="white"/></svg>
-                    </div>
-                </div>
-                <div class="news-content">
-                    <p><strong>MATZON NATIONS LEAGUE</strong> Starting tomorrow with AFRICA, ASIA (WEST) &amp; EUROPE on CONSOLE! Follow the competition here</p>
-                    <div class="news-meta">
-                        2 DAYS AGO &nbsp;•&nbsp;
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/EFootball_logo.svg" alt="eFootball" style="background:blue;padding:1px;height:12px;">
-                        &nbsp;•&nbsp;
-                        <span class="author">BY MATZON</span>
-                    </div>
-                </div>
-            </div>`;
-
-        container.innerHTML = featuredCard + list.map(t => {
+        container.innerHTML = list.map(t => {
             const filled    = t.slots - t.slotsLeft;
             const isOpen    = t.status === 'open' && t.slotsLeft > 0;
             const statusKey = t.slotsLeft === 0 ? 'full' : t.status;
