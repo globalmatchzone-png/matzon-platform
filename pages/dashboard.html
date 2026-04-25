@@ -3,15 +3,15 @@
 
 
 
-                <!-- BANNER SLIDER -->
+                <!-- BANNER VIDEO -->
                 <div class="banner-slider-wrapper">
-                    <div class="banner" id="mainBanner">
-                        <h2>MATZON World Cup 2026™ Challenger Series - Claim your ranked position! →</h2>
-                    </div>
-                    <div class="carousel-controls" id="bannerControls">
-                        <svg viewBox="0 0 24 24" class="arrow-prev"><path d="M15 18l-6-6 6-6"/></svg>
-                        <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
-                        <svg viewBox="0 0 24 24" class="arrow-next"><path d="M9 18l6-6-6-6"/></svg>
+                    <div class="banner" id="mainBanner" style="padding:0; background:none;">
+                        <video autoplay muted loop playsinline
+                               style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;">
+                            <source src="assets/banner.mp4" type="video/mp4">
+                        </video>
+                        <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%); z-index:1;"></div>
+                        <h2 style="position:relative; z-index:2; padding:20px;">MATZON World Cup 2026™ Challenger Series - Claim your ranked position! →</h2>
                     </div>
                 </div>
 
