@@ -68,8 +68,8 @@ function createEmojiImage(emoji) {
                     if (modalTeamNames[0]) modalTeamNames[0].textContent = team1;
                     if (modalTeamNames[1]) modalTeamNames[1].textContent = team2;
                     const modalFlags = matchModal.querySelectorAll('.matchup-flag');
-                    if (modalFlags[0]) modalFlags[0].src = flag1;
-                    if (modalFlags[1]) modalFlags[1].src = flag2;
+                    if (modalFlags[0]) { modalFlags[0].src = flag1; modalFlags[0].style.borderRadius='50%'; modalFlags[0].style.width='64px'; modalFlags[0].style.height='64px'; modalFlags[0].style.objectFit='cover'; }
+                    if (modalFlags[1]) { modalFlags[1].src = flag2; modalFlags[1].style.borderRadius='50%'; modalFlags[1].style.width='64px'; modalFlags[1].style.height='64px'; modalFlags[1].style.objectFit='cover'; }
                     const modalDateTime = matchModal.querySelector('.matchup-datetime');
                     if (modalDateTime) modalDateTime.textContent = `${date} - ${time}`;
                     const detailRows = matchModal.querySelectorAll('.matchup-detail-row span:last-child');

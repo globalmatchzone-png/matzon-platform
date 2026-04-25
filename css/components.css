@@ -37,7 +37,7 @@
 .compact-match-col { display: flex; flex-direction: column; gap: 10px; min-width: 80px; align-items: center; border-right: 1px solid var(--border-color); cursor: pointer; transition: opacity 0.2s; }
 .compact-match-col:active { opacity: 0.7; }
 .compact-match-info { display: flex; align-items: center; gap: 10px; }
-.compact-flags { display: flex; flex-direction: column; gap: 8px; font-size: 16px; }
+.compact-flags { display: flex; flex-direction: column; gap: 4px; }
 .compact-time { font-size: 11px; font-weight: 700; }
 .scroll-arrow-hint { position: absolute; right: -10px; top: 15px; background: var(--bg-card); width: 16px; height: 16px; fill: var(--text-muted); }
 
