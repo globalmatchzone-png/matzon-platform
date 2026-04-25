@@ -14,6 +14,11 @@ document.addEventListener("app:ready", () => {
     const commGroupInfoView  = document.getElementById('commGroupInfoView');
 
     const logoMatzon         = document.getElementById('logoMatzon');
+    const searchBtn          = document.getElementById('searchBtn');
+    const searchOverlay      = document.getElementById('searchOverlay');
+    const searchCloseBtn     = document.getElementById('searchCloseBtn');
+    const searchInput        = document.getElementById('searchInput');
+    const searchResults      = document.getElementById('searchResults');
     const headerBackBtn      = document.getElementById('headerBackBtn');
     const headerProfileTitle = document.getElementById('headerProfileTitle');
     const btnGoTournaments   = document.getElementById('btnGoTournaments');
@@ -148,7 +153,70 @@ document.addEventListener("app:ready", () => {
     if (menuRanking)      menuRanking.addEventListener('click', showRanking);
     if (menuComunidade)   menuComunidade.addEventListener('click', showCommunity);
     if (menuChat)         menuChat.addEventListener('click', showCommunity);
-    if (logoMatzon)       logoMatzon.addEventListener('click', showDashboard);
+    if (logoMatzon) logoMatzon.addEventListener('click', showDashboard);
+
+    // Search
+    if (searchBtn) {
+        searchBtn.addEventListener('click', () => {
+            searchOverlay.style.display = 'flex';
+            searchInput.focus();
+            document.body.classList.add('modal-open');
+        });
+    }
+    if (searchCloseBtn) {
+        searchCloseBtn.addEventListener('click', () => {
+            searchOverlay.style.display = 'none';
+            searchInput.value = '';
+            searchResults.innerHTML = '';
+            document.body.classList.remove('modal-open');
+        });
+    }
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            const q = searchInput.value.toLowerCase().trim();
+            if (!q) { searchResults.innerHTML = ''; return; }
+
+            Promise.all([
+                fetch('data/players.json').then(r => r.json()),
+                fetch('data/tournaments.json').then(r => r.json())
+            ]).then(([pd, td]) => {
+                const players = pd.players.filter(p => p.gamertag.toLowerCase().includes(q));
+                const tournaments = td.tournaments.filter(t => t.name.toLowerCase().includes(q));
+
+                let html = '';
+
+                if (players.length) {
+                    html += '<div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Players</div>';
+                    html += players.map(p => `
+                        <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-color);">
+                            <img src="${p.avatar}" style="width:40px;height:40px;border-radius:50%;object-fit:cover;">
+                            <div>
+                                <div style="font-size:14px;font-weight:700;">${p.gamertag}</div>
+                                <div style="font-size:11px;color:var(--text-muted);">#${p.rank} · ${p.nation}</div>
+                            </div>
+                            <div style="margin-left:auto;font-size:13px;font-weight:800;color:var(--accent-orange);">${p.points} pts</div>
+                        </div>`).join('');
+                }
+
+                if (tournaments.length) {
+                    html += '<div style="font-size:10px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin:16px 0 10px;">Tournaments</div>';
+                    html += tournaments.map(t => `
+                        <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-color);">
+                            <div style="width:40px;height:40px;border-radius:8px;background:var(--bg-card);display:flex;align-items:center;justify-content:center;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-orange)"><path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z"/></svg>
+                            </div>
+                            <div>
+                                <div style="font-size:14px;font-weight:700;">${t.name}</div>
+                                <div style="font-size:11px;color:var(--text-muted);">${t.game} · ${t.zone}</div>
+                            </div>
+                        </div>`).join('');
+                }
+
+                if (!html) html = '<div style="text-align:center;color:var(--text-muted);padding:40px 0;font-size:14px;">No results found</div>';
+                searchResults.innerHTML = html;
+            });
+        });
+    }
 
     const menuAvatar = document.getElementById('menuAvatar');
     if (menuAvatar) menuAvatar.addEventListener('click', showProfile);
