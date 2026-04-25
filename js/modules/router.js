@@ -148,6 +148,9 @@ document.addEventListener("app:ready", () => {
     if (menuComunidade)   menuComunidade.addEventListener('click', showCommunity);
     if (menuChat)         menuChat.addEventListener('click', showCommunity);
     if (logoMatzon)       logoMatzon.addEventListener('click', showDashboard);
+
+    const menuAvatar = document.getElementById('menuAvatar');
+    if (menuAvatar) menuAvatar.addEventListener('click', showProfile);
     if (headerBackBtn)    headerBackBtn.addEventListener('click', showDashboard);
 
     // Menu hambúrguer
