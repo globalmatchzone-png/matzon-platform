@@ -18,7 +18,6 @@ document.addEventListener("app:ready", () => {
     const headerProfileTitle = document.getElementById('headerProfileTitle');
     const btnGoTournaments   = document.getElementById('btnGoTournaments');
     const menuTournaments    = document.getElementById('menuTournaments');
-    const menuProfile        = document.getElementById('menuProfile');
     const menuRanking        = document.getElementById('menuRanking');
     const menuComunidade     = document.getElementById('menuComunidade');
     const menuChat           = document.getElementById('menuChat');
@@ -87,7 +86,7 @@ document.addEventListener("app:ready", () => {
         hideAllViews();
         if (dashboardView) dashboardView.style.display = 'block';
         setHeaderDefault();
-        setActiveMenu(menuProfile);
+        setActiveMenu(null);
         window.scrollTo(0, 0);
         closeMenu();
     }
@@ -146,7 +145,6 @@ document.addEventListener("app:ready", () => {
         });
     }
     if (menuTournaments)  menuTournaments.addEventListener('click', showTournaments);
-    if (menuProfile)      menuProfile.addEventListener('click', showProfile);
     if (menuRanking)      menuRanking.addEventListener('click', showRanking);
     if (menuComunidade)   menuComunidade.addEventListener('click', showCommunity);
     if (menuChat)         menuChat.addEventListener('click', showCommunity);
