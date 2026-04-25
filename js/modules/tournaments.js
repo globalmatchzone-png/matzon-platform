@@ -62,13 +62,6 @@ document.addEventListener('app:ready', () => {
             const statusColor = { open:'#10b981', ongoing:'var(--accent-blue)', full:'var(--text-muted)' }[statusKey];
 
             let actionBtn = '';
-            if (t.playerJoined) {
-                actionBtn = `<button class="trn-btn-joined" data-id="${t.id}" style="font-size:9px;padding:4px 8px;">✓ IN</button>`;
-            } else if (isOpen) {
-                actionBtn = `<button class="trn-btn-join" data-id="${t.id}" style="font-size:9px;padding:4px 8px;">JOIN</button>`;
-            } else {
-                actionBtn = `<button class="trn-btn-closed" disabled style="font-size:9px;padding:4px 8px;">FULL</button>`;
-            }
 
             const img = images[t.id] || images['t002'];
 
