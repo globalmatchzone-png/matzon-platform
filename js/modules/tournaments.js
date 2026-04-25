@@ -63,11 +63,11 @@ document.addEventListener('app:ready', () => {
 
             let actionBtn = '';
             if (t.playerJoined) {
-                actionBtn = `<button class="trn-btn-joined" data-id="${t.id}" style="margin-top:6px;">REGISTERED</button>`;
+                actionBtn = `<button class="trn-btn-joined" data-id="${t.id}" style="font-size:9px;padding:4px 8px;">✓ IN</button>`;
             } else if (isOpen) {
-                actionBtn = `<button class="trn-btn-join" data-id="${t.id}" style="margin-top:6px;">JOIN</button>`;
+                actionBtn = `<button class="trn-btn-join" data-id="${t.id}" style="font-size:9px;padding:4px 8px;">JOIN</button>`;
             } else {
-                actionBtn = `<button class="trn-btn-closed" disabled style="margin-top:6px;">CLOSED</button>`;
+                actionBtn = `<button class="trn-btn-closed" disabled style="font-size:9px;padding:4px 8px;">FULL</button>`;
             }
 
             const img = images[t.id] || images['t002'];
