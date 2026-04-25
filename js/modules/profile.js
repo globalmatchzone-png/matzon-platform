@@ -12,10 +12,23 @@ document.addEventListener('app:ready', () => {
     function renderProfile(p) {
 
         // Hero
-        setEl('prf-hero-bg',    el => el.style.backgroundImage = `url('https://flagcdn.com/w640/${p.nationCode}.png')`);
-        setEl('prf-initials',   el => el.textContent = p.initials);
-        setEl('prf-initials',   el => el.style.background = p.avatarGradient);
-        setEl('prf-flag-img',   el => { el.src = `https://flagcdn.com/w40/${p.nationCode}.png`; el.alt = p.nation; });
+        setEl('prf-hero-bg', el => el.style.backgroundImage = `url('https://flagcdn.com/w640/${p.nationCode}.png')`);
+        setEl('prf-flag-img', el => { el.src = `https://flagcdn.com/w40/${p.nationCode}.png`; el.alt = p.nation; });
+
+        // Avatar real
+        const avatarEl = document.getElementById('prf-initials');
+        if (avatarEl) {
+            avatarEl.innerHTML = '';
+            avatarEl.style.background = 'none';
+            avatarEl.style.padding = '0';
+            avatarEl.style.overflow = 'hidden';
+            const img = document.createElement('img');
+            img.src = p.avatar || `https://randomuser.me/api/portraits/men/1.jpg`;
+            img.alt = p.gamertag;
+            img.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:50%;';
+            img.onerror = () => { avatarEl.textContent = p.initials; avatarEl.style.background = p.avatarGradient; };
+            avatarEl.appendChild(img);
+        }
         setEl('prf-gamertag',   el => el.textContent = p.gamertag);
         setEl('prf-role-pill',  el => el.textContent = p.role);
         setEl('prf-nation-txt', el => el.textContent = p.nation);

@@ -14,17 +14,43 @@
       "assists": 41,
       "avg": 8.4
     },
-    "form": ["W","W","L","W","D"],
+    "form": [
+      "W",
+      "W",
+      "L",
+      "W",
+      "D"
+    ],
     "performance": [
-      { "label": "Attacking",  "value": 91, "color": "linear-gradient(90deg,#ff7a00,#ffb347)" },
-      { "label": "Passing",    "value": 78, "color": "linear-gradient(90deg,#1d4ed8,#3b82f6)" },
-      { "label": "Dribbling",  "value": 85, "color": "linear-gradient(90deg,#059669,#34d399)" },
-      { "label": "Defense",    "value": 42, "color": "linear-gradient(90deg,#4b5563,#9ca3af)" },
-      { "label": "Shooting",   "value": 88, "color": "linear-gradient(90deg,#dc2626,#f87171)" }
+      {
+        "label": "Attacking",
+        "value": 91,
+        "color": "linear-gradient(90deg,#ff7a00,#ffb347)"
+      },
+      {
+        "label": "Passing",
+        "value": 78,
+        "color": "linear-gradient(90deg,#1d4ed8,#3b82f6)"
+      },
+      {
+        "label": "Dribbling",
+        "value": 85,
+        "color": "linear-gradient(90deg,#059669,#34d399)"
+      },
+      {
+        "label": "Defense",
+        "value": 42,
+        "color": "linear-gradient(90deg,#4b5563,#9ca3af)"
+      },
+      {
+        "label": "Shooting",
+        "value": 88,
+        "color": "linear-gradient(90deg,#dc2626,#f87171)"
+      }
     ],
     "currentTournament": {
       "name": "MATZON Nations League",
-      "desc": "Europe · Week 1 · Group A",
+      "desc": "Europe \u00b7 Week 1 \u00b7 Group A",
       "position": "1st",
       "mp": 3,
       "goals": 7,
@@ -32,19 +58,85 @@
       "avg": 9.1
     },
     "history": [
-      { "opponent": "Greece",    "result": "W", "goals": 3, "assists": 1, "competition": "Nations League · Group A", "date": "APR 20" },
-      { "opponent": "Luxembourg","result": "D", "goals": 2, "assists": 0, "competition": "Nations League · Group A", "date": "APR 14" },
-      { "opponent": "Ukraine",   "result": "W", "goals": 2, "assists": 2, "competition": "Nations League · Group A", "date": "APR 7"  },
-      { "opponent": "Poland",    "result": "L", "goals": 0, "assists": 1, "competition": "Nations League · Group A", "date": "MAR 30" },
-      { "opponent": "Italy",     "result": "W", "goals": 4, "assists": 0, "competition": "Open Series",              "date": "MAR 22" }
+      {
+        "opponent": "Greece",
+        "result": "W",
+        "goals": 3,
+        "assists": 1,
+        "competition": "Nations League \u00b7 Group A",
+        "date": "APR 20"
+      },
+      {
+        "opponent": "Luxembourg",
+        "result": "D",
+        "goals": 2,
+        "assists": 0,
+        "competition": "Nations League \u00b7 Group A",
+        "date": "APR 14"
+      },
+      {
+        "opponent": "Ukraine",
+        "result": "W",
+        "goals": 2,
+        "assists": 2,
+        "competition": "Nations League \u00b7 Group A",
+        "date": "APR 7"
+      },
+      {
+        "opponent": "Poland",
+        "result": "L",
+        "goals": 0,
+        "assists": 1,
+        "competition": "Nations League \u00b7 Group A",
+        "date": "MAR 30"
+      },
+      {
+        "opponent": "Italy",
+        "result": "W",
+        "goals": 4,
+        "assists": 0,
+        "competition": "Open Series",
+        "date": "MAR 22"
+      }
     ],
     "badges": [
-      { "icon": "🏆", "name": "Champion",    "desc": "Win a tournament",      "locked": false },
-      { "icon": "⚡", "name": "Hat-Trick",   "desc": "3 goals in one match",  "locked": false },
-      { "icon": "🔥", "name": "On Fire",     "desc": "5 win streak",          "locked": false },
-      { "icon": "🌍", "name": "Nations Rep", "desc": "Represent your nation", "locked": false },
-      { "icon": "👑", "name": "Legend",      "desc": "Top 10 World Rank",     "locked": true  },
-      { "icon": "💎", "name": "Diamond",     "desc": "100 career goals",      "locked": true  }
-    ]
+      {
+        "icon": "\ud83c\udfc6",
+        "name": "Champion",
+        "desc": "Win a tournament",
+        "locked": false
+      },
+      {
+        "icon": "\u26a1",
+        "name": "Hat-Trick",
+        "desc": "3 goals in one match",
+        "locked": false
+      },
+      {
+        "icon": "\ud83d\udd25",
+        "name": "On Fire",
+        "desc": "5 win streak",
+        "locked": false
+      },
+      {
+        "icon": "\ud83c\udf0d",
+        "name": "Nations Rep",
+        "desc": "Represent your nation",
+        "locked": false
+      },
+      {
+        "icon": "\ud83d\udc51",
+        "name": "Legend",
+        "desc": "Top 10 World Rank",
+        "locked": true
+      },
+      {
+        "icon": "\ud83d\udc8e",
+        "name": "Diamond",
+        "desc": "100 career goals",
+        "locked": true
+      }
+    ],
+    "avatar": "https://randomuser.me/api/portraits/men/1.jpg"
   }
 }
