@@ -312,8 +312,30 @@
     width: 24px;
     background: rgba(255,255,255,0.3);
 }
-#bannerControls { transition: gap 0.4s ease; }
-#bannerControls.merging { gap: 0px; }
-#bannerControls.merging .dot { width: 4px; opacity: 0.5; }
-#bannerControls.separating { gap: 6px; }
-#bannerControls.separating .dot { width: 24px; opacity: 1; }
+#bannerControls {
+    transition: gap 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#bannerControls .dot {
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                border-radius 0.5s ease,
+                opacity 0.5s ease,
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#bannerControls.merging {
+    gap: 0px;
+}
+#bannerControls.merging .dot {
+    width: 6px;
+    border-radius: 50%;
+    opacity: 0.9;
+    transform: scaleY(1.3);
+}
+#bannerControls.separating {
+    gap: 6px;
+}
+#bannerControls.separating .dot {
+    width: 24px;
+    border-radius: 2px;
+    opacity: 1;
+    transform: scaleY(1);
+}
