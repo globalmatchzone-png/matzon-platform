@@ -4,14 +4,27 @@
 
 
                 <!-- BANNER VIDEO -->
-                <div class="banner-slider-wrapper">
-                    <div class="banner" id="mainBanner" style="padding:0; overflow:hidden; position:relative;">
-                        <video autoplay muted loop playsinline
-                               style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; z-index:0;">
-                            <source src="assets/banner.mp4" type="video/mp4">
-                        </video>
-                        <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%); z-index:1;"></div>
-                        <h2 style="position:relative; z-index:2; padding:20px;">MATZON World Cup 2026™ Challenger Series - Claim your ranked position! →</h2>
+                <div class="video-banner-wrapper">
+                    <div class="video-banner-track" id="videoBannerTrack">
+
+                        <!-- VIDEO 1 -->
+                        <div class="video-banner-slide">
+                            <video autoplay muted loop playsinline class="video-banner-bg">
+                                <source src="assets/banner.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-banner-overlay"></div>
+                            <div class="video-banner-text">
+                                <h2>MATZON World Cup 2026™ Challenger Series</h2>
+                                <p>Claim your ranked position! →</p>
+                            </div>
+                        </div>
+
+                        <!-- VIDEO 2 (adicionar depois) -->
+                        <!-- <div class="video-banner-slide"> ... </div> -->
+
+                    </div>
+                    <div class="video-banner-dots" id="videoBannerDots">
+                        <div class="dot active"></div>
                     </div>
                 </div>
 
