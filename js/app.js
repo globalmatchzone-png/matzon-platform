@@ -14,7 +14,9 @@ document.addEventListener('app:ready', function() {
         transitioning = true;
 
         // Dots juntam-se
-        dots.forEach(d => d.classList.add('merging'));
+        const controls = document.getElementById('bannerControls');
+        if (controls) controls.classList.add('merging');
+        dots.forEach(d => { d.classList.remove('separating'); d.classList.add('merging'); });
 
         setTimeout(() => {
             // Troca o slide
@@ -33,9 +35,9 @@ document.addEventListener('app:ready', function() {
             vid.play();
 
             // Dots separam-se
-            dots.forEach(d => d.classList.remove('merging'));
-            dots.forEach(d => d.classList.add('separating'));
-            setTimeout(() => dots.forEach(d => d.classList.remove('separating')), 400);
+            if (controls) { controls.classList.remove('merging'); controls.classList.add('separating'); }
+            dots.forEach(d => { d.classList.remove('merging'); d.classList.add('separating'); });
+            setTimeout(() => { if (controls) controls.classList.remove('separating'); dots.forEach(d => d.classList.remove('separating')); }, 500);
 
             transitioning = false;
 

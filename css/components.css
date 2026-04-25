@@ -312,11 +312,8 @@
     width: 24px;
     background: rgba(255,255,255,0.3);
 }
-#bannerControls .dot.merging {
-    transform: scaleX(0.1);
-    opacity: 0.3;
-}
-#bannerControls .dot.separating {
-    transform: scaleX(1);
-    opacity: 1;
-}
+#bannerControls { transition: gap 0.4s ease; }
+#bannerControls.merging { gap: 0px; }
+#bannerControls.merging .dot { width: 4px; opacity: 0.5; }
+#bannerControls.separating { gap: 6px; }
+#bannerControls.separating .dot { width: 24px; opacity: 1; }
