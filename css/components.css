@@ -141,3 +141,239 @@
 .matchup-alert-container { padding: 0 16px 20px; }
 .matchup-alert-box { display: flex; align-items: center; gap: 12px; background-color: var(--bg-card); padding: 16px; border-radius: 8px; font-size: 12px; font-weight: 400; color: #d1d5db; border: 1px solid var(--border-color); }
 .matchup-alert-box svg { fill: var(--text-primary); flex-shrink: 0; }
+
+/* =========================================
+   LIVE ACTIVITY
+   ========================================= */
+
+.act-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 16px 4px;
+}
+
+.act-block {
+    background-color: var(--bg-card);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.act-block-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.act-block-title {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    flex: 1;
+}
+
+.act-online-count {
+    font-size: 10px;
+    font-weight: 700;
+    color: #22c55e;
+}
+
+/* Dot pulsante LIVE */
+.act-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ef4444;
+    flex-shrink: 0;
+    animation: actLivePulse 1.6s ease-in-out infinite;
+}
+
+@keyframes actLivePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.3; transform: scale(0.6); }
+}
+
+/* Flag pequena */
+.act-flag {
+    width: 18px;
+    height: 12px;
+    border-radius: 2px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Feed */
+.act-feed-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.act-feed-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.act-feed-item--you .act-feed-text {
+    color: var(--accent-orange);
+    font-weight: 700;
+}
+
+.act-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.act-dot--blue   { background: var(--accent-blue); }
+.act-dot--orange { background: var(--accent-orange); }
+.act-dot--muted  { background: var(--text-muted); }
+
+.act-feed-text {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.act-feed-time {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Online players */
+.act-online-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.act-player-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.act-player-flag-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.act-status-dot {
+    position: absolute;
+    bottom: -1px;
+    right: -2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1px solid var(--bg-card);
+}
+
+.act-status--online  { background: #22c55e; }
+.act-status--playing { background: var(--accent-blue); animation: actLivePulse 1.6s ease-in-out infinite; }
+.act-status--offline { background: var(--text-muted); opacity: 0.4; }
+
+.act-player-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.act-player-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.act-player-status {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: capitalize;
+}
+
+.act-player-rank {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+/* Recent matches */
+.act-matches-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.act-match-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.act-match-teams {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.act-match-winner,
+.act-match-loser {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+}
+
+.act-match-winner span {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 72px;
+}
+
+.act-match-loser span {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 72px;
+}
+
+.act-match-score {
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 900;
+    color: var(--text-primary);
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 2px 8px;
+    background: var(--bg-pill);
+    border-radius: 6px;
+}
+
+.act-empty {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+    padding: 4px 0;
+}
