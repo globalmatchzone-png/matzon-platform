@@ -345,9 +345,6 @@
 .trn-panel { display: block; }
 
 .trn-page-header { padding: 24px 16px 16px; }
-.trn-page-title { font-family: var(--font-heading); font-size: 38px; font-weight: 900; font-style: italic; line-height: 0.9; letter-spacing: -1px; margin-bottom: 10px; }
-.trn-page-sub { font-size: 12px; font-weight: 500; color: var(--text-muted); line-height: 1.5; }
-
 .trn-filters-row { display: flex; gap: 8px; padding: 0 16px 20px; overflow-x: auto; scrollbar-width: none; }
 .trn-filters-row::-webkit-scrollbar { display: none; }
 
