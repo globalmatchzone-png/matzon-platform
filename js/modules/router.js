@@ -131,6 +131,17 @@ document.addEventListener("app:ready", () => {
 
     // Navegação
     if (btnGoTournaments) btnGoTournaments.addEventListener('click', showTournaments);
+
+    const newsNations = document.getElementById('newsNationsLeague');
+    if (newsNations) {
+        newsNations.addEventListener('click', () => {
+            showTournaments();
+            setTimeout(() => {
+                const card = document.getElementById('trn-card-t001');
+                if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 200);
+        });
+    }
     if (menuTournaments)  menuTournaments.addEventListener('click', showTournaments);
     if (menuProfile)      menuProfile.addEventListener('click', showProfile);
     if (menuRanking)      menuRanking.addEventListener('click', showRanking);
