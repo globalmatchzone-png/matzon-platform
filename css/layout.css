@@ -180,3 +180,21 @@
 .side-menu > div[style*="position:relative"] {
     min-height: 200px;
 }
+
+/* Menu items com ícones */
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.menu-item svg {
+    flex-shrink: 0;
+    opacity: 0.6;
+    order: 2;
+}
+
+.menu-item span, .menu-item {
+    order: 1;
+}
