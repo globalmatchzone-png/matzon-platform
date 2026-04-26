@@ -1,0 +1,28 @@
+{
+  "season": "2026",
+  "status": "upcoming",
+  "qualificationNote": "Top 2 of each Domestic League qualify",
+  "groups": [
+    {
+      "id": "grp-a",
+      "name": "Group A",
+      "standings": [
+        { "pos":1, "gamertag":"ShadowStrike", "nationCode":"br", "avatar":"https://randomuser.me/api/portraits/men/32.jpg",   "mp":0, "gd":0, "pts":0 },
+        { "pos":2, "gamertag":"PhaseShift",   "nationCode":"pt", "avatar":"https://randomuser.me/api/portraits/men/52.jpg",   "mp":0, "gd":0, "pts":0 },
+        { "pos":3, "gamertag":"TacticalX",    "nationCode":"ma", "avatar":"https://randomuser.me/api/portraits/men/88.jpg",   "mp":0, "gd":0, "pts":0 },
+        { "pos":4, "gamertag":"NeonBlitz",    "nationCode":"kr", "avatar":"https://randomuser.me/api/portraits/men/44.jpg",   "mp":0, "gd":0, "pts":0 }
+      ]
+    },
+    {
+      "id": "grp-b",
+      "name": "Group B",
+      "standings": [
+        { "pos":1, "gamertag":"DuskHunter",  "nationCode":"mx", "avatar":"https://randomuser.me/api/portraits/women/43.jpg", "mp":0, "gd":0, "pts":0 },
+        { "pos":2, "gamertag":"ColdFront",   "nationCode":"pl", "avatar":"https://randomuser.me/api/portraits/women/21.jpg", "mp":0, "gd":0, "pts":0 },
+        { "pos":3, "gamertag":"RedShift",    "nationCode":"tr", "avatar":"https://randomuser.me/api/portraits/men/67.jpg",   "mp":0, "gd":0, "pts":0 },
+        { "pos":4, "gamertag":"PacificEdge", "nationCode":"jp", "avatar":"https://randomuser.me/api/portraits/men/12.jpg",   "mp":0, "gd":0, "pts":0 }
+      ]
+    }
+  ],
+  "startDate": "JUN 1, 2026"
+}

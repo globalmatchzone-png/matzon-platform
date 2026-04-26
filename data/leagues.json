@@ -1,0 +1,98 @@
+{
+  "leagues": [
+    {
+      "id": "lg-pt",
+      "name": "Portugal League",
+      "nationCode": "pt",
+      "nation": "Portugal",
+      "season": "2026",
+      "status": "ongoing",
+      "game": "eFootball Mobile",
+      "reward": "+150 Ranking Points",
+      "qualifiesFor": "champions",
+      "standings": [
+        { "pos":1, "id":"p024", "gamertag":"PhaseShift", "avatar":"https://randomuser.me/api/portraits/men/52.jpg",   "mp":5, "w":4, "d":1, "l":0, "gd":8,  "pts":13 },
+        { "pos":2, "id":"p015", "gamertag":"ColdFront",  "avatar":"https://randomuser.me/api/portraits/women/21.jpg", "mp":5, "w":3, "d":1, "l":1, "gd":4,  "pts":10 },
+        { "pos":3, "id":"p012", "gamertag":"IronWall",   "avatar":"https://randomuser.me/api/portraits/men/55.jpg",   "mp":5, "w":2, "d":0, "l":3, "gd":-3, "pts":6  },
+        { "pos":4, "id":"p021", "gamertag":"ApexPulse",  "avatar":"https://randomuser.me/api/portraits/men/38.jpg",   "mp":5, "w":0, "d":0, "l":5, "gd":-9, "pts":0  }
+      ],
+      "matches": [
+        { "p1":"PhaseShift", "av1":"https://randomuser.me/api/portraits/men/52.jpg",    "s1":3, "p2":"IronWall",  "av2":"https://randomuser.me/api/portraits/men/55.jpg",    "s2":1, "date":"APR 10", "status":"done" },
+        { "p1":"ColdFront",  "av1":"https://randomuser.me/api/portraits/women/21.jpg",  "s1":2, "p2":"ApexPulse", "av2":"https://randomuser.me/api/portraits/men/38.jpg",    "s2":0, "date":"APR 12", "status":"done" },
+        { "p1":"PhaseShift", "av1":"https://randomuser.me/api/portraits/men/52.jpg",    "s1":1, "p2":"ColdFront", "av2":"https://randomuser.me/api/portraits/women/21.jpg",  "s2":1, "date":"APR 17", "status":"done" },
+        { "p1":"IronWall",   "av1":"https://randomuser.me/api/portraits/men/55.jpg",    "s1":null, "p2":"ApexPulse", "av2":"https://randomuser.me/api/portraits/men/38.jpg", "s2":null, "date":"MAY 1", "status":"upcoming" },
+        { "p1":"PhaseShift", "av1":"https://randomuser.me/api/portraits/men/52.jpg",    "s1":null, "p2":"ApexPulse", "av2":"https://randomuser.me/api/portraits/men/38.jpg", "s2":null, "date":"MAY 3", "status":"upcoming" }
+      ]
+    },
+    {
+      "id": "lg-br",
+      "name": "Brazil League",
+      "nationCode": "br",
+      "nation": "Brazil",
+      "season": "2026",
+      "status": "ongoing",
+      "game": "eFootball Mobile",
+      "reward": "+150 Ranking Points",
+      "qualifiesFor": "champions",
+      "standings": [
+        { "pos":1, "id":"p010", "gamertag":"ShadowStrike", "avatar":"https://randomuser.me/api/portraits/men/32.jpg",  "mp":5, "w":5, "d":0, "l":0, "gd":12, "pts":15 },
+        { "pos":2, "id":"p019", "gamertag":"DuskHunter",   "avatar":"https://randomuser.me/api/portraits/women/43.jpg","mp":5, "w":3, "d":0, "l":2, "gd":3,  "pts":9  },
+        { "pos":3, "id":"p020", "gamertag":"GridLock",     "avatar":"https://randomuser.me/api/portraits/men/23.jpg",  "mp":5, "w":1, "d":1, "l":3, "gd":-5, "pts":4  },
+        { "pos":4, "id":"p028", "gamertag":"BlackOps",     "avatar":"https://randomuser.me/api/portraits/men/83.jpg",  "mp":5, "w":0, "d":1, "l":4, "gd":-10,"pts":1  }
+      ],
+      "matches": [
+        { "p1":"ShadowStrike", "av1":"https://randomuser.me/api/portraits/men/32.jpg",   "s1":4, "p2":"BlackOps",   "av2":"https://randomuser.me/api/portraits/men/83.jpg",   "s2":0, "date":"APR 8",  "status":"done" },
+        { "p1":"DuskHunter",   "av1":"https://randomuser.me/api/portraits/women/43.jpg", "s1":2, "p2":"GridLock",   "av2":"https://randomuser.me/api/portraits/men/23.jpg",   "s2":1, "date":"APR 10", "status":"done" },
+        { "p1":"ShadowStrike", "av1":"https://randomuser.me/api/portraits/men/32.jpg",   "s1":3, "p2":"DuskHunter", "av2":"https://randomuser.me/api/portraits/women/43.jpg", "s2":1, "date":"APR 15", "status":"done" },
+        { "p1":"ShadowStrike", "av1":"https://randomuser.me/api/portraits/men/32.jpg",   "s1":null, "p2":"GridLock", "av2":"https://randomuser.me/api/portraits/men/23.jpg",  "s2":null, "date":"MAY 2", "status":"upcoming" },
+        { "p1":"DuskHunter",   "av1":"https://randomuser.me/api/portraits/women/43.jpg", "s1":null, "p2":"BlackOps", "av2":"https://randomuser.me/api/portraits/men/83.jpg",  "s2":null, "date":"MAY 5", "status":"upcoming" }
+      ]
+    },
+    {
+      "id": "lg-ao",
+      "name": "Angola League",
+      "nationCode": "ao",
+      "nation": "Angola",
+      "season": "2026",
+      "status": "open",
+      "game": "eFootball Mobile",
+      "reward": "+150 Ranking Points",
+      "qualifiesFor": "champions",
+      "standings": [
+        { "pos":1, "id":"p016", "gamertag":"TacticalX",  "avatar":"https://randomuser.me/api/portraits/men/88.jpg",  "mp":3, "w":2, "d":1, "l":0, "gd":5,  "pts":7 },
+        { "pos":2, "id":"p017", "gamertag":"RedShift",   "avatar":"https://randomuser.me/api/portraits/men/67.jpg",  "mp":3, "w":2, "d":0, "l":1, "gd":3,  "pts":6 },
+        { "pos":3, "id":"p023", "gamertag":"StormCore",  "avatar":"https://randomuser.me/api/portraits/men/14.jpg",  "mp":3, "w":0, "d":1, "l":2, "gd":-3, "pts":1 },
+        { "pos":4, "id":"p025", "gamertag":"DeltaForce", "avatar":"https://randomuser.me/api/portraits/men/71.jpg",  "mp":3, "w":0, "d":0, "l":3, "gd":-5, "pts":0 }
+      ],
+      "matches": [
+        { "p1":"TacticalX", "av1":"https://randomuser.me/api/portraits/men/88.jpg", "s1":2, "p2":"DeltaForce", "av2":"https://randomuser.me/api/portraits/men/71.jpg", "s2":0, "date":"APR 14", "status":"done" },
+        { "p1":"RedShift",  "av1":"https://randomuser.me/api/portraits/men/67.jpg", "s1":3, "p2":"StormCore",  "av2":"https://randomuser.me/api/portraits/men/14.jpg", "s2":1, "date":"APR 16", "status":"done" },
+        { "p1":"TacticalX", "av1":"https://randomuser.me/api/portraits/men/88.jpg", "s1":null, "p2":"RedShift", "av2":"https://randomuser.me/api/portraits/men/67.jpg", "s2":null, "date":"MAY 4", "status":"upcoming" },
+        { "p1":"StormCore", "av1":"https://randomuser.me/api/portraits/men/14.jpg", "s1":null, "p2":"DeltaForce","av2":"https://randomuser.me/api/portraits/men/71.jpg","s2":null, "date":"MAY 6", "status":"upcoming" }
+      ]
+    },
+    {
+      "id": "lg-mz",
+      "name": "Mozambique League",
+      "nationCode": "mz",
+      "nation": "Mozambique",
+      "season": "2026",
+      "status": "open",
+      "game": "eFootball Mobile",
+      "reward": "+150 Ranking Points",
+      "qualifiesFor": "champions",
+      "standings": [
+        { "pos":1, "id":"p011", "gamertag":"NeonBlitz",  "avatar":"https://randomuser.me/api/portraits/men/44.jpg",   "mp":4, "w":3, "d":1, "l":0, "gd":7,  "pts":10 },
+        { "pos":2, "id":"p013", "gamertag":"PacificEdge","avatar":"https://randomuser.me/api/portraits/men/12.jpg",   "mp":4, "w":2, "d":1, "l":1, "gd":2,  "pts":7  },
+        { "pos":3, "id":"p022", "gamertag":"NorthStar",  "avatar":"https://randomuser.me/api/portraits/women/62.jpg", "mp":4, "w":1, "d":0, "l":3, "gd":-4, "pts":3  },
+        { "pos":4, "id":"p026", "gamertag":"RapidFire",  "avatar":"https://randomuser.me/api/portraits/women/33.jpg", "mp":4, "w":0, "d":0, "l":4, "gd":-5, "pts":0  }
+      ],
+      "matches": [
+        { "p1":"NeonBlitz",   "av1":"https://randomuser.me/api/portraits/men/44.jpg",   "s1":3, "p2":"RapidFire",  "av2":"https://randomuser.me/api/portraits/women/33.jpg","s2":0, "date":"APR 9",  "status":"done" },
+        { "p1":"PacificEdge", "av1":"https://randomuser.me/api/portraits/men/12.jpg",   "s1":2, "p2":"NorthStar",  "av2":"https://randomuser.me/api/portraits/women/62.jpg","s2":1, "date":"APR 11", "status":"done" },
+        { "p1":"NeonBlitz",   "av1":"https://randomuser.me/api/portraits/men/44.jpg",   "s1":null, "p2":"PacificEdge","av2":"https://randomuser.me/api/portraits/men/12.jpg","s2":null,"date":"MAY 3","status":"upcoming" },
+        { "p1":"NorthStar",   "av1":"https://randomuser.me/api/portraits/women/62.jpg", "s1":null, "p2":"RapidFire", "av2":"https://randomuser.me/api/portraits/women/33.jpg","s2":null,"date":"MAY 7","status":"upcoming" }
+      ]
+    }
+  ]
+}

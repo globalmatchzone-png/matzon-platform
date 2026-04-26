@@ -7,6 +7,9 @@
         </button>
         <div class="tabs-scroll" id="trnTabsScroll">
             <button class="tab-item active js-trn-main-tab" data-target="trn-panel-join">Open Events</button>
+            <button class="tab-item js-trn-main-tab" data-target="trn-panel-leagues">Domestic</button>
+            <button class="tab-item js-trn-main-tab" data-target="trn-panel-champions">Champions</button>
+            <button class="tab-item js-trn-main-tab" data-target="trn-panel-worldcup">World Cup</button>
             <button class="tab-item js-trn-main-tab" data-target="trn-panel-league">Nations League</button>
             <button class="tab-item js-trn-main-tab" data-target="trn-panel-format">Format</button>
         </div>
@@ -30,6 +33,21 @@
         <!-- Lista de torneios -->
         <div id="tournament-join-list" style="padding:0 0 32px;"></div>
 
+    </div>
+
+    <!-- PANEL: DOMESTIC LEAGUES -->
+    <div id="trn-panel-leagues" class="trn-panel" style="display:none;">
+        <div id="leagues-list" style="padding:16px;"></div>
+    </div>
+
+    <!-- PANEL: CHAMPIONS LEAGUE -->
+    <div id="trn-panel-champions" class="trn-panel" style="display:none;">
+        <div id="champions-content" style="padding:16px;"></div>
+    </div>
+
+    <!-- PANEL: WORLD CUP -->
+    <div id="trn-panel-worldcup" class="trn-panel" style="display:none;">
+        <div id="worldcup-content" style="padding:16px;"></div>
     </div>
 
     <!-- PANEL: NATIONS LEAGUE (detalhe existente) -->
