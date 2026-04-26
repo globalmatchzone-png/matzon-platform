@@ -64,6 +64,8 @@ document.addEventListener("app:ready", () => {
         if (menuBtn)  menuBtn.innerHTML = ICON_HAMBURGER;
         if (menuSettingsBtn) menuSettingsBtn.classList.remove('visible');
         document.body.classList.remove('modal-open');
+        const ov = document.getElementById('menuOverlay');
+        if (ov) ov.style.display = 'none';
         resetSettings();
     }
 
@@ -72,6 +74,8 @@ document.addEventListener("app:ready", () => {
         if (menuBtn)  menuBtn.innerHTML = ICON_CLOSE_MENU;
         if (menuSettingsBtn) menuSettingsBtn.classList.add('visible');
         document.body.classList.add('modal-open');
+        const ov = document.getElementById('menuOverlay');
+        if (ov) ov.style.display = 'block';
     }
 
     function hideAllViews() {
@@ -175,17 +179,9 @@ document.addEventListener("app:ready", () => {
         });
     }
 
-    // Fechar ao clicar fora do menu
-    document.addEventListener('click', (e) => {
-        if (!sideMenu) return;
-        if (sideMenu.classList.contains('open') &&
-            !sideMenu.contains(e.target) &&
-            e.target !== menuBtn &&
-            !menuBtn.contains(e.target) &&
-            (!menuSettingsBtn || !menuSettingsBtn.contains(e.target))) {
-            closeMenu();
-        }
-    });
+    // Fechar ao clicar no overlay
+    const menuOverlay = document.getElementById('menuOverlay');
+    if (menuOverlay) menuOverlay.addEventListener('click', closeMenu);
 
     // ── Settings dentro do menu ───────────────────────────
     if (menuSettingsBtn) {
