@@ -346,15 +346,15 @@ document.addEventListener('app:ready', () => {
     function showLangPanel() {
         const settings = document.getElementById('navSettingsContent');
         const lang     = document.getElementById('navLanguageContent');
-        if (settings) { settings.classList.remove('slide-in'); settings.style.pointerEvents = 'none'; }
-        if (lang)     { lang.classList.add('slide-in'); lang.style.pointerEvents = 'auto'; }
+        if (settings) settings.classList.remove('slide-in');
+        if (lang)     lang.classList.add('slide-in');
     }
 
     function showSettingsPanel() {
         const settings = document.getElementById('navSettingsContent');
         const lang     = document.getElementById('navLanguageContent');
-        if (lang)     { lang.classList.remove('slide-in'); lang.style.pointerEvents = 'none'; }
-        if (settings) { settings.classList.add('slide-in'); settings.style.pointerEvents = 'auto'; }
+        if (lang)     lang.classList.remove('slide-in');
+        if (settings) settings.classList.add('slide-in');
     }
 
     // Language item click — detecta por includes
