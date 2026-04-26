@@ -84,9 +84,12 @@ document.addEventListener("app:ready", () => {
         if (sideMenu) sideMenu.classList.remove('open');
         if (menuBtn)  menuBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="#8a96a6"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>';
         document.body.classList.remove('modal-open');
-        if (settingsPanel) settingsPanel.classList.remove('open');
         const msb = document.getElementById('menuSettingsBtn');
         if (msb) msb.classList.remove('visible');
+        const main2 = document.getElementById('menuMainContent');
+        const nav2  = document.getElementById('navSettingsContent');
+        if (main2) main2.classList.remove('slide-out');
+        if (nav2)  nav2.classList.remove('slide-in');
     }
 
     // Views
@@ -144,18 +147,32 @@ document.addEventListener("app:ready", () => {
 
     if (menuSettingsBtn) {
         menuSettingsBtn.addEventListener('click', () => {
-            closeMenu();
-            if (settingsPanel) settingsPanel.classList.add('open');
-            document.body.classList.add('modal-open');
+            const main = document.getElementById('menuMainContent');
+            const nav  = document.getElementById('navSettingsContent');
+            if (main) main.classList.add('slide-out');
+            if (nav)  nav.classList.add('slide-in');
+        });
+    }
+
+    const navSettingsBack = document.getElementById('navSettingsBack');
+    if (navSettingsBack) {
+        navSettingsBack.addEventListener('click', () => {
+            const main = document.getElementById('menuMainContent');
+            const nav  = document.getElementById('navSettingsContent');
+            if (main) main.classList.remove('slide-out');
+            if (nav)  nav.classList.remove('slide-in');
         });
     }
 
     const settingsCloseBtn = document.getElementById('settingsCloseBtn');
     if (settingsCloseBtn) {
         settingsCloseBtn.addEventListener('click', () => {
-            if (settingsPanel) settingsPanel.classList.remove('open');
-        const msb = document.getElementById('menuSettingsBtn');
+            const msb = document.getElementById('menuSettingsBtn');
         if (msb) msb.classList.remove('visible');
+        const main2 = document.getElementById('menuMainContent');
+        const nav2  = document.getElementById('navSettingsContent');
+        if (main2) main2.classList.remove('slide-out');
+        if (nav2)  nav2.classList.remove('slide-in');
             document.body.classList.remove('modal-open');
         });
     }

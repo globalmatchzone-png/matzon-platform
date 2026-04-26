@@ -38,6 +38,7 @@
     </div>
 
     <!-- Navegação -->
+    <div id="menuMainContent" style="display:flex; flex-direction:column; gap:0; width:100%; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease;">
     <ul class="menu-list">
         <li class="menu-item" id="menuRanking">Ranking</li>
         <li class="menu-item" id="menuTournaments">Eventos e Torneios</li>
@@ -46,6 +47,29 @@
     </ul>
 
 
+
+    <!-- Settings Panel dentro do nav -->
+    <div id="navSettingsContent" style="position:absolute; top:0; left:0; width:100%; height:100%; padding:72px 24px 40px; display:flex; flex-direction:column; gap:8px; transform:translateX(100%); transition:transform 0.4s cubic-bezier(0.4,0,0.2,1); opacity:0; pointer-events:none;">
+
+        <button id="navSettingsBack" style="background:none; border:none; color:var(--text-muted); font-family:var(--font-body); font-size:12px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:6px; align-self:flex-end; margin-bottom:16px; padding:0;">
+            Back
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+
+        <div style="font-size:18px; font-weight:900; font-family:var(--font-heading); color:#fff; text-align:right; margin-bottom:20px;">Settings</div>
+
+        <div class="menu-item" id="sNav-editProfile">Edit Profile</div>
+        <div class="menu-item" id="sNav-editAvatar">Change Photo</div>
+        <div class="menu-item" id="sNav-editCover">Change Cover</div>
+        <div class="menu-item" id="sNav-language">Language</div>
+        <div class="menu-item" id="sNav-notifications">Notifications</div>
+        <div class="menu-item" id="sNav-privacy">Privacy</div>
+        <div class="menu-item" id="sNav-security">Security</div>
+
+        <div style="flex:1;"></div>
+        <button style="background:none; border:none; color:#ef4444; font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; text-align:right; padding:0;">Sign Out</button>
+
+    </div>
 
 </nav>
 
