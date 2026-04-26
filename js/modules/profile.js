@@ -165,13 +165,13 @@ document.addEventListener('app:ready', () => {
 
     if (settingsBtn && settingsPanel) {
         settingsBtn.addEventListener('click', () => {
-            settingsPanel.style.display = 'flex';
+            settingsPanel.classList.add('open');
             document.body.classList.add('modal-open');
         });
     }
     if (settingsClose) {
         settingsClose.addEventListener('click', () => {
-            settingsPanel.style.display = 'none';
+            settingsPanel.classList.remove('open');
             document.body.classList.remove('modal-open');
         });
     }

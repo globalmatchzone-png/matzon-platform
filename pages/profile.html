@@ -108,15 +108,7 @@
 <!-- SETTINGS PANEL -->
 <div id="settingsPanel" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(11,14,20,0.98); z-index:300; overflow-y:auto; flex-direction:column;">
 
-    <!-- Header -->
-    <div style="display:flex; align-items:center; justify-content:space-between; padding:16px; border-bottom:1px solid var(--border-color); position:sticky; top:0; background:rgba(11,14,20,0.98); z-index:1;">
-        <div style="font-size:16px; font-weight:800; font-family:var(--font-heading);">Settings</div>
-        <button id="settingsCloseBtn" class="menu-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-    </div>
-
-    <div style="padding:16px; display:flex; flex-direction:column; gap:8px;">
+    <div style="display:flex; flex-direction:column; gap:8px; width:100%;">
 
         <!-- Editar Perfil -->
         <div class="settings-section-title">Profile</div>
@@ -230,8 +222,11 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
         </div>
 
+        <!-- Fechar -->
+        <button id="settingsCloseBtn" style="margin-top:32px; width:100%; padding:13px; background:transparent; border:1px solid var(--border-color); border-radius:10px; color:var(--text-muted); font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; text-align:center;">Close</button>
+
         <!-- Sair -->
-        <button style="width:100%; margin-top:24px; padding:14px; background:none; border:none; color:#ef4444; font-family:var(--font-body); font-size:14px; font-weight:700; cursor:pointer; text-align:center;">Sign Out</button>
+        <button style="margin-top:8px; width:100%; padding:13px; background:transparent; border:none; color:#ef4444; font-family:var(--font-body); font-size:13px; font-weight:700; cursor:pointer; text-align:center;">Sign Out</button>
 
     </div>
 </div>
