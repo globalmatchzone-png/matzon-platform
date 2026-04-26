@@ -106,7 +106,7 @@
 .smenu-rank { display: flex; align-items: baseline; gap: 5px; margin-top: 2px; }
 .smenu-rank-num { font-family: var(--font-heading); font-size: 24px; font-weight: 900; color: var(--accent-orange); line-height: 1; }
 .smenu-rank-label { font-size: 9px; font-weight: 800; color: var(--text-muted); letter-spacing: 1px; }
-.smenu-stats { display: flex; align-items: center; justify-content: flex-end; gap: 0; width: 100%; padding-bottom: 24px; border-bottom: 1px solid var(--border-color); margin-bottom: 24px; }
+.smenu-stats { display: flex; align-items: center; justify-content: flex-end; gap: 0; width: 100%; margin-bottom: 24px; }
 .smenu-stat { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 0 14px; }
 .smenu-stat:first-child { padding-left: 0; }
 .smenu-stat:last-child  { padding-right: 0; }
