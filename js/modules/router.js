@@ -344,7 +344,7 @@ document.addEventListener("app:ready", () => {
 // ── Language panel ────────────────────────────────────
 document.addEventListener('app:ready', () => {
     const langItem = Array.from(document.querySelectorAll('#navSettingsContent .menu-item'))
-        .find(el => el.textContent.trim() === 'Language');
+        .find(el => el.textContent.trim().includes('Language'));
 
     if (langItem) {
         langItem.addEventListener('click', () => {
