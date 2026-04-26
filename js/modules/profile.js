@@ -157,4 +157,39 @@ document.addEventListener('app:ready', () => {
 
     window.MATZON = window.MATZON || {};
     window.MATZON.animateProfileBars = animateProfileBars;
+
+    // Settings panel
+    const settingsBtn   = document.getElementById('prfSettingsBtn');
+    const settingsPanel = document.getElementById('settingsPanel');
+    const settingsClose = document.getElementById('settingsCloseBtn');
+
+    if (settingsBtn && settingsPanel) {
+        settingsBtn.addEventListener('click', () => {
+            settingsPanel.style.display = 'flex';
+            document.body.classList.add('modal-open');
+        });
+    }
+    if (settingsClose) {
+        settingsClose.addEventListener('click', () => {
+            settingsPanel.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        });
+    }
+
+    // Toggles
+    document.querySelectorAll('.settings-toggle').forEach(toggle => {
+        toggle.addEventListener('click', () => toggle.classList.toggle('active'));
+    });
+
+    // Language picker
+    const langSetting = document.getElementById('settingLanguage');
+    const currentLang = document.getElementById('currentLang');
+    const langs = ['English', 'Português', 'Français', 'Español', 'العربية'];
+    let langIndex = 0;
+    if (langSetting) {
+        langSetting.addEventListener('click', () => {
+            langIndex = (langIndex + 1) % langs.length;
+            if (currentLang) currentLang.textContent = langs[langIndex];
+        });
+    }
 });
