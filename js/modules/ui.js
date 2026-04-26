@@ -1,10 +1,11 @@
 // MATZON - ui.js
-// Active states e scroll horizontal
 'use strict';
 
 document.addEventListener("app:ready", () => {
 
-function setupActiveState(selector) {
+    // Active state apenas para tabs e round buttons
+    // Pills são geridas pelos módulos individuais
+    function setupActiveState(selector) {
         const items = document.querySelectorAll(selector);
         items.forEach(item => {
             item.addEventListener('click', function () {
@@ -16,7 +17,6 @@ function setupActiveState(selector) {
     }
 
     setupActiveState('.tab-item');
-    setupActiveState('.pill');
     setupActiveState('.round-btn');
 
     function setupHorizontalScroll(containerId, leftBtnClass, rightBtnClass) {
