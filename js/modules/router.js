@@ -3,6 +3,7 @@
 
 document.addEventListener("app:ready", () => {
 
+    // ── Elementos ─────────────────────────────────────────
     const headerEl           = document.getElementById('mainHeader');
     const dashboardView      = document.getElementById('dashboardView');
     const tournamentsView    = document.getElementById('tournamentsView');
@@ -12,13 +13,7 @@ document.addEventListener("app:ready", () => {
     const communityListView  = document.getElementById('communityListView');
     const commChatView       = document.getElementById('commChatView');
     const commGroupInfoView  = document.getElementById('commGroupInfoView');
-
     const logoMatzon         = document.getElementById('logoMatzon');
-    const searchBtn          = document.getElementById('searchBtn');
-    const searchOverlay      = document.getElementById('searchOverlay');
-    const searchCloseBtn     = document.getElementById('searchCloseBtn');
-    const searchInput        = document.getElementById('searchInput');
-    const searchResults      = document.getElementById('searchResults');
     const headerBackBtn      = document.getElementById('headerBackBtn');
     const headerProfileTitle = document.getElementById('headerProfileTitle');
     const btnGoTournaments   = document.getElementById('btnGoTournaments');
@@ -29,7 +24,12 @@ document.addEventListener("app:ready", () => {
     const menuBtn            = document.getElementById('menuBtn');
     const sideMenu           = document.getElementById('sideMenu');
     const menuItems          = document.querySelectorAll('.menu-item');
-
+    const menuSettingsBtn    = document.getElementById('menuSettingsBtn');
+    const searchBtn          = document.getElementById('searchBtn');
+    const searchOverlay      = document.getElementById('searchOverlay');
+    const searchCloseBtn     = document.getElementById('searchCloseBtn');
+    const searchInput        = document.getElementById('searchInput');
+    const searchResults      = document.getElementById('searchResults');
     const commBackToMainBtn  = document.getElementById('commBackToMainBtn');
     const commBackToListBtn  = document.getElementById('commBackToListBtn');
     const openGroupInfoBtn   = document.getElementById('openGroupInfoBtn');
@@ -37,20 +37,43 @@ document.addEventListener("app:ready", () => {
     const closeGroupInfoBtn  = document.getElementById('closeGroupInfoBtn');
     const commMenuToggleBtn  = document.getElementById('commMenuToggleBtn');
     const commDropdown       = document.getElementById('commDropdown');
+    const menuAvatar         = document.getElementById('menuAvatar');
 
-    // Header scroll
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop && scrollTop > 60) {
-            if (headerEl) headerEl.classList.add('header--hidden');
-        } else {
-            if (headerEl) headerEl.classList.remove('header--hidden');
-        }
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    }, { passive: true });
+    // ── Estado ────────────────────────────────────────────
+    let settingsOpen = false;
 
-    // Helpers
+    const ICON_HAMBURGER = '<svg width="24" height="24" viewBox="0 0 24 24" fill="#8a96a6"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>';
+    const ICON_CLOSE_MENU = '<svg width="24" height="24" viewBox="0 0 24 24" fill="#8a96a6"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
+    const ICON_SETTINGS = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
+    const ICON_CLOSE_SETTINGS = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+
+    // ── Helpers ───────────────────────────────────────────
+    function resetSettings() {
+        settingsOpen = false;
+        const main = document.getElementById('menuMainContent');
+        const nav  = document.getElementById('navSettingsContent');
+        const lang = document.getElementById('navLanguageContent');
+        if (main) main.classList.remove('slide-out');
+        if (nav)  nav.classList.remove('slide-in');
+        if (lang) lang.classList.remove('slide-in');
+        if (menuSettingsBtn) menuSettingsBtn.innerHTML = ICON_SETTINGS;
+    }
+
+    function closeMenu() {
+        if (sideMenu) sideMenu.classList.remove('open');
+        if (menuBtn)  menuBtn.innerHTML = ICON_HAMBURGER;
+        if (menuSettingsBtn) menuSettingsBtn.classList.remove('visible');
+        document.body.classList.remove('modal-open');
+        resetSettings();
+    }
+
+    function openMenu() {
+        if (sideMenu) sideMenu.classList.add('open');
+        if (menuBtn)  menuBtn.innerHTML = ICON_CLOSE_MENU;
+        if (menuSettingsBtn) menuSettingsBtn.classList.add('visible');
+        document.body.classList.add('modal-open');
+    }
+
     function hideAllViews() {
         if (dashboardView)    dashboardView.style.display    = 'none';
         if (tournamentsView)  tournamentsView.style.display  = 'none';
@@ -77,24 +100,7 @@ document.addEventListener("app:ready", () => {
         if (el) el.classList.add('active');
     }
 
-    const menuSettingsBtn = document.getElementById('menuSettingsBtn');
-    const settingsPanel   = document.getElementById('settingsPanel');
-
-    function closeMenu() {
-        if (sideMenu) sideMenu.classList.remove('open');
-        if (menuBtn)  menuBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="#8a96a6"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>';
-        document.body.classList.remove('modal-open');
-        const msb = document.getElementById('menuSettingsBtn');
-        if (msb) msb.classList.remove('visible');
-        settingsOpen = false;
-        const main2 = document.getElementById('menuMainContent');
-        const nav2  = document.getElementById('navSettingsContent');
-        if (main2) main2.classList.remove('slide-out');
-        if (nav2)  nav2.classList.remove('slide-in');
-        if (menuSettingsBtn) menuSettingsBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
-    }
-
-    // Views
+    // ── Views ─────────────────────────────────────────────
     function showDashboard() {
         hideAllViews();
         if (dashboardView) dashboardView.style.display = 'block';
@@ -120,7 +126,9 @@ document.addEventListener("app:ready", () => {
         setActiveMenu(null);
         window.scrollTo(0, 0);
         closeMenu();
-        if (typeof animateProfileBars === 'function') animateProfileBars();
+        if (window.MATZON && typeof window.MATZON.animateProfileBars === 'function') {
+            window.MATZON.animateProfileBars();
+        }
     }
 
     function showRanking() {
@@ -144,11 +152,42 @@ document.addEventListener("app:ready", () => {
         closeMenu();
     }
 
-    // Navegação
-    if (btnGoTournaments) btnGoTournaments.addEventListener('click', showTournaments);
+    // ── Header scroll ─────────────────────────────────────
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop && scrollTop > 60) {
+            if (headerEl) headerEl.classList.add('header--hidden');
+        } else {
+            if (headerEl) headerEl.classList.remove('header--hidden');
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, { passive: true });
 
-    let settingsOpen = false;
+    // ── Menu hambúrguer ───────────────────────────────────
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            if (sideMenu.classList.contains('open')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+    }
 
+    // Fechar ao clicar fora do menu
+    document.addEventListener('click', (e) => {
+        if (!sideMenu) return;
+        if (sideMenu.classList.contains('open') &&
+            !sideMenu.contains(e.target) &&
+            e.target !== menuBtn &&
+            !menuBtn.contains(e.target) &&
+            (!menuSettingsBtn || !menuSettingsBtn.contains(e.target))) {
+            closeMenu();
+        }
+    });
+
+    // ── Settings dentro do menu ───────────────────────────
     if (menuSettingsBtn) {
         menuSettingsBtn.addEventListener('click', () => {
             const main = document.getElementById('menuMainContent');
@@ -157,29 +196,22 @@ document.addEventListener("app:ready", () => {
             if (settingsOpen) {
                 if (main) main.classList.add('slide-out');
                 if (nav)  nav.classList.add('slide-in');
-                menuSettingsBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+                menuSettingsBtn.innerHTML = ICON_CLOSE_SETTINGS;
             } else {
-                if (main) main.classList.remove('slide-out');
-                if (nav)  nav.classList.remove('slide-in');
-                menuSettingsBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
+                resetSettings();
             }
         });
     }
 
-    const settingsCloseBtn = document.getElementById('settingsCloseBtn');
-    if (settingsCloseBtn) {
-        settingsCloseBtn.addEventListener('click', () => {
-            const msb = document.getElementById('menuSettingsBtn');
-        if (msb) msb.classList.remove('visible');
-        settingsOpen = false;
-        const main2 = document.getElementById('menuMainContent');
-        const nav2  = document.getElementById('navSettingsContent');
-        if (main2) main2.classList.remove('slide-out');
-        if (nav2)  nav2.classList.remove('slide-in');
-        if (menuSettingsBtn) menuSettingsBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>';
-            document.body.classList.remove('modal-open');
-        });
-    }
+    // ── Navegação ─────────────────────────────────────────
+    if (btnGoTournaments) btnGoTournaments.addEventListener('click', showTournaments);
+    if (menuTournaments)  menuTournaments.addEventListener('click', showTournaments);
+    if (menuRanking)      menuRanking.addEventListener('click', showRanking);
+    if (menuComunidade)   menuComunidade.addEventListener('click', showCommunity);
+    if (menuChat)         menuChat.addEventListener('click', showCommunity);
+    if (logoMatzon)       logoMatzon.addEventListener('click', showDashboard);
+    if (headerBackBtn)    headerBackBtn.addEventListener('click', showDashboard);
+    if (menuAvatar)       menuAvatar.addEventListener('click', showProfile);
 
     const newsNations = document.getElementById('newsNationsLeague');
     if (newsNations) {
@@ -191,29 +223,26 @@ document.addEventListener("app:ready", () => {
             }, 200);
         });
     }
-    if (menuTournaments)  menuTournaments.addEventListener('click', showTournaments);
-    if (menuRanking)      menuRanking.addEventListener('click', showRanking);
-    if (menuComunidade)   menuComunidade.addEventListener('click', showCommunity);
-    if (menuChat)         menuChat.addEventListener('click', showCommunity);
-    if (logoMatzon) logoMatzon.addEventListener('click', showDashboard);
 
-    // Search
+    // ── Pesquisa ──────────────────────────────────────────
+    let searchFilter = 'all';
+
     if (searchBtn) {
         searchBtn.addEventListener('click', () => {
-            searchOverlay.style.display = 'flex';
-            searchInput.focus();
+            if (searchOverlay) searchOverlay.style.display = 'flex';
+            if (searchInput) searchInput.focus();
             document.body.classList.add('modal-open');
         });
     }
+
     if (searchCloseBtn) {
         searchCloseBtn.addEventListener('click', () => {
-            searchOverlay.style.display = 'none';
-            searchInput.value = '';
-            searchResults.innerHTML = '';
+            if (searchOverlay) searchOverlay.style.display = 'none';
+            if (searchInput) searchInput.value = '';
+            if (searchResults) searchResults.innerHTML = '';
             document.body.classList.remove('modal-open');
         });
     }
-    let searchFilter = 'all';
 
     document.querySelectorAll('.search-filter').forEach(btn => {
         btn.addEventListener('click', () => {
@@ -227,7 +256,7 @@ document.addEventListener("app:ready", () => {
     function triggerSearch() {
         if (!searchInput) return;
         const q = searchInput.value.toLowerCase().trim();
-        if (!q) { searchResults.innerHTML = ''; return; }
+        if (!q) { if (searchResults) searchResults.innerHTML = ''; return; }
 
         Promise.all([
             fetch('data/players.json').then(r => r.json()),
@@ -265,36 +294,13 @@ document.addEventListener("app:ready", () => {
             }
 
             if (!html) html = '<div style="text-align:center;color:var(--text-muted);padding:40px 0;font-size:14px;">No results found</div>';
-            searchResults.innerHTML = html;
+            if (searchResults) searchResults.innerHTML = html;
         });
     }
 
-    if (searchInput) {
-        searchInput.addEventListener('input', triggerSearch);
-    }
+    if (searchInput) searchInput.addEventListener('input', triggerSearch);
 
-    const menuAvatar = document.getElementById('menuAvatar');
-    if (menuAvatar) menuAvatar.addEventListener('click', showProfile);
-    if (headerBackBtn)    headerBackBtn.addEventListener('click', showDashboard);
-
-    // Menu hambúrguer
-    if (menuBtn) {
-        menuBtn.addEventListener('click', () => {
-            const isOpen = sideMenu.classList.contains('open');
-            if (isOpen) {
-                closeMenu();
-            } else {
-                menuBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="#8a96a6"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
-                if (sideMenu) sideMenu.classList.add('open');
-                document.body.classList.add('modal-open');
-                const msb = document.getElementById('menuSettingsBtn');
-                if (msb) msb.classList.add('visible');
-
-            }
-        });
-    }
-
-    // Comunidade interna
+    // ── Comunidade ────────────────────────────────────────
     if (commBackToMainBtn) commBackToMainBtn.addEventListener('click', showDashboard);
 
     document.querySelectorAll('.js-open-chat').forEach(item => {
@@ -353,17 +359,13 @@ document.addEventListener('app:ready', () => {
         });
     }
 
-    // Seleccionar idioma
     document.querySelectorAll('.lang-item').forEach(item => {
         item.addEventListener('click', () => {
             document.querySelectorAll('.lang-item').forEach(i => i.classList.remove('lang-item--active'));
             item.classList.add('lang-item--active');
-
             const lang = item.dataset.lang;
             document.documentElement.lang = lang;
             localStorage.setItem('matzon-lang', lang);
-
-            // Voltar para settings após 600ms
             setTimeout(() => {
                 const langPanel = document.getElementById('navLanguageContent');
                 const settings  = document.getElementById('navSettingsContent');
@@ -373,7 +375,6 @@ document.addEventListener('app:ready', () => {
         });
     });
 
-    // Restaurar idioma guardado
     const saved = localStorage.getItem('matzon-lang');
     if (saved) {
         document.querySelectorAll('.lang-item').forEach(i => {
