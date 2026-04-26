@@ -77,13 +77,14 @@ document.addEventListener("app:ready", () => {
         if (el) el.classList.add('active');
     }
 
-    const logoutBtn = document.getElementById('menuLogoutBtn');
+    const menuSettingsBtn = document.getElementById('menuSettingsBtn');
+    const settingsPanel   = document.getElementById('settingsPanel');
 
     function closeMenu() {
         if (sideMenu) sideMenu.classList.remove('open');
         if (menuBtn)  menuBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="#8a96a6"><path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z"/></svg>';
         document.body.classList.remove('modal-open');
-        if (logoutBtn) logoutBtn.classList.remove('visible');
+        if (settingsPanel) settingsPanel.classList.remove('open');
     }
 
     // Views
@@ -138,6 +139,22 @@ document.addEventListener("app:ready", () => {
 
     // Navegação
     if (btnGoTournaments) btnGoTournaments.addEventListener('click', showTournaments);
+
+    if (menuSettingsBtn) {
+        menuSettingsBtn.addEventListener('click', () => {
+            closeMenu();
+            if (settingsPanel) settingsPanel.classList.add('open');
+            document.body.classList.add('modal-open');
+        });
+    }
+
+    const settingsCloseBtn = document.getElementById('settingsCloseBtn');
+    if (settingsCloseBtn) {
+        settingsCloseBtn.addEventListener('click', () => {
+            if (settingsPanel) settingsPanel.classList.remove('open');
+            document.body.classList.remove('modal-open');
+        });
+    }
 
     const newsNations = document.getElementById('newsNationsLeague');
     if (newsNations) {
@@ -245,7 +262,7 @@ document.addEventListener("app:ready", () => {
                 menuBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="#8a96a6"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
                 if (sideMenu) sideMenu.classList.add('open');
                 document.body.classList.add('modal-open');
-                if (logoutBtn) logoutBtn.classList.add('visible');
+
             }
         });
     }
