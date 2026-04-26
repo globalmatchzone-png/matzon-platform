@@ -338,3 +338,47 @@ document.addEventListener("app:ready", () => {
     }
 
 });
+
+// ── Language panel ────────────────────────────────────
+document.addEventListener('app:ready', () => {
+    const langItem = Array.from(document.querySelectorAll('#navSettingsContent .menu-item'))
+        .find(el => el.textContent.trim() === 'Language');
+
+    if (langItem) {
+        langItem.addEventListener('click', () => {
+            const settings = document.getElementById('navSettingsContent');
+            const lang     = document.getElementById('navLanguageContent');
+            if (settings) { settings.classList.remove('slide-in'); settings.style.pointerEvents = 'none'; }
+            if (lang)     lang.classList.add('slide-in');
+        });
+    }
+
+    // Seleccionar idioma
+    document.querySelectorAll('.lang-item').forEach(item => {
+        item.addEventListener('click', () => {
+            document.querySelectorAll('.lang-item').forEach(i => i.classList.remove('lang-item--active'));
+            item.classList.add('lang-item--active');
+
+            const lang = item.dataset.lang;
+            document.documentElement.lang = lang;
+            localStorage.setItem('matzon-lang', lang);
+
+            // Voltar para settings após 600ms
+            setTimeout(() => {
+                const langPanel = document.getElementById('navLanguageContent');
+                const settings  = document.getElementById('navSettingsContent');
+                if (langPanel) langPanel.classList.remove('slide-in');
+                if (settings)  { settings.classList.add('slide-in'); settings.style.pointerEvents = 'auto'; }
+            }, 600);
+        });
+    });
+
+    // Restaurar idioma guardado
+    const saved = localStorage.getItem('matzon-lang');
+    if (saved) {
+        document.querySelectorAll('.lang-item').forEach(i => {
+            i.classList.toggle('lang-item--active', i.dataset.lang === saved);
+        });
+        document.documentElement.lang = saved;
+    }
+});
