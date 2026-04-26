@@ -343,18 +343,28 @@ document.addEventListener("app:ready", () => {
 
 // ── Language panel ────────────────────────────────────
 document.addEventListener('app:ready', () => {
-    const langItem = Array.from(document.querySelectorAll('#navSettingsContent .menu-item'))
-        .find(el => el.textContent.trim().includes('Language'));
-
-    if (langItem) {
-        langItem.addEventListener('click', () => {
-            const settings = document.getElementById('navSettingsContent');
-            const lang     = document.getElementById('navLanguageContent');
-            if (settings) { settings.classList.remove('slide-in'); settings.style.pointerEvents = 'none'; }
-            if (lang)     lang.classList.add('slide-in');
-        });
+    function showLangPanel() {
+        const settings = document.getElementById('navSettingsContent');
+        const lang     = document.getElementById('navLanguageContent');
+        if (settings) { settings.classList.remove('slide-in'); settings.style.pointerEvents = 'none'; }
+        if (lang)     { lang.classList.add('slide-in'); lang.style.pointerEvents = 'auto'; }
     }
 
+    function showSettingsPanel() {
+        const settings = document.getElementById('navSettingsContent');
+        const lang     = document.getElementById('navLanguageContent');
+        if (lang)     { lang.classList.remove('slide-in'); lang.style.pointerEvents = 'none'; }
+        if (settings) { settings.classList.add('slide-in'); settings.style.pointerEvents = 'auto'; }
+    }
+
+    // Language item click — detecta por includes
+    document.querySelectorAll('#navSettingsContent .menu-item').forEach(el => {
+        if (el.textContent.trim().includes('Language')) {
+            el.addEventListener('click', showLangPanel);
+        }
+    });
+
+    // Selecionar idioma e voltar
     document.querySelectorAll('.lang-item').forEach(item => {
         item.addEventListener('click', () => {
             document.querySelectorAll('.lang-item').forEach(i => i.classList.remove('lang-item--active'));
@@ -362,15 +372,11 @@ document.addEventListener('app:ready', () => {
             const lang = item.dataset.lang;
             document.documentElement.lang = lang;
             localStorage.setItem('matzon-lang', lang);
-            setTimeout(() => {
-                const langPanel = document.getElementById('navLanguageContent');
-                const settings  = document.getElementById('navSettingsContent');
-                if (langPanel) langPanel.classList.remove('slide-in');
-                if (settings)  { settings.classList.add('slide-in'); settings.style.pointerEvents = 'auto'; }
-            }, 600);
+            setTimeout(showSettingsPanel, 500);
         });
     });
 
+    // Restaurar idioma guardado
     const saved = localStorage.getItem('matzon-lang');
     if (saved) {
         document.querySelectorAll('.lang-item').forEach(i => {
