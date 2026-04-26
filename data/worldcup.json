@@ -1,28 +1,71 @@
 {
   "season": "2026",
   "status": "upcoming",
-  "qualificationNote": "Top ranked player per nation qualifies",
+  "startDate": "AUG 1, 2026",
+  "qualificationNote": "Top ranked player per nation qualifies via Nations League",
   "groups": [
     {
-      "id": "grp-a",
       "name": "Group A",
       "standings": [
-        { "pos":1, "nation":"Brazil",      "nationCode":"br", "player":"ShadowStrike", "avatar":"https://randomuser.me/api/portraits/men/32.jpg",   "mp":0, "gd":0, "pts":0 },
-        { "pos":2, "nation":"South Korea", "nationCode":"kr", "player":"NeonBlitz",    "avatar":"https://randomuser.me/api/portraits/men/44.jpg",   "mp":0, "gd":0, "pts":0 },
-        { "pos":3, "nation":"Germany",     "nationCode":"de", "player":"IronWall",     "avatar":"https://randomuser.me/api/portraits/men/55.jpg",   "mp":0, "gd":0, "pts":0 },
-        { "pos":4, "nation":"France",      "nationCode":"fr", "player":"AlexTactical", "avatar":"https://randomuser.me/api/portraits/men/1.jpg",    "mp":0, "gd":0, "pts":0 }
+        { "pos":1, "nation":"Brazil",       "nationCode":"br", "player":"ShadowStrike", "avatar":"https://randomuser.me/api/portraits/men/32.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":2, "nation":"South Korea",  "nationCode":"kr", "player":"NeonBlitz",    "avatar":"https://randomuser.me/api/portraits/men/44.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":3, "nation":"Germany",      "nationCode":"de", "player":"IronWall",     "avatar":"https://randomuser.me/api/portraits/men/55.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":4, "nation":"France",       "nationCode":"fr", "player":"AlexTactical", "avatar":"https://randomuser.me/api/portraits/men/1.jpg",    "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 }
       ]
     },
     {
-      "id": "grp-b",
       "name": "Group B",
       "standings": [
-        { "pos":1, "nation":"Japan",     "nationCode":"jp", "player":"PacificEdge", "avatar":"https://randomuser.me/api/portraits/men/12.jpg",   "mp":0, "gd":0, "pts":0 },
-        { "pos":2, "nation":"Argentina", "nationCode":"ar", "player":"VoltDrive",   "avatar":"https://randomuser.me/api/portraits/men/76.jpg",   "mp":0, "gd":0, "pts":0 },
-        { "pos":3, "nation":"Portugal",  "nationCode":"pt", "player":"PhaseShift",  "avatar":"https://randomuser.me/api/portraits/men/52.jpg",   "mp":0, "gd":0, "pts":0 },
-        { "pos":4, "nation":"Morocco",   "nationCode":"ma", "player":"TacticalX",   "avatar":"https://randomuser.me/api/portraits/men/88.jpg",   "mp":0, "gd":0, "pts":0 }
+        { "pos":1, "nation":"Japan",        "nationCode":"jp", "player":"PacificEdge", "avatar":"https://randomuser.me/api/portraits/men/12.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":2, "nation":"Argentina",    "nationCode":"ar", "player":"VoltDrive",   "avatar":"https://randomuser.me/api/portraits/men/76.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":3, "nation":"Portugal",     "nationCode":"pt", "player":"PhaseShift",  "avatar":"https://randomuser.me/api/portraits/men/52.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":4, "nation":"Morocco",      "nationCode":"ma", "player":"TacticalX",   "avatar":"https://randomuser.me/api/portraits/men/88.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 }
+      ]
+    },
+    {
+      "name": "Group C",
+      "standings": [
+        { "pos":1, "nation":"Poland",       "nationCode":"pl", "player":"ColdFront",   "avatar":"https://randomuser.me/api/portraits/women/21.jpg", "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":2, "nation":"Turkey",       "nationCode":"tr", "player":"RedShift",    "avatar":"https://randomuser.me/api/portraits/men/67.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":3, "nation":"Nigeria",      "nationCode":"ng", "player":"SilentAce",   "avatar":"https://randomuser.me/api/portraits/men/91.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":4, "nation":"Mexico",       "nationCode":"mx", "player":"DuskHunter",  "avatar":"https://randomuser.me/api/portraits/women/43.jpg", "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 }
+      ]
+    },
+    {
+      "name": "Group D",
+      "standings": [
+        { "pos":1, "nation":"Angola",       "nationCode":"ao", "player":"TacticalX",   "avatar":"https://randomuser.me/api/portraits/men/88.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":2, "nation":"Mozambique",   "nationCode":"mz", "player":"NeonBlitz",   "avatar":"https://randomuser.me/api/portraits/men/44.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":3, "nation":"Ghana",        "nationCode":"gh", "player":"StormCore",   "avatar":"https://randomuser.me/api/portraits/men/14.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 },
+        { "pos":4, "nation":"Italy",        "nationCode":"it", "player":"GridLock",    "avatar":"https://randomuser.me/api/portraits/men/23.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0 }
       ]
     }
   ],
-  "startDate": "AUG 1, 2026"
+  "knockout": {
+    "status": "upcoming",
+    "rounds": [
+      {
+        "name": "Quarter-Finals",
+        "matches": [
+          { "p1":"1A", "av1":null, "flag1":null, "p2":"2B", "av2":null, "flag2":null, "date":"SEP 5",  "status":"upcoming" },
+          { "p1":"1B", "av1":null, "flag1":null, "p2":"2A", "av2":null, "flag2":null, "date":"SEP 5",  "status":"upcoming" },
+          { "p1":"1C", "av1":null, "flag1":null, "p2":"2D", "av2":null, "flag2":null, "date":"SEP 6",  "status":"upcoming" },
+          { "p1":"1D", "av1":null, "flag1":null, "p2":"2C", "av2":null, "flag2":null, "date":"SEP 6",  "status":"upcoming" }
+        ]
+      },
+      {
+        "name": "Semi-Finals",
+        "matches": [
+          { "p1":"TBD", "av1":null, "flag1":null, "p2":"TBD", "av2":null, "flag2":null, "date":"SEP 15", "status":"upcoming" },
+          { "p1":"TBD", "av1":null, "flag1":null, "p2":"TBD", "av2":null, "flag2":null, "date":"SEP 15", "status":"upcoming" }
+        ]
+      },
+      {
+        "name": "Final",
+        "matches": [
+          { "p1":"TBD", "av1":null, "flag1":null, "p2":"TBD", "av2":null, "flag2":null, "date":"SEP 25", "status":"upcoming" }
+        ]
+      }
+    ]
+  }
 }

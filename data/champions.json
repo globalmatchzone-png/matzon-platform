@@ -1,28 +1,50 @@
 {
   "season": "2026",
   "status": "upcoming",
+  "startDate": "JUN 1, 2026",
   "qualificationNote": "Top 2 of each Domestic League qualify",
+  "qualified": [
+    { "gamertag":"ShadowStrike", "league":"Brazil League",    "leaguePos":1, "nationCode":"br", "avatar":"https://randomuser.me/api/portraits/men/32.jpg"   },
+    { "gamertag":"DuskHunter",   "league":"Brazil League",    "leaguePos":2, "nationCode":"br", "avatar":"https://randomuser.me/api/portraits/women/43.jpg" },
+    { "gamertag":"PhaseShift",   "league":"Portugal League",  "leaguePos":1, "nationCode":"pt", "avatar":"https://randomuser.me/api/portraits/men/52.jpg"   },
+    { "gamertag":"ColdFront",    "league":"Portugal League",  "leaguePos":2, "nationCode":"pt", "avatar":"https://randomuser.me/api/portraits/women/21.jpg" }
+  ],
   "groups": [
     {
-      "id": "grp-a",
       "name": "Group A",
       "standings": [
-        { "pos":1, "gamertag":"ShadowStrike", "nationCode":"br", "avatar":"https://randomuser.me/api/portraits/men/32.jpg",   "mp":0, "gd":0, "pts":0 },
-        { "pos":2, "gamertag":"PhaseShift",   "nationCode":"pt", "avatar":"https://randomuser.me/api/portraits/men/52.jpg",   "mp":0, "gd":0, "pts":0 },
-        { "pos":3, "gamertag":"TacticalX",    "nationCode":"ma", "avatar":"https://randomuser.me/api/portraits/men/88.jpg",   "mp":0, "gd":0, "pts":0 },
-        { "pos":4, "gamertag":"NeonBlitz",    "nationCode":"kr", "avatar":"https://randomuser.me/api/portraits/men/44.jpg",   "mp":0, "gd":0, "pts":0 }
+        { "pos":1, "gamertag":"ShadowStrike", "nationCode":"br", "avatar":"https://randomuser.me/api/portraits/men/32.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0, "qualified":false },
+        { "pos":2, "gamertag":"PhaseShift",   "nationCode":"pt", "avatar":"https://randomuser.me/api/portraits/men/52.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0, "qualified":false },
+        { "pos":3, "gamertag":"TacticalX",    "nationCode":"ao", "avatar":"https://randomuser.me/api/portraits/men/88.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0, "qualified":false },
+        { "pos":4, "gamertag":"NeonBlitz",    "nationCode":"mz", "avatar":"https://randomuser.me/api/portraits/men/44.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0, "qualified":false }
       ]
     },
     {
-      "id": "grp-b",
       "name": "Group B",
       "standings": [
-        { "pos":1, "gamertag":"DuskHunter",  "nationCode":"mx", "avatar":"https://randomuser.me/api/portraits/women/43.jpg", "mp":0, "gd":0, "pts":0 },
-        { "pos":2, "gamertag":"ColdFront",   "nationCode":"pl", "avatar":"https://randomuser.me/api/portraits/women/21.jpg", "mp":0, "gd":0, "pts":0 },
-        { "pos":3, "gamertag":"RedShift",    "nationCode":"tr", "avatar":"https://randomuser.me/api/portraits/men/67.jpg",   "mp":0, "gd":0, "pts":0 },
-        { "pos":4, "gamertag":"PacificEdge", "nationCode":"jp", "avatar":"https://randomuser.me/api/portraits/men/12.jpg",   "mp":0, "gd":0, "pts":0 }
+        { "pos":1, "gamertag":"DuskHunter",  "nationCode":"br", "avatar":"https://randomuser.me/api/portraits/women/43.jpg", "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0, "qualified":false },
+        { "pos":2, "gamertag":"ColdFront",   "nationCode":"pt", "avatar":"https://randomuser.me/api/portraits/women/21.jpg", "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0, "qualified":false },
+        { "pos":3, "gamertag":"RedShift",    "nationCode":"ao", "avatar":"https://randomuser.me/api/portraits/men/67.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0, "qualified":false },
+        { "pos":4, "gamertag":"PacificEdge", "nationCode":"mz", "avatar":"https://randomuser.me/api/portraits/men/12.jpg",   "mp":0, "w":0, "d":0, "l":0, "gd":0, "pts":0, "qualified":false }
       ]
     }
   ],
-  "startDate": "JUN 1, 2026"
+  "knockout": {
+    "status": "upcoming",
+    "rounds": [
+      {
+        "name": "Semi-Finals",
+        "matches": [
+          { "p1":"1A", "av1":null, "p2":"2B", "av2":null, "date":"JUL 10", "status":"upcoming" },
+          { "p1":"1B", "av1":null, "p2":"2A", "av2":null, "date":"JUL 10", "status":"upcoming" }
+        ]
+      },
+      {
+        "name": "Final",
+        "matches": [
+          { "p1":"TBD", "av1":null, "p2":"TBD", "av2":null, "date":"JUL 20", "status":"upcoming" }
+        ]
+      }
+    ]
+  }
 }
