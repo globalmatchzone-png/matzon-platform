@@ -38,7 +38,8 @@
     </div>
 
     <!-- Navegação -->
-    <div id="menuMainContent">
+    <div style="position:relative; flex:1; overflow:hidden;">
+    <div id="menuMainContent" style="position:absolute; width:100%;">
     <ul class="menu-list">
         <li class="menu-item" id="menuRanking">Ranking</li>
         <li class="menu-item" id="menuTournaments">Eventos e Torneios</li>
@@ -46,9 +47,7 @@
         <li class="menu-item" id="menuComunidade">Comunidade</li>
     </ul>
     </div>
-
-    <!-- Settings -->
-    <div id="navSettingsContent">
+    <div id="navSettingsContent" style="position:absolute; width:100%; top:0;">
         <div class="smenu-gamertag" style="text-align:right; margin-bottom:8px;">Settings</div>
         <ul class="menu-list">
             <li class="menu-item">Edit Profile</li>
@@ -61,6 +60,7 @@
         </ul>
         <div style="flex:1;"></div>
         <button style="background:none;border:none;color:#ef4444;font-family:var(--font-body);font-size:13px;font-weight:700;cursor:pointer;text-align:right;padding:0;align-self:flex-end;">Sign Out</button>
+    </div>
     </div>
 
 </nav>
