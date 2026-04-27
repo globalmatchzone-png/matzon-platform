@@ -361,3 +361,50 @@
 .trn-standing-top { background:rgba(255,122,0,0.05); border-radius:8px; padding:8px; margin:-8px; margin-bottom:0; }
 .trn-match-row { display:flex; align-items:center; padding:10px 0; border-bottom:1px solid var(--border-color); }
 .trn-match-row:last-child { border-bottom:none; }
+
+/* =========================================
+   WORLD CUP — News / Live / Instagram
+   ========================================= */
+.live-match-widget { background:var(--bg-card); border:1px solid var(--border-color); border-radius:12px; padding:16px; margin-bottom:16px; }
+.live-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; }
+.live-indicator { display:flex; align-items:center; gap:6px; color:#ef4444; font-size:11px; font-weight:800; letter-spacing:1px; }
+.pulse-dot { width:8px; height:8px; background-color:#ef4444; border-radius:50%; animation:wcPulse 1.5s infinite; }
+@keyframes wcPulse { 0%{transform:scale(0.95);box-shadow:0 0 0 0 rgba(239,68,68,0.7);} 70%{transform:scale(1);box-shadow:0 0 0 6px rgba(239,68,68,0);} 100%{transform:scale(0.95);box-shadow:0 0 0 0 rgba(239,68,68,0);} }
+.live-tournament { font-size:10px; font-weight:600; color:var(--text-muted); text-transform:uppercase; }
+.live-scoreboard { display:flex; justify-content:space-between; align-items:center; }
+.live-team { display:flex; flex-direction:column; align-items:center; gap:8px; width:30%; }
+.live-team img { width:44px; height:30px; border-radius:4px; object-fit:cover; }
+.live-team span { font-size:12px; font-weight:600; }
+.live-score-center { display:flex; flex-direction:column; align-items:center; }
+.live-score-center .score { font-size:28px; font-weight:900; font-family:var(--font-heading); color:var(--accent-orange); }
+.live-score-center .minute { font-size:12px; font-weight:700; color:#ef4444; margin-top:4px; }
+
+.ig-feed-container { padding-bottom:20px; }
+.ig-post { background-color:var(--bg-card); border-radius:16px; margin:0 16px 24px; padding-bottom:16px; border:1px solid var(--border-color); overflow:hidden; }
+.ig-post-header { display:flex; justify-content:space-between; align-items:center; padding:12px 16px; }
+.ig-post-user { display:flex; align-items:center; gap:10px; }
+.ig-avatar { width:32px; height:32px; border-radius:50%; object-fit:cover; border:1px solid var(--border-color); }
+.ig-username { font-size:13px; font-weight:700; color:#fff; }
+.verified-badge { width:14px; height:14px; }
+.ig-more-icon { width:20px; height:20px; cursor:pointer; }
+.ig-post-image { width:100%; height:auto; max-height:450px; display:block; object-fit:cover; }
+.ig-post-content { padding:0 16px; }
+.ig-post-actions { display:flex; justify-content:space-between; align-items:center; padding:12px 0 8px; }
+.ig-action-left { display:flex; gap:16px; }
+.action-btn { background:none; border:none; color:#fff; cursor:pointer; padding:0; display:flex; align-items:center; justify-content:center; transition:transform 0.1s; }
+.action-btn svg { width:24px; height:24px; }
+.action-btn:active { transform:scale(0.9); }
+.action-btn.liked svg { fill:#ef4444; stroke:#ef4444; }
+.ig-likes { font-size:13px; font-weight:700; margin-bottom:8px; }
+.ig-caption { font-size:13px; line-height:1.5; margin-bottom:6px; color:#d1d5db; }
+.ig-caption .ig-username { color:#fff; margin-right:4px; }
+.ig-view-comments { font-size:13px; color:var(--text-muted); cursor:pointer; margin-bottom:12px; display:inline-block; font-weight:500; }
+.comments-list { margin-bottom:12px; max-height:150px; overflow-y:auto; display:flex; flex-direction:column; gap:8px; }
+.comment-item { font-size:13px; line-height:1.4; color:#d1d5db; }
+.comment-item .ig-username { font-size:13px; margin-right:4px; color:#fff; }
+.ig-add-comment { display:flex; align-items:center; gap:12px; margin-top:8px; }
+.ig-avatar-small { width:28px; height:28px; border-radius:50%; }
+.comment-input { flex:1; background:var(--bg-pill); border:none; border-radius:20px; padding:8px 14px; color:#fff; font-size:13px; outline:none; font-family:var(--font-body); }
+.comment-input::placeholder { color:var(--text-muted); }
+.btn-post-comment { background:transparent; border:none; color:var(--accent-orange); font-weight:700; font-size:13px; cursor:pointer; }
+.ig-post-time { font-size:10px; color:var(--text-muted); margin-top:12px; font-weight:600; text-transform:uppercase; }
