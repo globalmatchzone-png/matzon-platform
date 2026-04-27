@@ -647,3 +647,34 @@
 .comp-back-header { display:flex; align-items:center; gap:12px; padding:16px; border-bottom:1px solid var(--border-color); position:sticky; top:0; background:var(--bg-main); z-index:10; }
 .comp-back-btn { background:none; border:none; cursor:pointer; color:var(--text-muted); display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:10px; flex-shrink:0; transition:background 0.15s; }
 .comp-back-btn:active { background:rgba(255,255,255,0.06); }
+
+/* ── Competition Hub ─────────────────────── */
+.comp-back-header { display:flex; align-items:center; gap:12px; padding:16px; border-bottom:1px solid var(--border-color); position:sticky; top:0; background:var(--bg-main); z-index:10; }
+.comp-back-btn { background:none; border:none; cursor:pointer; color:var(--text-muted); display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:10px; flex-shrink:0; }
+.comp-back-btn:active { background:rgba(255,255,255,0.06); }
+
+/* My Competitions cards */
+.comp-my-card { background:var(--bg-card); border-radius:12px; padding:14px; min-width:148px; flex-shrink:0; cursor:pointer; border:1px solid var(--border-color); transition:opacity 0.2s; }
+.comp-my-card:active { opacity:0.7; }
+.comp-my-badge { font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; }
+.comp-my-name { font-size:13px; font-weight:800; color:var(--text-primary); margin-bottom:2px; }
+.comp-my-sub { font-size:10px; color:var(--text-muted); margin-bottom:8px; }
+.comp-my-action { font-size:11px; font-weight:700; color:var(--accent-orange); }
+
+/* Progression Pyramid */
+.comp-pyramid { display:flex; flex-direction:column; }
+.comp-pyramid-row { display:flex; align-items:center; gap:12px; cursor:pointer; transition:opacity 0.2s; }
+.comp-pyramid-row:active { opacity:0.7; }
+.comp-pyramid-line { width:2px; height:16px; background:var(--border-color); margin-left:7px; }
+.comp-pyramid-dot { width:16px; height:16px; border-radius:50%; background:var(--bg-pill); border:2px solid var(--border-color); flex-shrink:0; }
+.comp-pyramid-dot-active { background:var(--accent-orange); border-color:var(--accent-orange); }
+.comp-pyramid-dot-qualified { background:var(--accent-blue); border-color:var(--accent-blue); }
+.comp-pyramid-info { flex:1; }
+.comp-pyramid-label { font-size:13px; font-weight:700; color:var(--text-primary); }
+.comp-pyramid-sub { font-size:10px; color:var(--text-muted); margin-top:2px; }
+.comp-pyramid-status { font-size:10px; font-weight:800; flex-shrink:0; }
+
+/* Country cards (Domestic Hub) */
+.comp-country-card { background:var(--bg-card); border-radius:12px; padding:16px; cursor:pointer; border:2px solid var(--border-color); text-align:center; transition:border-color 0.2s, opacity 0.2s; }
+.comp-country-card:active { opacity:0.7; }
+.comp-country-active { border-color:var(--accent-orange); background:rgba(255,122,0,0.06); }

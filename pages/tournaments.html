@@ -1,46 +1,76 @@
 <div id="tournamentsView" style="display:none;">
 
-    <!-- ══════════════════════════════════════
-         COMPETITION HUB — vista principal
-    ══════════════════════════════════════ -->
+    <!-- ══ NÍVEL 1: COMPETITION HUB ══ -->
     <div id="compHub">
 
-        <!-- Progress Banner -->
+        <!-- My Competitions -->
         <div style="padding:16px 16px 0;">
-            <div class="tournament-card-wrapper" style="margin:0;padding:14px 16px;">
-                <div style="font-size:9px;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Competition Pyramid</div>
-                <div style="display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none;">
-                    <button class="pill active" style="white-space:nowrap;flex-shrink:0;">🏠 Domestic</button>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" style="flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
-                    <button class="pill" style="white-space:nowrap;flex-shrink:0;">⭐ Champions</button>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" style="flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
-                    <button class="pill" style="white-space:nowrap;flex-shrink:0;">🌍 Nations</button>
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" style="flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
-                    <button class="pill" style="white-space:nowrap;flex-shrink:0;">🏆 World Cup</button>
+            <div class="flex-between" style="padding:0 0 10px;">
+                <h3 style="font-size:15px;">My Competitions</h3>
+                <a href="#" style="font-size:12px;color:var(--accent-blue);">see all</a>
+            </div>
+            <div style="display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;">
+                <div class="comp-my-card" id="myCardLeague">
+                    <div class="comp-my-badge" style="color:#4ade80;">● ACTIVE</div>
+                    <div class="comp-my-name">Angola League</div>
+                    <div class="comp-my-sub">Round 3 · Pos #1</div>
+                    <div class="comp-my-action">View →</div>
+                </div>
+                <div class="comp-my-card" id="myCardChamp">
+                    <div class="comp-my-badge" style="color:var(--accent-blue);">✓ QUALIFIED</div>
+                    <div class="comp-my-name">Champions League</div>
+                    <div class="comp-my-sub">Starts JUN 1</div>
+                    <div class="comp-my-action">View →</div>
+                </div>
+                <div class="comp-my-card" id="myCardWC">
+                    <div class="comp-my-badge" style="color:var(--accent-orange);">◷ PENDING</div>
+                    <div class="comp-my-name">World Cup</div>
+                    <div class="comp-my-sub">Qualification open</div>
+                    <div class="comp-my-action">View →</div>
                 </div>
             </div>
         </div>
 
-        <!-- My Competitions -->
+        <!-- Progression Pyramid -->
         <div style="padding:20px 16px 0;">
-            <div class="flex-between" style="padding:0 0 12px;">
-                <h3 style="font-size:15px;">My Competitions</h3>
-            </div>
-            <div style="display:flex;gap:10px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;">
-                <div class="tournament-card-wrapper" style="margin:0;min-width:150px;flex-shrink:0;padding:14px;cursor:pointer;">
-                    <div style="font-size:9px;font-weight:800;color:#4ade80;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">● ACTIVE</div>
-                    <div style="font-size:13px;font-weight:800;color:var(--text-primary);margin-bottom:2px;">Angola League</div>
-                    <div style="font-size:10px;color:var(--text-muted);">Round 3 of 5</div>
-                </div>
-                <div class="tournament-card-wrapper" style="margin:0;min-width:150px;flex-shrink:0;padding:14px;cursor:pointer;">
-                    <div style="font-size:9px;font-weight:800;color:var(--accent-blue);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">✓ QUALIFIED</div>
-                    <div style="font-size:13px;font-weight:800;color:var(--text-primary);margin-bottom:2px;">Champions League</div>
-                    <div style="font-size:10px;color:var(--text-muted);">Starts JUN 1</div>
-                </div>
-                <div class="tournament-card-wrapper" style="margin:0;min-width:150px;flex-shrink:0;padding:14px;cursor:pointer;">
-                    <div style="font-size:9px;font-weight:800;color:var(--accent-orange);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px;">◷ PENDING</div>
-                    <div style="font-size:13px;font-weight:800;color:var(--text-primary);margin-bottom:2px;">World Cup</div>
-                    <div style="font-size:10px;color:var(--text-muted);">Qualification open</div>
+            <div class="tournament-card-wrapper" style="margin:0;padding:16px;">
+                <div style="font-size:9px;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">Your Progress Path</div>
+                <div class="comp-pyramid">
+                    <div class="comp-pyramid-row comp-pyramid-active" id="pyDomestic">
+                        <div class="comp-pyramid-dot comp-pyramid-dot-active"></div>
+                        <div class="comp-pyramid-info">
+                            <div class="comp-pyramid-label">Domestic League</div>
+                            <div class="comp-pyramid-sub">Angola League · Round 3 of 5</div>
+                        </div>
+                        <div class="comp-pyramid-status" style="color:#4ade80;">Active</div>
+                    </div>
+                    <div class="comp-pyramid-line"></div>
+                    <div class="comp-pyramid-row comp-pyramid-qualified" id="pyChampions">
+                        <div class="comp-pyramid-dot comp-pyramid-dot-qualified"></div>
+                        <div class="comp-pyramid-info">
+                            <div class="comp-pyramid-label">Champions League</div>
+                            <div class="comp-pyramid-sub">Qualified · Starts JUN 1</div>
+                        </div>
+                        <div class="comp-pyramid-status" style="color:var(--accent-blue);">Qualified</div>
+                    </div>
+                    <div class="comp-pyramid-line"></div>
+                    <div class="comp-pyramid-row" id="pyNations">
+                        <div class="comp-pyramid-dot"></div>
+                        <div class="comp-pyramid-info">
+                            <div class="comp-pyramid-label">Nations League</div>
+                            <div class="comp-pyramid-sub">Represent France · Active</div>
+                        </div>
+                        <div class="comp-pyramid-status" style="color:#4ade80;">Active</div>
+                    </div>
+                    <div class="comp-pyramid-line"></div>
+                    <div class="comp-pyramid-row" id="pyWorldCup">
+                        <div class="comp-pyramid-dot"></div>
+                        <div class="comp-pyramid-info">
+                            <div class="comp-pyramid-label">World Cup</div>
+                            <div class="comp-pyramid-sub">Qualification pending</div>
+                        </div>
+                        <div class="comp-pyramid-status" style="color:var(--accent-orange);">Pending</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,132 +78,130 @@
         <!-- Discover Competitions -->
         <div style="padding:20px 16px 32px;">
             <div class="flex-between" style="padding:0 0 12px;">
-                <h3 style="font-size:15px;">Discover</h3>
+                <h3 style="font-size:15px;">Discover Competitions</h3>
             </div>
 
-            <!-- Domestic Leagues -->
-            <div id="hubCardDomestic" class="news-item" style="margin:0 0 12px;cursor:pointer;align-items:stretch;">
-                <div class="news-img" style="background:var(--green-grad);min-height:110px;display:flex;align-items:center;justify-content:center;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22" stroke="white" fill="none" stroke-width="1.5"/></svg>
+            <!-- Domestic -->
+            <div id="hubCardDomestic" class="news-item" style="margin:0 0 12px;cursor:pointer;">
+                <div class="news-img" style="background:var(--green-grad);display:flex;align-items:center;justify-content:center;min-height:110px;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
                 </div>
-                <div class="news-content" style="justify-content:space-between;">
-                    <div>
-                        <p style="margin-bottom:6px;"><strong>Domestic Leagues</strong> National competitive season. Win your league to qualify for Champions.</p>
-                        <div class="news-meta">SEASON 2026 • <span style="color:var(--text-muted);">4 LEAGUES ACTIVE</span></div>
-                    </div>
-                    <div class="news-meta" style="margin-top:8px;">
-                        <span style="color:#4ade80;font-weight:800;">● ACTIVE</span>
-                        &nbsp;•&nbsp; 🇦🇴 🇵🇹 🇧🇷 🇲🇿
-                    </div>
+                <div class="news-content">
+                    <p><strong>Domestic Leagues</strong> National season. Win your league, qualify for Champions.</p>
+                    <div class="news-meta" style="margin-top:6px;">4 LEAGUES &nbsp;•&nbsp; <span style="color:#4ade80;">● ACTIVE</span></div>
+                    <div class="news-meta" style="margin-top:4px;color:var(--text-muted);">🇦🇴 🇵🇹 🇧🇷 🇲🇿</div>
                 </div>
             </div>
 
-            <!-- Champions League -->
-            <div id="hubCardChampions" class="news-item" style="margin:0 0 12px;cursor:pointer;align-items:stretch;">
-                <div class="news-img" style="background:var(--blue-grad);min-height:110px;display:flex;align-items:center;justify-content:center;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z"/></svg>
+            <!-- Champions -->
+            <div id="hubCardChampions" class="news-item" style="margin:0 0 12px;cursor:pointer;">
+                <div class="news-img" style="background:var(--blue-grad);display:flex;align-items:center;justify-content:center;min-height:110px;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z"/></svg>
                 </div>
-                <div class="news-content" style="justify-content:space-between;">
-                    <div>
-                        <p style="margin-bottom:6px;"><strong>Champions League</strong> Elite competition. Top players from domestic leagues qualify.</p>
-                        <div class="news-meta">QUALIFICATION REQUIRED • <span style="color:var(--text-muted);">+300 PTS</span></div>
-                    </div>
-                    <div class="news-meta" style="margin-top:8px;">
-                        <span style="color:var(--accent-blue);font-weight:800;">STARTS JUN 1</span>
-                        &nbsp;•&nbsp; Groups + Knockout
-                    </div>
+                <div class="news-content">
+                    <p><strong>Champions League</strong> Elite. Top players from domestic leagues compete.</p>
+                    <div class="news-meta" style="margin-top:6px;">QUALIFICATION REQUIRED &nbsp;•&nbsp; +300 PTS</div>
+                    <div class="news-meta" style="margin-top:4px;color:var(--accent-blue);">STARTS JUN 1, 2026</div>
                 </div>
             </div>
 
-            <!-- Nations League -->
-            <div id="hubCardNations" class="news-item" style="margin:0 0 12px;cursor:pointer;align-items:stretch;">
+            <!-- Nations -->
+            <div id="hubCardNations" class="news-item" style="margin:0 0 12px;cursor:pointer;">
                 <div class="news-img" style="background-image:url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=300&q=80');min-height:110px;">
-                    <div class="link-icon">
-                        <svg viewBox="0 0 24 24"><path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z" fill="white"/></svg>
-                    </div>
+                    <div class="link-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 6V12C3 17.55 6.84 22.74 12 24C17.16 22.74 21 17.55 21 12V6L12 2Z" fill="white"/></svg></div>
                 </div>
-                <div class="news-content" style="justify-content:space-between;">
-                    <div>
-                        <p style="margin-bottom:6px;"><strong>Nations League</strong> Represent your nation. Top nations qualify for World Cup.</p>
-                        <div class="news-meta">6 ZONES • <span style="color:var(--text-muted);">WORLD CUP QUALIFIER</span></div>
-                    </div>
-                    <div class="news-meta" style="margin-top:8px;">
-                        <span style="color:#4ade80;font-weight:800;">● ACTIVE NOW</span>
-                    </div>
+                <div class="news-content">
+                    <p><strong>Nations League</strong> Represent your nation. Qualify for World Cup.</p>
+                    <div class="news-meta" style="margin-top:6px;">6 ZONES &nbsp;•&nbsp; WORLD CUP QUALIFIER</div>
+                    <div class="news-meta" style="margin-top:4px;color:#4ade80;">● ACTIVE NOW</div>
                 </div>
             </div>
 
             <!-- World Cup -->
-            <div id="hubCardWorldCup" class="news-item" style="margin:0 0 12px;cursor:pointer;align-items:stretch;">
-                <div class="news-img" style="background:linear-gradient(135deg,#052e16,#064e3b);min-height:110px;display:flex;align-items:center;justify-content:center;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+            <div id="hubCardWorldCup" class="news-item" style="margin:0 0 12px;cursor:pointer;">
+                <div class="news-img" style="background:linear-gradient(135deg,#052e16,#064e3b);display:flex;align-items:center;justify-content:center;min-height:110px;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
                 </div>
-                <div class="news-content" style="justify-content:space-between;">
-                    <div>
-                        <p style="margin-bottom:6px;"><strong>MATZON World Cup™</strong> The summit. Top nations from Nations League qualify.</p>
-                        <div class="news-meta">GROUPS A–H • <span style="color:var(--text-muted);">KNOCKOUT • GRAND FINAL</span></div>
-                    </div>
-                    <div class="news-meta" style="margin-top:8px;">
-                        <span style="color:#4ade80;font-weight:800;">STARTS AUG 1</span>
-                    </div>
+                <div class="news-content">
+                    <p><strong>MATZON World Cup™</strong> The summit. Nations League qualifiers compete.</p>
+                    <div class="news-meta" style="margin-top:6px;">GROUPS A–H &nbsp;•&nbsp; KNOCKOUT &nbsp;•&nbsp; FINAL</div>
+                    <div class="news-meta" style="margin-top:4px;color:#4ade80;">STARTS AUG 1, 2026</div>
                 </div>
             </div>
 
             <!-- Open Events -->
-            <div id="hubCardOpen" class="slim-banner" style="margin:0;height:auto;padding:16px;flex-direction:column;align-items:flex-start;gap:6px;">
-                <div style="display:flex;align-items:center;gap:8px;width:100%;justify-content:space-between;">
-                    <div style="font-size:14px;font-weight:800;">🎯 Open Events</div>
-                    <span style="font-size:10px;font-weight:800;background:rgba(0,0,0,0.3);padding:3px 8px;border-radius:20px;">5 OPEN →</span>
+            <div id="hubCardOpen" class="slim-banner" style="margin:0;height:auto;padding:16px;flex-direction:column;align-items:flex-start;gap:4px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+                    <span style="font-size:14px;font-weight:800;">Open Events</span>
+                    <span style="font-size:11px;font-weight:800;background:rgba(0,0,0,0.25);padding:3px 10px;border-radius:20px;">5 OPEN →</span>
                 </div>
-                <div style="font-size:11px;color:rgba(255,255,255,0.7);">Weekly tournaments open to all. No qualification required.</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.7);">Weekly tournaments. No qualification required.</div>
             </div>
         </div>
     </div>
 
-    <!-- ══════════════════════════════════════
-         DOMESTIC LEAGUES
-    ══════════════════════════════════════ -->
+    <!-- ══ NÍVEL 2: DOMESTIC HUB ══ -->
     <div id="compDomestic" style="display:none;">
         <div class="comp-back-header">
             <button class="comp-back-btn" data-back="hub">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             </button>
             <div style="font-size:15px;font-weight:800;">Domestic Leagues</div>
         </div>
 
-        <div style="padding:12px 16px 0;">
-            <div class="pills-scroll" style="max-width:100%;-webkit-mask-image:none;mask-image:none;">
-                <button class="pill active js-league-select" data-league="lg-ao">🇦🇴 Angola</button>
-                <button class="pill js-league-select" data-league="lg-pt">🇵🇹 Portugal</button>
-                <button class="pill js-league-select" data-league="lg-br">🇧🇷 Brazil</button>
-                <button class="pill js-league-select" data-league="lg-mz">🇲🇿 Mozambique</button>
+        <!-- Countries -->
+        <div style="padding:16px 16px 0;">
+            <div style="font-size:10px;font-weight:800;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Select League</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px;">
+                <div class="comp-country-card comp-country-active js-league-select" data-league="lg-ao">
+                    <div style="font-size:22px;margin-bottom:6px;">🇦🇴</div>
+                    <div style="font-size:13px;font-weight:800;color:#fff;">Angola</div>
+                    <div style="font-size:10px;color:#4ade80;font-weight:700;">● Active</div>
+                </div>
+                <div class="comp-country-card js-league-select" data-league="lg-pt">
+                    <div style="font-size:22px;margin-bottom:6px;">🇵🇹</div>
+                    <div style="font-size:13px;font-weight:800;color:#fff;">Portugal</div>
+                    <div style="font-size:10px;color:#4ade80;font-weight:700;">● Active</div>
+                </div>
+                <div class="comp-country-card js-league-select" data-league="lg-br">
+                    <div style="font-size:22px;margin-bottom:6px;">🇧🇷</div>
+                    <div style="font-size:13px;font-weight:800;color:#fff;">Brazil</div>
+                    <div style="font-size:10px;color:#4ade80;font-weight:700;">● Active</div>
+                </div>
+                <div class="comp-country-card js-league-select" data-league="lg-mz">
+                    <div style="font-size:22px;margin-bottom:6px;">🇲🇿</div>
+                    <div style="font-size:13px;font-weight:800;color:#fff;">Mozambique</div>
+                    <div style="font-size:10px;color:#4ade80;font-weight:700;">● Active</div>
+                </div>
             </div>
         </div>
 
-        <div class="tabs-container" style="margin-top:16px;">
-            <div class="tabs-scroll" id="domTabsScroll">
-                <button class="tab-item active js-dom-tab" data-target="dom-overview">Overview</button>
-                <button class="tab-item js-dom-tab" data-target="dom-standings">Standings</button>
-                <button class="tab-item js-dom-tab" data-target="dom-fixtures">Fixtures</button>
-                <button class="tab-item js-dom-tab" data-target="dom-results">Results</button>
-                <button class="tab-item js-dom-tab" data-target="dom-qualification">Qualification</button>
+        <!-- ══ NÍVEL 3: LEAGUE DETAIL ══ -->
+        <div id="compLeagueDetail" style="display:none;">
+            <div class="tabs-container" style="margin-top:0;">
+                <div class="tabs-scroll">
+                    <button class="tab-item active js-dom-tab" data-target="dom-overview">Overview</button>
+                    <button class="tab-item js-dom-tab" data-target="dom-standings">Standings</button>
+                    <button class="tab-item js-dom-tab" data-target="dom-fixtures">Fixtures</button>
+                    <button class="tab-item js-dom-tab" data-target="dom-results">Results</button>
+                    <button class="tab-item js-dom-tab" data-target="dom-qualification">Qualification</button>
+                    <button class="tab-item js-dom-tab" data-target="dom-join">Join</button>
+                </div>
             </div>
+            <div id="dom-overview" class="dom-panel" style="padding:16px;"></div>
+            <div id="dom-standings" class="dom-panel" style="display:none;padding:16px;"></div>
+            <div id="dom-fixtures" class="dom-panel" style="display:none;padding:16px;"></div>
+            <div id="dom-results" class="dom-panel" style="display:none;padding:16px;"></div>
+            <div id="dom-qualification" class="dom-panel" style="display:none;padding:16px;"></div>
+            <div id="dom-join" class="dom-panel" style="display:none;padding:16px;"></div>
         </div>
-
-        <div id="dom-overview" class="dom-panel" style="padding:16px;"></div>
-        <div id="dom-standings" class="dom-panel" style="display:none;padding:16px;"></div>
-        <div id="dom-fixtures" class="dom-panel" style="display:none;padding:16px;"></div>
-        <div id="dom-results" class="dom-panel" style="display:none;padding:16px;"></div>
-        <div id="dom-qualification" class="dom-panel" style="display:none;padding:16px;"></div>
     </div>
 
-    <!-- ══════════════════════════════════════
-         CHAMPIONS LEAGUE
-    ══════════════════════════════════════ -->
+    <!-- ══ CHAMPIONS LEAGUE ══ -->
     <div id="compChampions" style="display:none;">
         <div class="comp-back-header">
             <button class="comp-back-btn" data-back="hub">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             </button>
             <div style="font-size:15px;font-weight:800;">Champions League</div>
         </div>
@@ -188,19 +216,17 @@
         <div id="champ-qualified" class="champ-panel" style="padding:16px;"></div>
         <div id="champ-groups" class="champ-panel" style="display:none;padding:16px;"></div>
         <div id="champ-knockout" class="champ-panel" style="display:none;padding:16px;"></div>
-        <div id="champ-final" class="champ-panel" style="display:none;padding:16px 16px 32px;text-align:center;color:var(--text-muted);padding-top:60px;">
+        <div id="champ-final" class="champ-panel" style="display:none;padding:60px 16px;text-align:center;color:var(--text-muted);">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
-            <div style="margin-top:16px;font-size:13px;">Final details after knockout stage.</div>
+            <div style="margin-top:16px;font-size:13px;">Final announced after knockout stage.</div>
         </div>
     </div>
 
-    <!-- ══════════════════════════════════════
-         NATIONS LEAGUE
-    ══════════════════════════════════════ -->
+    <!-- ══ NATIONS LEAGUE ══ -->
     <div id="compNations" style="display:none;">
         <div class="comp-back-header">
             <button class="comp-back-btn" data-back="hub">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             </button>
             <div style="font-size:15px;font-weight:800;">Nations League</div>
         </div>
@@ -253,10 +279,7 @@
         </section>
         <section class="standings-section">
             <h2 class="section-title">Standings</h2>
-            <div class="table-header">
-                <div class="th-left"><span class="th-hash">#</span><span>PARTICIPANT</span></div>
-                <div class="th-right"><span>MP</span><span>GD</span><span>PTS</span></div>
-            </div>
+            <div class="table-header"><div class="th-left"><span class="th-hash">#</span><span>PARTICIPANT</span></div><div class="th-right"><span>MP</span><span>GD</span><span>PTS</span></div></div>
             <div class="standings-list">
                 <div class="standing-row advancing"><div class="st-left"><span class="st-rank">1</span><img src="https://flagcdn.com/w40/fr.png" alt="France" class="st-flag"><span class="st-name">France</span></div><div class="st-right"><span>0</span><span>0</span><span class="st-pts">0</span></div></div>
                 <div class="standing-row advancing"><div class="st-left"><span class="st-rank">2</span><img src="https://flagcdn.com/w40/gr.png" alt="Greece" class="st-flag"><span class="st-name">Greece</span></div><div class="st-right"><span>0</span><span>0</span><span class="st-pts">0</span></div></div>
@@ -285,58 +308,32 @@
                 <div class="match-card"><div class="match-row"><div class="match-team"><img src="https://flagcdn.com/w40/lu.png" alt="Luxembourg" class="m-flag"> Luxembourg</div><div class="match-time">19:00</div></div><div class="match-row mt-12"><div class="match-team"><img src="https://flagcdn.com/w40/gr.png" alt="Greece" class="m-flag"> Greece</div><div class="match-date">APR 28</div></div></div>
             </div>
         </section>
-        <section class="qual-section">
-            <h2 class="section-title">Qualification for continental<br>championships via Nations League</h2>
-            <div class="qual-gradient-box">
-                <div class="qual-pattern"></div>
-                <div class="qual-table-wrapper">
-                    <table class="qual-table">
-                        <thead><tr><th class="t-left"></th><th>Consistency PTS<br>Qualification</th><th>Week 3<br>Qualification</th><th>Total</th></tr></thead>
-                        <tbody>
-                            <tr class="glass"><td class="t-left">Europe</td><td>8</td><td>4</td><td>12</td></tr>
-                            <tr class="glass highlight"><td class="t-left">Asia East*</td><td>3</td><td>2</td><td>5</td></tr>
-                            <tr class="glass"><td class="t-left">Asia West*</td><td>2</td><td>1</td><td>3</td></tr>
-                            <tr class="glass highlight"><td class="t-left">Africa</td><td>5</td><td>3</td><td>8</td></tr>
-                            <tr class="glass"><td class="t-left">N&amp;CA</td><td>4</td><td>2</td><td>6</td></tr>
-                            <tr class="glass highlight"><td class="t-left">SA</td><td>3</td><td>1</td><td>4</td></tr>
-                            <tr class="glass"><td class="t-left">Oceania**</td><td>N.A.</td><td>N.A.</td><td>2</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="swipe-alert"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M9 18l-6-6 6-6v4h6V6l6 6-6 6v-4H9v4z"/></svg> SWIPE HORIZONTAL FOR FULL TABLE</div>
-                <div class="qual-notes">* Asia West and Asia East will compete together in the MATZON Continental Championship Asia.<br>** Oceania will compete separately in the MATZON Continental Championship Oceania.</div>
-            </div>
-        </section>
         <section class="explanation-section">
             <div class="explanation-box">
                 <h3>Consistency ranking explanation</h3>
                 <p>Throughout all three qualifying-weeks, national teams earn consistency points based on their performance across both the group stages and the knockout stages.</p>
                 <h3 class="mt-24">Direct qualification in week 3</h3>
-                <p>A limited number of teams qualify directly through their performance in week 3. These spots are awarded to the top-performing teams of the final week.</p>
+                <p>A limited number of teams qualify directly through their performance in week 3.</p>
             </div>
         </section>
     </div>
 
-    <!-- ══════════════════════════════════════
-         WORLD CUP
-    ══════════════════════════════════════ -->
+    <!-- ══ WORLD CUP ══ -->
     <div id="compWorldCup" style="display:none;">
         <div class="comp-back-header">
             <button class="comp-back-btn" data-back="hub">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             </button>
             <div style="font-size:15px;font-weight:800;">World Cup</div>
         </div>
         <div id="worldcup-content" style="padding:16px;"></div>
     </div>
 
-    <!-- ══════════════════════════════════════
-         OPEN EVENTS
-    ══════════════════════════════════════ -->
+    <!-- ══ OPEN EVENTS ══ -->
     <div id="compOpen" style="display:none;">
         <div class="comp-back-header">
             <button class="comp-back-btn" data-back="hub">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a96a6" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
             </button>
             <div style="font-size:15px;font-weight:800;">Open Events</div>
         </div>
