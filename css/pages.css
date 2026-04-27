@@ -634,3 +634,9 @@
     align-items: center;
     gap: 8px;
 }
+
+/* World Cup standings — 8 colunas P W D L F A GD PTS */
+#wcStandings .th-right span { width: 20px; }
+#wcStandings .th-right span.th-pts { width: 26px; color: var(--accent-orange); font-weight: 900; }
+#wcStandings .st-right span { width: 20px; }
+#wcStandings .st-right span.st-pts { width: 26px; color: var(--accent-orange); font-weight: 800; font-size: 12px; }
