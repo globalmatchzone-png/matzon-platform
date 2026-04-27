@@ -312,15 +312,7 @@ document.addEventListener('app:ready', () => {
     }
 
     // ── Tabs ──────────────────────────────────────────────
-    document.querySelectorAll('.js-trn-main-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.js-trn-main-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.trn-panel').forEach(p => p.style.display = 'none');
-            tab.classList.add('active');
-            const panel = document.getElementById(tab.dataset.target);
-            if (panel) panel.style.display = 'block';
-        });
-    });
+    // Tab switching handled by competition.js
 
     const scroll   = document.getElementById('trnTabsScroll');
     const leftBtn  = document.querySelector('.js-trn-tab-left');

@@ -408,3 +408,23 @@
 .comment-input::placeholder { color:var(--text-muted); }
 .btn-post-comment { background:transparent; border:none; color:var(--accent-orange); font-weight:700; font-size:13px; cursor:pointer; }
 .ig-post-time { font-size:10px; color:var(--text-muted); margin-top:12px; font-weight:600; text-transform:uppercase; }
+
+/* =========================================
+   COMPETITION HUB
+   ========================================= */
+.comp-pyramid-step { font-size:11px; font-weight:700; color:var(--text-muted); background:var(--bg-pill); padding:5px 10px; border-radius:20px; white-space:nowrap; flex-shrink:0; }
+.comp-pyramid-step.active { color:var(--accent-orange); background:rgba(255,122,0,0.12); }
+.comp-my-card { background:var(--bg-card); border-radius:12px; padding:14px; min-width:140px; flex-shrink:0; border:1px solid var(--border-color); cursor:pointer; transition:opacity 0.2s; }
+.comp-my-card:active { opacity:0.7; }
+.comp-main-card { border-radius:16px; padding:20px; margin-bottom:12px; border:1px solid var(--border-color); cursor:pointer; transition:opacity 0.2s; }
+.comp-main-card:active { opacity:0.8; }
+.comp-tag { font-size:10px; font-weight:700; color:var(--text-muted); background:rgba(255,255,255,0.06); padding:4px 8px; border-radius:6px; border:1px solid var(--border-color); white-space:nowrap; }
+.comp-enter-btn { font-size:12px; font-weight:800; padding:8px 16px; border-radius:8px; border:none; cursor:pointer; font-family:var(--font-body); transition:opacity 0.2s; }
+.comp-enter-btn:active { opacity:0.7; }
+.comp-enter-orange { background:var(--accent-orange); color:#000; }
+.comp-enter-blue { background:#1d4ed8; color:#fff; }
+.comp-enter-purple { background:#7c3aed; color:#fff; }
+.comp-enter-green { background:#059669; color:#fff; }
+.comp-back-header { display:flex; align-items:center; gap:12px; padding:16px; border-bottom:1px solid var(--border-color); position:sticky; top:0; background:var(--bg-main); z-index:10; }
+.comp-back-btn { background:none; border:none; cursor:pointer; color:var(--text-muted); display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:8px; flex-shrink:0; }
+.comp-back-btn:active { background:rgba(255,255,255,0.06); }
