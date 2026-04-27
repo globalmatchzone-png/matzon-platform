@@ -341,4 +341,132 @@ document.addEventListener('app:ready', () => {
         });
     }
 
+    // ── Competition Hub Navigation ────────────────────────
+
+    const allSections = ['compHub','compLeague','compChampions','compNations','compWorldCup','compOpen'];
+
+    function showSection(id) {
+        allSections.forEach(s => {
+            const el = document.getElementById(s);
+            if (el) el.style.display = s === id ? 'block' : 'none';
+        });
+        window.scrollTo(0, 0);
+    }
+
+    // My Competition cards → navegação
+    const cardLeague = document.getElementById('myCardLeague');
+    const cardChamp  = document.getElementById('myCardChamp');
+    const cardWC     = document.getElementById('myCardWC');
+    if (cardLeague) cardLeague.addEventListener('click', () => showSection('compLeague'));
+    if (cardChamp)  cardChamp.addEventListener('click',  () => showSection('compChampions'));
+    if (cardWC)     cardWC.addEventListener('click',     () => showSection('compWorldCup'));
+
+    // Progression pyramid → navegação
+    const pyDomestic  = document.getElementById('pyDomestic');
+    const pyChampions = document.getElementById('pyChampions');
+    const pyNations   = document.getElementById('pyNations');
+    const pyWorldCup  = document.getElementById('pyWorldCup');
+    if (pyDomestic)  pyDomestic.addEventListener('click',  () => showSection('compLeague'));
+    if (pyChampions) pyChampions.addEventListener('click', () => showSection('compChampions'));
+    if (pyNations)   pyNations.addEventListener('click',   () => showSection('compNations'));
+    if (pyWorldCup)  pyWorldCup.addEventListener('click',  () => showSection('compWorldCup'));
+
+    // Competition grid cards → navegação
+    document.querySelectorAll('[data-goto]').forEach(el => {
+        el.addEventListener('click', () => {
+            const target = el.dataset.goto;
+            if (target) showSection(target);
+        });
+    });
+
+    // Back buttons → volta ao hub
+    document.querySelectorAll('.comp-back-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const back = btn.dataset.back || 'hub';
+            showSection(back === 'hub' ? 'compHub' : back);
+        });
+    });
+
+    // Botão do perfil → Open Events
+    const btnJoinTournament = document.getElementById('btnJoinTournament');
+    if (btnJoinTournament) {
+        btnJoinTournament.addEventListener('click', () => {
+            const menuT = document.getElementById('menuTournaments');
+            if (menuT) menuT.dispatchEvent(new Event('click'));
+            setTimeout(() => showSection('compOpen'), 100);
+        });
+    }
+
+
+    // ── Competition Hub Navigation ────────────────────────
+
+    const allSections = ['compHub','compDomestic','compLeague','compLeagueDetail','compChampions','compNations','compWorldCup','compOpen'];
+
+    function showSection(id) {
+        allSections.forEach(s => {
+            const el = document.getElementById(s);
+            if (el) el.style.display = s === id ? 'block' : 'none';
+        });
+        window.scrollTo(0, 0);
+    }
+
+    // Hub discover cards
+    const hubCards = {
+        'hubCardDomestic': 'compDomestic',
+        'hubCardChampions': 'compChampions',
+        'hubCardNations':   'compNations',
+        'hubCardWorldCup':  'compWorldCup',
+        'hubCardOpen':      'compOpen'
+    };
+    Object.entries(hubCards).forEach(([cardId, sectionId]) => {
+        const el = document.getElementById(cardId);
+        if (el) el.addEventListener('click', () => showSection(sectionId));
+    });
+
+    // My Competition cards
+    const myCards = {
+        'myCardLeague': 'compLeague',
+        'myCardChamp':  'compChampions',
+        'myCardWC':     'compWorldCup'
+    };
+    Object.entries(myCards).forEach(([cardId, sectionId]) => {
+        const el = document.getElementById(cardId);
+        if (el) el.addEventListener('click', () => showSection(sectionId));
+    });
+
+    // Progression pyramid
+    const pyramid = {
+        'pyDomestic':  'compDomestic',
+        'pyChampions': 'compChampions',
+        'pyNations':   'compNations',
+        'pyWorldCup':  'compWorldCup'
+    };
+    Object.entries(pyramid).forEach(([rowId, sectionId]) => {
+        const el = document.getElementById(rowId);
+        if (el) el.addEventListener('click', () => showSection(sectionId));
+    });
+
+    // Back buttons
+    document.querySelectorAll('.comp-back-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const back = btn.dataset.back;
+            if (back === 'hub' || !back) showSection('compHub');
+            else showSection(back);
+        });
+    });
+
+    // Botão do perfil → Open Events
+    const btnJoinProfile = document.getElementById('btnJoinTournament');
+    if (btnJoinProfile) {
+        btnJoinProfile.addEventListener('click', () => {
+            const menuT = document.getElementById('menuTournaments');
+            if (menuT) menuT.dispatchEvent(new Event('click'));
+            setTimeout(() => showSection('compOpen'), 100);
+        });
+    }
+
+    // Iniciar sempre no hub
+    showSection('compHub');
+
+
 });
