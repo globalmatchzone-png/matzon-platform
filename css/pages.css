@@ -640,3 +640,10 @@
 #wcStandings .th-right span.th-pts { width: 26px; color: var(--accent-orange); font-weight: 900; }
 #wcStandings .st-right span { width: 20px; }
 #wcStandings .st-right span.st-pts { width: 26px; color: var(--accent-orange); font-weight: 800; font-size: 12px; }
+
+/* =========================================
+   COMPETITION HUB
+   ========================================= */
+.comp-back-header { display:flex; align-items:center; gap:12px; padding:16px; border-bottom:1px solid var(--border-color); position:sticky; top:0; background:var(--bg-main); z-index:10; }
+.comp-back-btn { background:none; border:none; cursor:pointer; color:var(--text-muted); display:flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:10px; flex-shrink:0; transition:background 0.15s; }
+.comp-back-btn:active { background:rgba(255,255,255,0.06); }
